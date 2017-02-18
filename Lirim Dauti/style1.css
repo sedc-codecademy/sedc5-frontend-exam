@@ -1,0 +1,17 @@
+.btn btn-outline-secondary{
+    text-align: top;
+    padding: 50%;
+     margin: 0 auto;
+  
+}
+
+
+#myBtn{
+    border:  none;
+    padding: 100px;
+    color: black;
+    background-color: grey;
+}
+#myBtn :hover{
+    padding: 250px;
+}
