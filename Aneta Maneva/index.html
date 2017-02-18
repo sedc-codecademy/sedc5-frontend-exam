@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="choise-btn">
+        <input type="button" value="novels" id="searchnovels">
+        <input type="button" value="anthology" id="searchanthology">
+        <button  id="addbooks" type="button">Add</button>
+        
+    </div>
+    <div class="novels">
+       <form class="allnov">
+       
+        Title:
+        <input type="text" name="title" id="titlenov"><br/><br/>
+        Author:
+        <input type="text" name="author" id="authornov"><br/><br/>
+        Publisher:
+        <input type="text" name="publisher" id="publishernov"><br/><br/>
+        Year:
+        <input type="text" name="year" id="yearnov"><br/><br/>
+        Length in pages:
+        <input type="text" name="length" id="lengthnov"><br/><br/>
+        Series:
+        <input type="text" name="series" id="seriesnov"><br/><br/>
+        Series number:
+        <input type="text" name="series number" id="senumnov"><br/><br/>
+        Isbn:
+        <input type="text" name="isbn" id="isbnnov"><br/><br/>
+        Review:
+        <input type="text" name="review" id="reviewnov"><br/><br/>
+        
+       </form>
+    
+    </div>
+    <div class="anthology">
+       <form class="allant">
+        Title:
+        <input type="text" name="title" id="titleant"><br/><br/>
+        Author:
+        <input type="text" name="editor" id="authorant"><br/><br/>
+        Publisher:
+        <input type="text" name="publisher" id="publisherant"><br/><br/>
+        Year:
+        <input type="text" name="year" id="yearant"><br/><br/>
+        Length in pages:
+        <input type="text" name="length" id="lengthant"><br/><br/>
+        Stories:
+        <input type="text" name="stories" id="storiesant"><br/><br/>
+        Isbn:
+        <input type="text" name="isbn" id="isbnant"><br/><br/>
+        Review:
+        <input type="text" name="review" id="reviewant"><br/><br/>
+       
+       </form>
+
+    </div>
+    <table class="tabnov" border=1px;>
+        <thead>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Publisher</th>
+          <th>Year</th>
+          <th>Length in pages</th>
+          <th>Series</th>
+          <th>Series number</th>
+          <th>Isbn</th>
+          <th>Review</th>
+        </thead>
+        <tbody id="library-body">
+          
+        </tbody>
+    </table>
+   
+    
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
