@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Books</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container">
+        <div id="header">
+            <h1 class="h1">Books!</h1>
+
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-8">
+                        <a class="btn btn-success" href="#" role="button" id="add">Add Novel</a>
+                        <a class="btn btn-danger" href="#" role="button" id="anthologyButton">Add Antology</a>
+                        <a class="btn btn-primary" href="#" role="button" id="addedBooks">List of added books</a>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--Novel form-->
+            <div id="novelID">
+                <h1 class="h1">Add Novel</h1>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Title</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Title of the novel" id="example-text-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Author</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Author of the novel" id="example-author-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Publisher</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Publisher of the novel" id="example-publisher-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-year-input" class="col-2 col-form-label">Year</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" placeholder="Year of publication" id="example-num-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Length</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" placeholder="Length of pages" id="example-length-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Series</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Series" id="example-series-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Series Number</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" value="Series number" id="example-sernum-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">ISBN</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="13-digit ISBN" id="example-isbn-input">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review">Review</label>
+                    <textarea class="form-control" id="review" rows="3"></textarea>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Submit" id="submit">
+
+                <button type="button" value="Reset" id="reset">Reset</button>
+            </div>
+
+
+            <!--Anthology form-->
+            <div id="anthologyID">
+                <h1 class="h1">Add Anthology</h1>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Title</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Title of the anthology" id="titleAnthology">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Editor</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Editor of the anthology" id="Editor">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">Publisher</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" placeholder="Publisher of the anthology" id="publisherAnthology">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-year-input" class="col-2 col-form-label">Year</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" placeholder="Year of publication" id="yearAnthology">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Length</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" placeholder="Length" id="lengthAnthology">
+                    </div>
+                </div>
+                <form class="form-inline"><b>Stories:</b> <br />
+                    <label class="sr-only" for="inlineFormInput">Title</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Title of the story">
+                    <label class="sr-only" for="inlineFormInput">Author</label>
+                    <input type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInputA" placeholder="Author of the story">
+                   <br />
+                   <br />
+                    <form><b> Is the story original to the anthology?</b>
+                      <label class="radio-inline">
+                    <input type="radio" name="trueFalse" id="true">True
+                    </label>
+                     <label class="radio-inline">
+                    <input type="radio" name="trueFalse" id="false">False
+                    </label>
+                    </form>
+                </form> 
+                <br />
+                <div class="form-group row">
+                    <label for="example-number-input" class="col-2 col-form-label">Series Number</label>
+                    <div class="col-10">
+                        <input class="form-control" type="number" value="Series number" id="example-sernum-input">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="example-text-input" class="col-2 col-form-label">ISBN</label>
+                    <div class="col-10">
+                        <input class="form-control" type="text" value="13-digit ISBN" id="example-isbn-inputA">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="review">Review</label>
+                    <textarea class="form-control" id="reviewA" rows="3"></textarea>
+                </div>
+
+                <input class="btn btn-primary" type="submit" value="Submit" id="submitA">
+
+
+                <button type="button" value="Reset" id="resetB">Reset</button>
+            </div>
+
+
+            <!--Result table-->
+            <div id="resultTable">
+                <h1 class="h1">List of added Books!</h1>
+
+                <table class="table">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>ID</th>
+                            <th>Book title</th>
+                            <th>Author/Editor</th>
+                            <th>Publishing Information</th>
+                            <th>Length</th>
+                            <th>Series</th>
+                            <th>ISBN</th>
+                            <th>Review</th>
+
+
+
+                        </tr>
+                    </thead>
+                    <tbody id="bookContainer"></tbody>
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+        <!-- Latest compiled and Bottstrap JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+            <script src="script.js"></script>
+</body>
+
+</html>
