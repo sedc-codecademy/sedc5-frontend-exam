@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h4>Book entry</h4>
+        <div class="row" id="choice">
+            <div class="col-4">
+                <label for="typeOfBook">Select the type of book you want to enter:</label>
+                <select class="form-control" id="typeOfBook">
+                    <option disabled selected>Select type of book:</option>
+                    <option>Novel</option>
+                    <option>Anthology</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-4">
+                <button type="button" class="btn btn-primary" id="showLibrary">Show the library view</button>
+            </div>
+        </div>
+        <hr>
+        <br>
+        <div class="row">
+            <div class="col-10">
+
+                <!--form for novels-->
+
+                <div class="card" id="novelsForm">
+                    <div class="card-block">
+                        <form>
+                            <div class="row">
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="novelTitle" class="form-control" placeholder="Title" required>
+                                </div>
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="novelAuthor" class="form-control" placeholder="Author" required>
+                                </div>
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="novelPublisher" class="form-control" placeholder="Publisher">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="number" id="novelYear" class="form-control" placeholder="Year of publication">
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" id="novelLength" class="form-control" placeholder="Length in pages" min="1" max="1000">
+                                </div>
+                                <div class="col-4">
+                                    <input type="text" id="novelSeries" class="form-control" placeholder="Series">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-6">
+                                    <input type="number" id="novelNumber" class="form-control" placeholder="Series number">
+                                </div>
+                                <div class="col-6">
+                                    <input type="number" id="novelISBN" class="form-control" placeholder="ISBN">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12" class="form-group">
+                                    <textarea id="novelReview" class="form-control" rows="3" placeholder="Review"></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary" id="addNovel">Add book to library</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!--form for anthologies-->
+
+                <div class="card" id="anthologyForm">
+                    <div class="card-block">
+                        <form>
+                            <div class="row">
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="anthologyTitle" class="form-control" placeholder="Title">
+                                </div>
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="anthologyEditor" class="form-control" placeholder="Editor">
+                                </div>
+                                <div class="col-4" class="form-group">
+                                    <input type="text" id="anthologyPublisher" class="form-control" placeholder="Publisher">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-4">
+                                    <input type="number" id="anthologyYear" class="form-control" placeholder="Year of publication">
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" id="anthologyLength" class="form-control" placeholder="Length in pages" min="1" max="1000">
+                                </div>
+                                <div class="col-4">
+                                    <input type="number" id="anthologyISBN" class="form-control" placeholder="ISBN">
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-3">
+                                    <input type="text" id="storyTitle" class="form-control" placeholder="Title of the story" required>
+                                </div>
+                                <div class="col-3">
+                                    <input type="text" id="storyAuthor" class="form-control" placeholder="Author of the story" required>
+                                </div>
+                                <div class="col-3">
+                                   <label class="form-check-label" id="radioButtons">
+                                        <input type="radio" class="form-check-input" value="original" name="stories">Original<br>
+                                        <input type="radio" class="form-check-input" value="not-original" name="stories">Not original
+                                   </label>
+                                </div>
+                                <div class="col-3">
+                                    <button type="button" id="addStories" class="btn btn-primary">Add story</button>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12" id="storiesContainer">
+
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-12" class="form-group">
+                                    <textarea class="form-control" id="anthologyReview" rows="3" placeholder="Review"></textarea>
+                                </div>
+                            </div>
+                            <br>
+                            <button type="submit" class="btn btn-primary" id="addAnthology">Add book to library</button>
+                        </form>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div id="library">
+            <div class="card">
+                <div class="card-block">
+                    <h4>Library view</h4>
+                    <div class="row">
+                        <div class="col-10">
+                            <table class="table table-bordered table-inverse">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>Author/Editor</th>
+                                        <th>Publishing information</th>
+                                        <th>Length</th>
+                                        <th>Aditional information</th>
+                                        <th>ISNB</th>
+                                        <th>Review</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="table">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+    <!-- jQuery first, then Tether, then Bootstrap JS. -->
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
