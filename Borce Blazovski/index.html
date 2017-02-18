@@ -1,0 +1,227 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <button id="Novel">Title of the Novel</button> Showing # to # of # <button id="next">Next</button>
+    <br />
+    <input type="text" id="searchItem"> <button id="search">Search</button>
+    </br>
+    </br>
+    </br>
+    
+     <button id="Anthologies">Title of the Anthologies</button> Showing # to # of # <button id="next">Next</button>
+    <br />
+    <input type="text" id="searchItem"> <button id="search">Search</button>
+    <div class="container">
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Име на рецептот</span>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Извор на рецептот</span>
+                        <input type="text" class="form-control" id='izvorNaRecpetot' aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+     <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-group">
+                        <select class="form-control" id="dropDown">
+                        <option id="listaNaSostojki" disabled selected>Листа на состојки:</option>
+                        <option value="Title">Title</option>
+                        <option value="Author">Author</option>
+                        <option value="publisher">publisher</option>
+                        <option value="year">year</option>
+                        <option value="lengts">lengts</option>
+                        <option value="Јајца">Јајца</option>
+                        <option value="series">series</option>
+                        <option value="nameSeriesNumber">nameSeriesNumber</option>
+                        <option value="ISBN">ISBN</option>
+                        <option value="review">review</option> 
+                    </select>
+                    </div>
+                </div>
+    <table>
+        <!--<thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>publisher</th>
+                <th>year</th>
+                <th>lengts</th>
+                <th>series</th>
+                <th>nameSeriesNumber</th>
+                <th>ISBN</th>
+                <th>review</th>
+                
+                
+            </tr>
+        </thead>-->
+        <!--<tbody id="booksContainer">
+        </tbody>
+    </table>
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Books library</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oleo+Script" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+</head>
+
+<body>
+    
+    <header>
+        <!--NASLOV-->
+        <h1 class="titleCover">Books library</h1>
+        <br/>
+        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <!--Ime na receptot-->
+         <button id="Novels">Novels</button>
+         <button id="Anthologies">Anthologies</button>
+         
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Name Title</span>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Author</span>
+                        <input type="text" class="form-control" id='izvorNaRecpetot' aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <!--DROPDOWN MENI-->
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="form-group">
+                     <select class="form-control" id="dropDown">
+                        <option id="listaNaSostojki" disabled selected>Листа на состојки:</option>
+                        <option value="Title">Title</option>
+                        <option value="Author">Author</option>
+                        <option value="publisher">publisher</option>
+                        <option value="year">year</option>
+                        <option value="lengts">lengts</option>
+                        <option value="series">series</option>
+                        <option value="nameSeriesNumber">nameSeriesNumber</option>
+                        <option value="ISBN">ISBN</option>
+                        <option value="review">review</option> 
+                    </select>
+                    </div>
+                </div>
+                <div class="container">
+            <div class="row ">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Publisher</span>
+                        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon">Year</span>
+                        <input type="text" class="form-control" id='izvorNaRecpetot' aria-describedby="basic-addon3">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+                <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+                <!--Kolicina-->
+                <!--<div class="col-lg-2">
+                    <div class="form-group">
+                        <input id='kolicina' type="number" class="form-control" placeholder="Количина"></input>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <button id='addRecipes' type="button" class="btn btn-success">Додај состојка</button>
+                </div>
+            </div>
+        </div>
+        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <!--Vreme na podgotovka-->
+        <!--<div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">Време на подготовка</span>
+                        <input type="number" class="form-control" id="basic-url2" aria-describedby="basic-addon3" placeholder="Минути">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <!--Nacin na podgotovka-->
+        <!--<div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <textarea class="form-control" id="exampleTextarea" rows="8" placeholder="Начин на подготовка" maxlength="50"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>-->
+        <!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx-->
+        <!--Najgolemo kopce-->
+        <!--<div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="button" id='keepRecipes' class="btn btn-primary btn-lg btn-block">Сочувај Рецепт</button>
+                </div>
+            </div>
+        </div>-->
+      
+    </header>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <script src='bootbox.min.js'></script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+.navbar {
+    background-color: white !important;
+    border-color: transparent !important;
+}
+
+#logo {
+    height: 50px;
+    width: 50px;
+    margin-top: -15px;
+}
+
+#intro {
+    background: url("img/background.jpg") no-repeat center center;
+    height: 800px;
+    background-size: cover;
+    text-align: cetner;
+
+}
+
+#introTitle {
+    text-align: center;
+    margin-top: 300px;
+}
+
+.introBtn button{
+    margin-top: 100px;
+}
+
+#introTitle h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 48px;
+    text-shadow: 2px 2px black;
+    
+}
+
+#anchor {
+    margin-top: 750px;
+}
+
+.hide {
+    display: none;
+}
+Chat conversation end
