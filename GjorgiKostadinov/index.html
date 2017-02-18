@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Exam 2017</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+  </head>
+  <body background="img/img2.jpg">
+      <div class="container"><h1 style="color: #EFC363">Book library</h1></div>
+        <div id="exTab1" class="container"> 
+          <ul  class="nav nav-pills">
+                <li class="active">
+                  <a  href="#1a" data-toggle="tab" style="color: #EFC363">Add new novel</a>
+                </li>
+                <li><a href="#2a" data-toggle="tab" style="color: #EFC363">Add new anthology</a>
+                </li>
+                <li>
+                  <a  href="#3a" data-toggle="tab" style="color: #EFC363">ALL BOOKS</a>
+                </li>
+          </ul>
+
+          <div class="tab-content clearfix">
+          <div class="tab-pane active" id="1a">
+                  <form id="form" >
+                       <div class="form-group">
+                        <label for="booktitle" style="color: #EFC363">Book title:</label>
+                        <input type="text" class="form-control" id="booktitle" placeholder="Enter the title">
+                      </div>
+                      <div class="form-group">
+                        <label for="author" style="color: #EFC363">Author:</label>
+                        <input type="text" class="form-control" id="author" placeholder="Enter the author">
+                      </div>
+                      <div class="form-group">
+                        <label for="publisher" style="color: #EFC363">Publisher:</label>
+                        <input type="text" class="form-control" id="publisher" placeholder="Enter the publisher">
+                      </div>
+                      <div class="form-group">
+                        <label for="year" id="color" style="color: #EFC363">Year of publication:</label>
+                        <input type="number" class="form-control" id="year" min="1900" max="2017" placeholder="Enter the year of publication">
+                      </div>
+                      <div class="form-group">
+                        <label for="pages" id="color" style="color: #EFC363">Length(pages):</label>
+                        <input type="number" class="form-control" id="pages" min="1" max="1000" placeholder="Enter the length of book in pages">
+                      </div>
+                      <div class="form-group">
+                        <label for="series" id="color" style="color: #EFC363">Series:</label>
+                        <input type="text" class="form-control" id="series" placeholder="If the book is part of series, enter the name of series">
+                      </div>
+                      <div class="form-group">
+                        <label for="seriesnumber" id="color" style="color: #EFC363">Series number:</label>
+                        <input type="number" class="form-control" id="seriesnumber" placeholder="Enter the series number">
+                      </div>
+                      <div class="form-group">
+                        <label for="isbn" id="color" style="color: #EFC363">ISBN:</label>
+                        <input type="tel" class="form-control" id="isbn" maxlength="13" placeholder="Enter the ISBN of number">
+                      </div>
+                      <div class="form-group">
+                        <label for="review" id="color" style="color: #EFC363">Review:</label><br>
+                        <textarea id="review" rows="4" cols="50" placeholder="Enter your review"></textarea> 
+                      </div>
+                     
+                    </form>
+                       <button type="button" class="btn btn-default" id="btn1" style="background-color: green">Save</button>
+          </div>
+          <div class="tab-pane" id="2a">
+                    <form id="form" >
+                       <div class="form-group">
+                        <label for="booktitle" style="color: #EFC363">Book title:</label>
+                        <input type="text" class="form-control" id="booktitle" placeholder="Enter the title">
+                      </div>
+                      <div class="form-group">
+                        <label for="author" style="color: #EFC363">Author:</label>
+                        <input type="text" class="form-control" id="author" placeholder="Enter the author">
+                      </div>
+                      <div class="form-group">
+                        <label for="publisher" style="color: #EFC363">Publisher:</label>
+                        <input type="text" class="form-control" id="publisher" placeholder="Enter the publisher">
+                      </div>
+                      <div class="form-group">
+                        <label for="year" style="color: #EFC363">Year of publication:</label>
+                        <input type="number" class="form-control" id="year" min="1900" max="2017" placeholder="Enter the year of publication">
+                      </div>
+                      <div class="form-group">
+                        <label for="pages" style="color: #EFC363">Length(pages):</label>
+                        <input type="number" class="form-control" id="pages" min="1" max="1000" placeholder="Enter the length of book in pages">
+                      </div>
+                      <div class="form-group">
+                        <label for="series" style="color: #EFC363">Series:</label>
+                        <input type="text" class="form-control" id="series" placeholder="If the book is part of series, enter the name of series">
+                      </div>
+                      <div class="form-group">
+                        <label for="seriesnumber" style="color: #EFC363">Series number:</label>
+                        <input type="number" class="form-control" id="seriesnumber" placeholder="Enter the series number">
+                      </div>
+                      <div class="form-group">
+                        <label for="isbn" style="color: #EFC363">ISBN:</label>
+                        <input type="tel" class="form-control" id="isbn" maxlength="13" placeholder="Enter the ISBN of number">
+                      </div>
+                      <div class="form-group">
+                        <label for="review" style="color: #EFC363">Review:</label><br>
+                         <textarea id="review" rows="4" cols="50" placeholder="Enter your review"></textarea>
+                      </div>
+                      
+                    </form>
+                      <button type="button" class="btn btn-default" id="btn2" style="background-color: green">Save</button>
+          </div>
+          <div class="tab-pane" id="3a">
+            <table id='table1' class="table table-bordered" style="background-color: #E0CB9E">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Author</th>
+                  <th>Publisher</th>
+                  <th>Year</th>
+                  <th>Length(pages)</th>
+                  <th>Series</th>
+                  <th>Series number</th>
+                  <th>ISBN</th>
+                  <th>Review</th>
+                </tr>
+              </thead>
+              <tbody>
+                  
+              </tbody>
+              <tfoot>
+                
+              </tfoot>
+            </table>
+          </div>
+        </div>
+         
+      </div>
+  </div>
+
+            <!--   <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                  
+                </div>
+                <div class="tab-pane" id="2a">
+                  <div class="tab-content clearfix">
+                <div class="tab-pane active" id="1a">
+                  <form id="form" >
+                     <div class="form-group">
+                      <label for="booktitle" id="color">Book title:</label>
+                      <input type="text" class="form-control" id="booktitle">
+                    </div>
+                    <div class="form-group" id="color">
+                      <label for="author">Author:</label>
+                      <input type="text" class="form-control" id="author">
+                    </div>
+                    <div class="form-group">
+                      <label for="publisher" id="color">Publisher:</label>
+                      <input type="text" class="form-control" id="publisher">
+                    </div>
+                    <div class="form-group">
+                      <label for="year" id="color">Year of publication:</label>
+                      <input type="number" class="form-control" id="year" min="1900" max="2017">
+                    </div>
+                    <div class="form-group">
+                      <label for="pages" id="color">Length(pages):</label>
+                      <input type="number" class="form-control" id="pages" min="1" max="1000">
+                    </div>
+                    <div class="form-group">
+                      <label for="series" id="color">Series:</label>
+                      <input type="text" class="form-control" id="series">
+                    </div>
+                    <div class="form-group">
+                      <label for="seriesnumber" id="color">Series number:</label>
+                      <input type="number" class="form-control" id="seriesnumber">
+                    </div>
+                    <div class="form-group">
+                      <label for="isbn" id="color">ISBN:</label>
+                      <input type="phone" class="form-control" id="isbn" max="13">
+                    </div>
+                    <div class="form-group">
+                      <label for="review" id="color">Review:</label>
+                      <input type="number" class="form-control" id="review">
+                    </div>
+                      <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                </div>
+                </div>
+                <div class="tab-pane" id="3a">
+                  <h3>ALL BOOKS</h3>
+                </div>
+              </div>
+            </div> -->
+  </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+  </body>
+</html>
