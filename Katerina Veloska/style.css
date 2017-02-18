@@ -1,0 +1,58 @@
+body{
+	background-image: url("background.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: 'Barrio', cursive;
+}
+
+h2 {
+ text-align: center; 
+}
+
+.btn{
+	position: absolute;
+	top: 20%;
+	height: 50px;
+	width: 100px;
+	border-radius: 10px;
+	background-color: #ffe066;
+}
+
+.btn1{
+	top: 20%;
+	left: 35%;
+}	
+
+.btn2{
+	left: 55%;
+
+}
+
+.entr {
+	position: absolute;
+	top: 30%;
+	left: 20%;
+
+}
+
+.entr > input {
+	height: 35px;
+	width: 400px;
+	border-radius: 10px;
+	display: block;
+	box-sizing: border-box;
+	margin: 20px 0;
+}
+
+.tbl {
+ 	position: absolute;
+ 	top: 30%;
+ 	right: 15%;
+}
+.story{
+	margin: 20px 0;
+	position: absolute;
+	top: 55%;
+	left: 450px;
+	border-radius: 10px;
+}
