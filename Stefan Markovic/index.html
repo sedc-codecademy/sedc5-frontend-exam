@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Test</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+</head>
+
+<body>
+    <div id="mainBody">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>BOOKS WEBSITE</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+
+                <!--NOVELS-->
+                <div class="col-md-6">
+                    <h3>Novels</h3>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Title</label>
+                        <div class="col-10">
+                            <input class="form-control" id="novelTitle" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Author</label>
+                        <div class="col-10">
+                            <input class="form-control" id="novelAuthor" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Publisher</label>
+                        <div class="col-10">
+                            <input class="form-control" id="novelPublisher">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Year</label>
+                        <div class="col-10">
+                            <input type="number" min="1900" class="form-control" id="novelYear">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Length</label>
+                        <div class="col-10">
+                            <input type="number" class="form-control" id="novelLength">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Series</label>
+                        <div class="col-10">
+                            <input type="text" class="form-control" id="novelSeries">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Ser. No.</label>
+                        <div class="col-10">
+                            <input type="number" class="form-control" id="novelNumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">ISBN</label>
+                        <div class="col-10">
+                            <input class="form-control" id="novelIsbn">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Review</label>
+                        <textarea class="form-control" id="novelReview" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="novelSubmit">Submit Novel</button>
+
+                </div>
+
+
+                <!------------------------------------------------------------------------------>
+
+                <!--ANTHOLOGIES-->
+                <div class="col-md-6" id="ant">
+                    <h3>Anthologies</h3>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Title</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyTitle" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Editor</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyEditor" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Publisher</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyPublisher">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Year</label>
+                        <div class="col-10">
+                            <input type="number" min="1900" class="form-control" id="anthologyYear">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Length</label>
+                        <div class="col-10">
+                            <input type="number" class="form-control" id="anthologyLength">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Stories</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyStories" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">st. title</label>
+                        <div class="col-6">
+                            <input class="form-control" id="anthologyStoriesTitle">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">st. author</label>
+                        <div class="col-6">
+                            <input class="form-control" id="anthologyStoriesAuthor">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="dropDown">
+                        <option id="listaNaSostojki" disabled selected>Is original to the anthology?</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    </div>
+                    <button type="button" class="btn btn-warning" id="addStories">Add Stories</button>
+                    <br>
+                    <br>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">Ser. No.</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyNumber">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-2 col-form-label">ISBN</label>
+                        <div class="col-10">
+                            <input class="form-control" id="anthologyIsbn">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Review</label>
+                        <textarea class="form-control" id="anthologyReview" rows="3"></textarea>
+                    </div>
+                    <button type="button" class="btn btn-success" id="anthologySubmit">Submit Anthology</button>
+                </div>
+
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table table-inverse">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th id="bookTtitle">Book title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Length</th>
+                        <th>Additional information</th>
+                        <th>ISBN</th>
+                        <th>Review</th>
+                        <th>Delete</th>
+
+                    </tr>
+                </thead>
+                <tbody id="myTable">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary btn-lg btn-block">Add new book</button>
+                <input class="form-control mr-sm-2" id="search" placeholder='Search Books'>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
+    <script src="script/script.js"></script>
+</body>
+
+</html>
