@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Exam</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="classes.js"></script>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">
+                <div id="book_selector">
+                    <label for="select_type">Add a book</label>
+            
+                    <select id="select_type">
+                        <option value="library" selected disabled>Select type of book</option>
+                        <option value="novel_editor">Novel</option>
+                        <option value="anthologie_editor">Anthologie</option>
+                    </select>
+                </div>
+                <!--div container for editors-->
+            <div id="editor_menu">
+                <!--NOVEL-->
+                <div id="novel_editor" class="editor">
+                    <h3>Novel Editor</h3>
+                    <label for="novel_title">Title</label><br>
+                    <input type="text" id="novel_title">
+                    <br>
+                    <label for="novel_author">Author</label><br>
+                    <input type="text" id="novel_author">
+                    <br>
+                    <label for="novel_publisher">Publisher</label><br>
+                    <input type="text" id="novel_publisher">
+                    <br>
+                    <label for="novel_year">Year of publication</label><br>
+                    <input type="number" id="novel_year">
+                    <br>
+                    <label for="novel_length">Length in pages</label><br>
+                    <input type="number" id="novel_length">
+                    <br>  
+                    <label for="novel_series">Series</label><br>
+                    <input type="text" id="novel_series">
+                    <br>        
+                    <label for="novel_seriesNumber">Series Number</label><br>
+                    <input type="number" id="novel_seriesNumber">
+                    <br>    
+                    <label for="novel_ISBN">ISBN number</label><br>
+                    <input type="text" id="novel_ISBN">
+                    <br>      
+                    <label for="novel_review">Review</label><br>
+                    <textarea rows="" cols="" id="novel_review"></textarea>      
+                    
+                </div>
+                <!--ANTHOLOGIE-->
+                <div id="anthologie_editor" class="editor">
+                    <h3>Anthologie Editor</h3>
+                    <label for="anthologie_title">Title</label><br>
+                    <input type="text" id="anthologie_title">
+                    <br>
+                    <label for="anthologie_author">Editor</label><br>
+                    <input type="text" id="anthologie_author">
+                    <br>
+                    <label for="anthologie_publisher">Publisher</label><br>
+                    <input type="text" id="anthologie_publisher">
+                    <br>
+                    <label for="anthologie_year">Year of publication</label><br>
+                    <input type="number" id="novel_anthologie">
+                    <br>
+                    <label for="anthologie_length">Length in pages</label><br>
+                    <input type="number" id="anthologie_length">
+                    <br> 
+                    <!--STORY -->
+                    <label for="anthologie_stories">Stories</label><br>
+                        <ul id="story_display"></ul>
+                        <button  class="btn" id="anthologie_stories">Add Story</button>
+                        <div id="story_add" class="editor" title="Story Editor">
+                            <h6 id="story_message"></h6>
+                            <label for="story_title">Title</label>
+                            <input type="text" id="story_title">
+                            <br>
+                            <label for="story_author">Author</label>
+                            <input type="text" id="story_author">
+                            <br>
+                            <input type="checkbox" id="story_original">The story is original<br>
+                        </div>
+                    <!--END STORY-->
+                    <br>
+                    <label for="anthologie_ISBN">ISBN number</label><br>
+                    <input type="text" id="anthologie_ISBN">
+                    <br>      
+                    <label for="anthologie_review">Review</label><br>
+                    <textarea rows="10" cols="30" id="novel_review"></textarea>    
+                </div>
+
+                <div id="error_message" class="editor">
+                    <p id="message"></p>
+                    <button id="save_book" class="btn">Save book</button>
+                    <button id="cancel" class="btn">Cancel</button>
+                </div>
+            </div><!-- end editors -->
+            
+        </div> <!-- end container -->
+        
+        <div id="library">
+            <table>
+                <thead>
+                    <tr>
+                        <th><a href="" id="sort_id">ID</a></th>
+                        <th><a href="" id="sort_title">Title</a></th>
+                        <th><a href="" id="sort_author">Author/Editor</a></th>
+                        <th><a href="" id="sort_publisher">Published</a></th>
+                        <th><a href="" id="sort_length">Length</a></th>
+                        <th><a href="" id="sort_aditional">Stories/Series</a></th>
+                        <th><a href="" id="sort_isbn">ISBN</a></th>
+                        <th>Review</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody id="library_display">
+                    
+                </tbody>
+            </table>
+        </div>
+        
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>

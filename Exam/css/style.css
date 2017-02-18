@@ -1,0 +1,121 @@
+body {
+    background-image: url("../img/background.jpg");
+    font-family: "Verdana", "Geneva", "sans-serif";
+    
+}
+#container{
+    margin: auto;
+    padding: 15px;
+    height: 10%;
+    width: 20%;
+    opacity: 0.9;
+    /*min-width: 1040px;*/
+    background-color: white;
+}
+textarea {
+    width: 155px;
+}
+#book_selector {
+    background-color: indianred;
+    padding: 5px;
+}
+.editor {
+    background-color: indianred;
+    padding: 15px;
+    opacity: 0.9;
+}
+.delete_button {
+    float: right;
+}
+#anthologie_stories {
+    padding: 5px 10px 5px 10px;
+    font-size: 10px;
+}
+input:not([type='checkbox'])  {
+  display: block;
+  margin: 0;
+  width: 100%;
+  font-family: sans-serif;
+  font-size: 18px;
+  appearance: none;
+  box-shadow: none;
+  border-radius: none;
+}
+#library {
+    background-color: lightcoral;
+    padding: 15px;
+    opacity: 0.9;
+}
+
+
+
+
+/*button style*/
+.btn {
+  background: #d9345d;
+  background-image: -webkit-linear-gradient(top, #d9345d, #801f1f);
+  background-image: -moz-linear-gradient(top, #d9345d, #801f1f);
+  background-image: -ms-linear-gradient(top, #d9345d, #801f1f);
+  background-image: -o-linear-gradient(top, #d9345d, #801f1f);
+  background-image: linear-gradient(to bottom, #d9345d, #801f1f);
+  -webkit-border-radius: 7;
+  -moz-border-radius: 7;
+  border-radius: 7px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #17e693;
+  background-image: -webkit-linear-gradient(top, #17e693, #08c7a1);
+  background-image: -moz-linear-gradient(top, #17e693, #08c7a1);
+  background-image: -ms-linear-gradient(top, #17e693, #08c7a1);
+  background-image: -o-linear-gradient(top, #17e693, #08c7a1);
+  background-image: linear-gradient(to bottom, #17e693, #08c7a1);
+  text-decoration: none;
+}
+
+/*selection style*/
+#select_type select {
+ outline: none;
+  -webkit-appearance: none;
+  display: block;
+  padding: 1.2em 3em 1.3em 1.5em;
+  margin: 0;
+  width: 100%;
+
+  transition: border-color 0.2s;
+  border: 5px solid #EB5168;
+  border-radius: 5px;
+
+  background: #fff;
+  color: #555;
+
+}
+
+#select_type {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+/*table style*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
