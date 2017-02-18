@@ -1,0 +1,49 @@
+body {
+    background-image: url(https://static1.squarespace.com/static/5576548ae4b02f4b87943018/t/55cdeffae4b0a4f80be7ef60/1439559679211/books+background+picture.jpg?format=1500w);
+    background-repeat: no-repeat;
+   background-size: cover;
+   
+}
+
+div{
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+#header {
+   width: 85%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 12px;
+	background-color: rgba(0, 0, 0, 0.5);
+	font-size: 17px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	color: white;
+	box-shadow: 2px 4px 5px 5px black;
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+   
+}
+
+
+
+#reset {
+    background-color: darkred;
+    border-radius: 20px;
+}
+
+#resetB {
+    background-color: darkred;
+    border-radius: 20px;
+}
+
+.delete {
+    color: black;
+}
+
+#naslov{
+    font-size: 60px;
+    font-family:'Berkshire Swash', cursive;
+}
