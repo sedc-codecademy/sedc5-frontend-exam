@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book library</title>
+</head>
+
+<body>
+    <div id="container">
+        <div class="buttons">
+            <button id="showAddBook">Add a book</button>
+            <button id="showBookLibrary">Book library</button>
+        </div>
+        <div id="addBook" hidden>
+            <select id="bookType">
+                <option disabled selected>Select the type you want to enter</option>
+                <option value="novel">Novel</option>
+                <option value="anthology">Anthology</option>
+            </select>
+            <div id="novel" hidden>
+                <br>
+                <form id="novelForm" action="">
+                    <label>Title</label>
+                    <input type="text" name="title" id="novelTitle" />
+                    <br><br>
+                    <label>Author</label>
+                    <input type="text" name="author" id="novelAuthor" />
+                    <br><br>
+                    <label>Publisher</label>
+                    <select id="novelPublisher">
+                        <option value="Algonquin Press">Algonquin Press</option>
+                        <option value="Atria">Atria</option>
+                        <option value="Baen Books">Baen Books</option>
+                        <option value="Orion House">Orion House</option>
+                    </select>
+                    <br><br>
+                    <label>Year of publication</label>
+                    <input type="number" maxlength="4" min="1970" id="novelYear" />
+                    <br><br>
+                    <label>Length in pages</label>
+                    <input type="number" maxlength="4" min="1" max="1000" id="novelLength" />
+                    <br><br>
+                    <label>Series name</label>
+                    <input type="text" id="novelSeriesName" />
+                    <br><br>
+                    <label>Series number</label>
+                    <input type="number" id="novelSeriesNumber" />
+                    <br><br>
+                    <label>ISBN</label>
+                    <input type="text" id="novelISBN" />
+                    <br><br>
+                    <label>Review</label>
+                    <input type="text" id="novelReview" />
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+            <div id="anthology" hidden>
+                <br>
+                <form id="anthologyForm" action="">
+                    <label>Title</label>
+                    <input type="text" id="anthologyTitle" />
+                    <br><br>
+                    <label>Editor</label>
+                    <input type="text" id="anthologyEditor" />
+                    <br><br>
+                    <label>Publisher</label>
+                    <input type="text" id="anthologyPublisher" />
+                    <br><br>
+                    <label>Year of publication</label>
+                    <input type="number" maxlength="4" min="1970" id="anthologyYear" />
+                    <br><br>
+                    <label>Length in pages</label>
+                    <input type="number" maxlength="4" min="1" max="1000" id="anthologyLength" />
+                    <br><br>
+                    <label>Stories</label>
+                    <br><br>
+                    <label>Story title</label> <input type="text" id="anthologyStoryTitle" /> <br><br>
+                    <label>Story author</label> <input type="text" id="anthologyStoryAuthor" /> <br><br>
+                    <label>Original story</label> 
+                    <div id="anthologyStoryOriginal">
+                        <input type="radio" name="original" value="true"> true
+                        <input type="radio" name="original" value="false"> talse
+                    </div>
+                    <br><br>
+                    <input type="button" value="Add story" id="addStory" />
+                    <br><br>
+                    <table id="storyTable">
+                        <thead>
+                            <tr>
+                                <th>Story title</th>
+                                <th>Story author</th>
+                                <th>Original story</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                    <br><br>
+                    <label>ISBN</label>
+                    <input type="text" id="anthologyISBN" />
+                    <br><br>
+                    <label>Review</label>
+                    <input type="text" id="anthologyReview" />
+                    <br><br>
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+        </div>
+        <div id="bookLibrary" hidden>
+            <table id="bookTable">
+                <thead>
+                    <tr>
+                        <th id="sortById">Book ID</th>
+                        <th id="sortByTitle">Book title</th>
+                        <th id="sortByAuthor">Principal author</th>
+                        <th>Publishing information</th>
+                        <th>Length</th>
+                        <th>Additional information</th>
+                        <th>ISBN</th>
+                        <th>Review</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
+<script src="index.js"></script>
+<script src="http://wzrd.in/standalone/uuid@latest"></script>
+<script src="https://cdn.jsdelivr.net/lodash/4.17.4/lodash.min.js"></script>
+<link rel="stylesheet" href="style.css">
+</html>
