@@ -1,0 +1,30 @@
+.container table{
+    width: 100%;
+}
+th{
+    border: 2px solid white;
+    padding: 3px;
+    color: white;
+    background-color: grey;
+    font-size: 1.2em;
+    min-width: 50px;
+}
+td{
+    padding: 3px;
+    border: 2px solid white;
+    background-color: lightgrey;
+}
+
+.text-center{
+    text-align: center;
+}
+
+input{
+    margin: 5px 0;
+}
+
+.startShow
+{
+    width: 200px;
+     position: absolute;
+}
