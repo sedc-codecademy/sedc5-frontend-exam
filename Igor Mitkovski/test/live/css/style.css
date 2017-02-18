@@ -1,0 +1,15 @@
+* {
+	margin: 0;
+}
+#entryContainer {
+	width: 700px;
+	height: 600px;
+	margin: 0 auto;
+	background-color: lightblue;
+}
+.hidden {
+	display: none;
+}
+table {
+	margin: 0 auto;
+}

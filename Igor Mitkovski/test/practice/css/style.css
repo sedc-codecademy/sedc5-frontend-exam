@@ -1,0 +1,11 @@
+
+#container {
+	display: inline-block;
+	margin: 20px auto 0;
+}
+#addRecipe {
+	background-color: red;
+}
+.hide {
+	display: none;
+}
