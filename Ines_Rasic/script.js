@@ -158,15 +158,15 @@ $("#add").on('click', function () {
     
 	$('#resetB').click(function(){
 		Id++;
-		let titleAnthology = $('#titleAnthology').val();
-		let Editor = $('#Editor').val();
-		let publisherAnthology = $('#publisherAnthology').val();
-		let yearAnthology = $('#yearAnthology').val();
-		let lengthAnthology = $('#lengthAnthology').val();
-		let Additional = $('#inlineFormInput').val();
-		let Additioal2 = $('#inlineFormInputA').val();
-		let isbnAnthology = $('#example-isbn-inputA').val();
-		let reviewA = $('#reviewA').val();
+		let titleAnthology = $('#titleAnthology').val("");
+		let Editor = $('#Editor').val("");
+		let publisherAnthology = $('#publisherAnthology').val("");
+		let yearAnthology = $('#yearAnthology').val("");
+		let lengthAnthology = $('#lengthAnthology').val("");
+		let Additional = $('#inlineFormInput').val("");
+		let Additioal2 = $('#inlineFormInputA').val("");
+		let isbnAnthology = $('#example-isbn-inputA').val("");
+		let reviewA = $('#reviewA').val("");
 
         
 	});

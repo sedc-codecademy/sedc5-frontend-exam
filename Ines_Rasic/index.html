@@ -6,19 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books</title>
-    <link rel="stylesheet" href="style.css">
+    
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
         crossorigin="anonymous">
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
             crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div id="header">
-            <h1 class="h1">Books!</h1>
+            <h1 id="naslov">Books!</h1>
 
             <div class="container">
                 <div class="row text-center">
@@ -33,7 +35,7 @@
 
             <!--Novel form-->
             <div id="novelID">
-                <h1 class="h1">Add Novel</h1>
+                <h1>Add Novel</h1>
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Title</label>
                     <div class="col-10">
@@ -95,7 +97,7 @@
 
             <!--Anthology form-->
             <div id="anthologyID">
-                <h1 class="h1">Add Anthology</h1>
+                <h1>Add Anthology</h1>
                 <div class="form-group row">
                     <label for="example-text-input" class="col-2 col-form-label">Title</label>
                     <div class="col-10">
@@ -169,7 +171,7 @@
 
             <!--Result table-->
             <div id="resultTable">
-                <h1 class="h1">List of added Books!</h1>
+                <h1>List of added Books!</h1>
 
                 <table class="table">
                     <thead class="thead-inverse">
@@ -179,7 +181,7 @@
                             <th>Author/Editor</th>
                             <th>Publishing Information</th>
                             <th>Length</th>
-                            <th>Series</th>
+                            <th>Additional Info</th>
                             <th>ISBN</th>
                             <th>Review</th>
 
