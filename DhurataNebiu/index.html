@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Front-End Exam</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/simple-sidebar.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+
+ </head>
+
+
+<body>
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">Menu</a>
+                </li>
+                <li>
+                    <a href="#" id="books">List of books</a>
+                </li>
+                <li>
+                    <a href="#" id="newBook">Enter Books</a>
+                </li>
+      
+              
+            </ul>
+        </div>
+
+        <div id="page-content-wrapper" class="one">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-warning btn-lg" id="menu-toggle">Мenu</a>
+                        <hr />
+                        <h1 class="myHi">List of Books</h1>
+                        <div class="table-responsive">
+                            <table class="table" id="bookTable">
+                                <thead>
+                                      <tr>
+                                        <th>Title of book</th>
+                                        <th>Author of the book</th>
+                                        <th>Publisher of the novel</th>
+                                        <th>Year of publication</th>
+                                        <th>Length in pages</th>
+                                        <th>Series</th>
+                                        <th>Series Number</th>
+                                        <th>ISBN</th>
+                                        <th>Review</th>
+                                 </tr>
+                                </thead>
+                                
+                                  <tbody id="novelBody">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+          <div id="page-content-wrapper" class="two">
+          <!-- Entering Novels -->
+
+            <div class="container-fluid"> 
+              <div class="row">
+                  <div class="col-lg-12">
+                     <a href="#menu-toggle" class="btn btn-warning btn-lg" id="menu-toggle">Мenu</a>
+                  </div>
+              </div>
+                
+                <h1>Enter the Novel</h1>
+                  <form role="form" id="novelForm">
+                  <div class="form-group">
+                          <label for="title">Title:</label>
+                          <input type="text" class="form-control" id="title" /> 
+                  </div>
+                    <div class="form-group">
+                          <label for="author">Author:</label>
+                          <input type="text" class="form-control" id="author" /> 
+                  </div>
+                    <div class="form-group">
+                          <label for="publisher">Publisher:</label>
+                          <input type="text" class="form-control" id="publisher" /> 
+                  </div>
+                  <div class="form-group">
+                  <div class="table-responsive">
+                    <table class="table myTable">
+                      <tr>
+                      <th>
+                      <form>
+                        <label for="datepicker">Year</label>
+                        <input class="form-control" type="date" id="datepicker">
+                      </form>
+                      </th>
+
+                      <th>                    
+                          <label for="length">Length</label>
+                          <input class="form-control" type="number" id="length">
+                      </th>
+                       
+                       <th>
+                          <label for="series">Series</label>
+                          <input class="form-control" type="text" id="series">
+                      </th>
+
+                      <th>                      
+                          <label for="seriesNumber">Series Number</label>
+                          <input class="form-control" type="text" id="seriesNumber">
+                      </th>
+
+                      <th>
+                        <label for="isbn">ISBN</label>
+                        <input class="form-control" type="number" id="isbn">
+                      </th>
+
+                      <th>
+                          <label for="review">Review:</label>
+                          <input type="text" class="form-control" id="review" /> 
+                      </th>
+
+                      </tr>
+                  </table>
+                  </div>
+                  </div>
+                  <div class="form-group">
+                  <button id="submitButton" class="btn btn-warning btn-lg">Enter the Novel</button> 
+           </form>
+      </div>
+
+
+        <!--------------------------------------------------------------------------------------------------->
+         <!-- Entering Anthology -->
+                <hr/><hr/>
+
+                  <h1>Anthology</h1>
+                  <form role="form" id="antForm">
+                  <div class="form-group">
+                          <label for="title1">Title:</label>
+                          <input type="text" class="form-control" id="title1" /> 
+                  </div>
+                    <div class="form-group">
+                          <label for="author1">Editor:</label>
+                          <input type="text" class="form-control" id="author1" /> 
+                  </div>
+                    <div class="form-group">
+                          <label for="publisher1">Publisher:</label>
+                          <input type="text" class="form-control" id="publisher1" /> 
+                  </div>
+                  <div class="form-group">
+                  <div class="table-responsive">
+                    <table class="table myTable">
+                      <tr>
+                      <th>
+                        <label for="datepicker1">Year</label>
+                        <input class="form-control restricting" type="text" id="datepicker1">         
+                      </th>
+
+                      <th>                    
+                          <label for="length1">Length</label>
+                          <input class="form-control" type="text" id="length1">
+                      </th>
+                       
+                       <th>
+                          <label for="series1">Series</label>
+                          <input class="form-control" type="text" id="series1">
+                      </th>
+
+                      <th>                      
+                          <label for="seriesNumber1">Series Number</label>
+                          <input class="form-control" type="text" id="seriesNumber1">
+                      </th>
+
+                      <th>
+                        <label for="isbn1">ISBN</label>
+                        <input class="form-control" type="text" id="isbn1">
+                      </th>
+
+                      <th>
+                          <label for="review1">Review:</label>
+                          <input type="text" class="form-control" id="review" /> 
+                      </th>
+
+                      </tr>
+                  </table>
+                  </div>
+                  </div>
+                  <div class="form-group">
+                  <button id="submitButton1" class="btn btn-warning btn-lg">Enter the Novel</button> 
+           </form>
+      </div>
+    </div>
+    
+  
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

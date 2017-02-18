@@ -1,0 +1,20 @@
+.myTable>tbody>tr>td, 
+.myTable>tbody>tr>th, 
+.myTable>tfoot>tr>td, 
+.myTable>tfoot>tr>th, 
+.myTable>thead>tr>td, 
+.myTable>thead>tr>th {
+	border-top: none;
+}
+
+.myHi {
+	text-align: center;
+}
+
+#red {
+	color: red;
+}
+
+.two {
+	display: none;
+}
