@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Novel</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="sorting.css">
+<!-- 	<script type="text/javascript" src="/path/to/jquery-latest.js"></script>
+	<script type="text/javascript" src="/path/to/jquery.tablesorter.js"></script> 
+</head> -->
+
+<body>
+
+<h1 id="title">Library</h1>
+<h3 id="title">Novel</h3>
+
+<div style="margin: 0 auto;">
+	<div class="container-fluid" id="booksContainer">
+		<div class="row">
+			<div class="col-md-3">
+				<label>Title:</label> <br/>
+				<input type="text" name="bookTitle" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Author:</label> <br/>
+				<input type="text" name="bookAuthor" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Publisher:</label> <br/>
+				<input type="text" name="bookPublisher" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Year of Publication:</label> <br/>
+				<input type="date" min="1900-01-01" max="2017-12-12" name="bookYearPubl" id="yearP" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Length in Pages:</label> <br/>
+				<input type="number" name="bookLength" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Series:</label> <br/>
+				<input type="text" name="bookSeries" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Series Number:</label> <br/>
+				<input type="text" name="bookSerNumber" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>13-digit ISBN:</label> <br/>
+				<input type="text" maxlength="13" name="bookIsbn" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Review:</label> <br/>
+				<textarea name="bookReview" cols="80" rows="4"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<button type="button" id="button">Save</button> 
+			</div>
+		</div>
+
+	</div>
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<div class="container-fluid">
+		<table id="booksTable" class="table table-condensed tablesorter">
+			<thead>
+				<tr>
+					<th>ID Number</th>
+					<th>Book Title</th>
+					<th>Principal Author</th>
+					<th>Publication Information</th>
+					<th>Length</th>
+					<th>Series</th>
+					<th>ISBN</th>
+					<th>Review</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody id="bookContainer">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+ <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ <script src="script.js"></script>
+ <script type="text/javascript" src="path_to/jquery.js"></script>
+ <script type="text/javascript" src="path_to/jquery.simplePagination.js"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+  crossorigin="anonymous"></script>
+  <script src="sorting.js"></script>
+
+</body>
+
+</html>
