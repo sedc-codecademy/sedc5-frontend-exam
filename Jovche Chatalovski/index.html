@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Vezba 1t</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <h1>Book library</h1>
+
+      <button  id="showNovel">Novel</button>
+      <button  id="showAntology">Anthology</button>
+
+    <div class="novel-container">
+        <form>
+            Title of the novel:<br>
+        <input type="text" name="title" id="title" placeholder="Title" required>
+        <br>
+        Author of the novel:<br>
+        <input type="text" name="author" id="author" placeholder="Author" required>
+        <br>
+        Publisher of the novel:<br>
+        <input type="text" name="publisher" id="publisher" placeholder="Publisher">
+        <br>
+        Year of publication:<br>
+        <input type="text" name="year" id="year" placeholder="Year">
+        <br>
+        Length in pages:<br>
+        <input type="text" name="length" id="length" placeholder="Length">
+        <br>
+        Series:<br>
+        <input type="text" name="series" id="series" placeholder="Series">
+        <br>
+        Series Number:<br>
+        <input type="text" name="seriesNum" id="seriseNum" placeholder="Series Number">
+        <br>
+        13-digit ISBN:<br>
+        <input type="text" name="ISBN" id="ISBN" placeholder="13-digit ISBN">
+        <br>
+        Review:<br>
+        <input type="text" name="review" id="review" placeholder="Review">
+        <br><br>
+        <input type="submit" value="Submit" placeholder="">
+        </form> 
+    </div>
+
+    <div class="anthology-containter">
+        <form>
+            Title of the anthology:<br>
+        <input type="text" name="title" id="title">
+        <br>
+        Editor of the anthology:<br>
+        <input type="text" name="author" id="author">
+        <br>
+        Publisher of the antology:<br>
+        <input type="text" name="publisher" id="publisher">
+        <br>
+        Year of publication:<br>
+        <input type="text" name="year" id="year">
+        <br>
+        Length in pages:<br>
+        <input type="text" name="length" id="length">
+        <br>
+        Stories included:<br>
+        <input type="text" name="series" id="series">
+        <br>
+        13-digit ISBN:<br>
+        <input type="text" name="seriesNum" id="seriseNum">
+        <br>
+        Review:<br>
+        <input type="text" name="ISBN" id="ISBN">
+        <br><br>
+        <input type="submit" value="Submit">
+        </form> 
+    </div>
+<br> <br>
+<div class="table">
+    <table>
+  <tr>
+    <th>Title</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Author</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Publisher</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Year</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Length</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Series</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Series Number</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>ISBN</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>Review</th>
+    <td></td>
+  </tr>
+</table>
+</div>
+
+
+    <script src="jquery.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
