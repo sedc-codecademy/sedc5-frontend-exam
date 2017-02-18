@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    
+
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    <div>
+<div id="main">
+    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Books</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <button type="button" class="btn btn-success" id="addBook">Add Book</button>
+          <button type="button" class="btn btn-success navbar-btn" id="libery">Libary </button>
+        </ul>
+        <form class="navbar-form navbar-left">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        
+      </div>
+    </nav>
+    <div id="kkk">
+        <but  id="butt" hidden>
+        <button type="button" class="btn btn-success" id="addNovel">Add Novel</button>
+          <button type="button" class="btn btn-success navbar-btn" id="addAnthology">Add Anthology </button>
+        </but>
+        <form id="novel" hidden>
+            <label>Title of the novel : </label> <input type="text" id="titleNov"><br/>
+            <label>Author of the novel : </label> <input type="text" id = "authorNov"><br/>
+            <label>Publisher of the novel : </label> <input type="text" id="pubNob"><br/>
+            <label>Year of publication: </label> <input type="number" id="yearNob"><br/>
+            <label>Length in pages : </label> <input type="number" id ="lengthNob"><br/>
+            <label>Series Number : </label> <input type="number" id="seriesNob"><br/>
+            <label>13-digit ISBN : </label> <input type="text" id="isbnN"><br/>
+            <textarea name="review" id="" cols="30" rows="10" id="revNob"></textarea><br/>
+            <button type="button" class="btn btn-success" id="saveNovel">Save Book</button>
+            </form>
+          </div>
+          <div>
+              <form id="anthology" hidden>
+            <label>Title of the anthology: </label> <input type="text" id="titleAnt"><br/>
+            <label>Editor of the anthology : </label> <input type="text" id ="authorAnt"><br/>
+            <label>Publisher of the novel : </label> <input type="text" id="publishAnt"><br/>
+            <label>Year of publication: </label> <input type="number" id="yearAnt"><br/>
+            <label>Length in pages : </label> <input type="number" id="lenghtAnt"><br/>
+            <label>Stories included : </label> <input type="number" id="incAnt"><br/>
+            <label>13-digit ISBN : </label> <input type="text" id="isbnAnt"><br/>
+            <textarea name="Review" id="" cols="30" rows="10" id="revAnt"></textarea><br/>
+            
+            <label>Story : </label><br/>
+                <label>Title of the story: </label> <input type="text" id="titleStory"><br/>
+                <label>Author of the story: </label> <input type="text" id="autorStory"><br/>
+                <label>it Orginal</label> <br/>
+                 <button type="button" class="btn btn-success" id="addStory">Add Story</button>
+
+                <button type="button" class="btn btn-success" id="saveAnthology">Save Book</button>
+            </form>
+          </div>
+          <div>
+          <form id ="novelLibery" hidden>
+              <table id="taBody" border="1">
+                  <thead>
+                    <th>Id</th>
+                     <th>Book Title</th>
+                      <th>Author/editor</th>
+                       <th>Publishing info</th>
+                        <th>Length</th>
+                         <th>Additional information</th>
+                          <th>isbn</th>
+                           <th>Review</th>
+
+                  </thead>
+                  <tbody id="taBody">
+                    
+                     
+
+                  </tbody>
+              </table>
+          </form>
+          </div>
+         
+      </div>
+    </div>
+
+    </div>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
