@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Front End Exam </title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://jqueryvalidation.org/files/demo/site-demos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Books
+                    </a>
+                </li>
+                <li>
+                    <a href="index.html">Novels</a>
+                </li>
+                <li>
+                    <a href="anthologies.html">Anthologies</a>
+                </li>
+            <!--     <li>
+                    <a href="#">Results of Novels and Anthologies</a>
+                </li> -->
+            </ul>
+        </div>
+        <!-- SiderBar close--> 
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a href="#menu-toggle" class="btn btn-success" id="menu-toggle">Menu</a>
+                        <h1>Anthologies</h1>
+                        <div class="table-responsive"> 
+                        <table class="table table-bordered table-inverse" id="novelHead">
+                            <thead class="thead-inverse" >
+                                <tr id="myTr">
+                                    <th>Title</th>
+                                    <th>Editor</th>
+                                    <th>Publisher</th>
+                                    <th>Year</th>
+                                    <th>Length</th>
+                                    <th>Stories</th>
+                                    <th>13-digit ISBN</th>
+                                    <th>Review</th>
+                                    <th id="delete">Delete</th>
+                                </tr>
+                                <tbody id="novelBody">
+
+                                </tbody>
+                            </thead>           
+                          </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div id="page-content-wrapper" class="two">
+        <div class="container-fluid"> 
+            <div class="row">
+            <div class="col-lg-12">
+                    <!-- MENU --> 
+            </div>
+            </div>
+                <h1>New Antholigies</h1>
+                <form role="form" id="novelForm2">
+                <div class="form-group">
+                        <label for="title">Title:</label>
+                        <input type="text" class="form-control" id="title" /> 
+                </div>
+                  <div class="form-group">
+                        <label for="editor">Editor:</label>
+                        <input type="text" class="form-control" id="editor" /> 
+                </div>
+                  <div class="form-group">
+                        <label for="publisher">Publisher:</label>
+                        <input type="text" class="form-control" id="publisher" /> 
+                </div>
+                <div class="form-group">
+                <div class="table-responsive">
+                <table class="table myTable">
+                    <tr>
+                    <th>
+                    <!-- The year is a number in the range 1900 - current year. The value of the current year should not be hardcoded -->
+                        <label for="datepicker">Year</label>
+                        <input class="form-control restricting" type="text" id="datepicker">
+                    </th>
+                    <th>
+                    <!-- Number in the range 1 - 1000--> 
+                        <label for="lengthPages">Length</label>
+                        <input class="form-control left" name="lengthPages" type="text" id="lengthPages" >
+                    </th>
+                     <th>
+                    <!-- Name of the series the novel belongs to (if any)--> 
+                        <label for="stories">Stories</label>
+                        <input class="form-control" type="text" id="stories">
+                    </th>
+                    <th>
+                    <!-- The ISBN is a string of 13 digits (it's not a number).--> 
+                      <label for="isbn">13-digit ISBN</label>
+                      <input class="form-control" type="number" id="isbn" name="name"/> 
+                    
+                    </th>
+                    <th>
+                        <label for="review">Review:</label>
+                        <input type="text" class="form-control" id="review" /> 
+                    </th>
+                    </tr>
+                </table>
+                </div>
+                </div>
+                <div class="form-group">
+                <button id="submitButton2" class="btn btn-block btn-success">Add Anthologies</button> 
+         </form>
+                </div>
+        
+        </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <!-- jQuery Validation --> 
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.15.0/additional-methods.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Costum JavaScript --> 
+    <script src="js/script2.js"> </script>
+
+
+</body>
+
+</html>
