@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Dragan Sekuloski">
+    <meta name="description" content="FRON-END Exam - 18.02.2016">
+    <title>Dragan Sekuloski FRON-END</title>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="jumbotron ">
+        <h1 class="text-center">Books library</h1>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center ">
+                    <a id='addBook' class="btn btn-primary" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+                        aria-controls="collapseExample">
+                    Add new Book
+                    </a>
+                    <a href="#" id='viewBooks' class="btn btn-info" role="button">
+                    View Books
+                    </a>
+                </div>
+
+                <br>
+                <br>
+                <!---->
+                <div class="col-xs-12 text-center ">
+                    <div class="collapse" id="collapseExample">
+                        <div class="well">
+                            <a href="#" id='addNovel' class="btn btn-link btn-lg" role="button">
+                        Add Novel
+                        </a>
+                            <a href="#" id='addAnthologie' class="btn btn-link btn-lg" role="button">
+                        Add Anthologie
+                        </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-6 text-center ">
+                    <!--empty-->
+                </div>
+            </div>
+            <!--end row-->
+        </div>
+    </div>
+    <!--end jumbotron-->
+    <!--Start View Books page-->
+    <div id="allBooks" class="container">
+        <div id="view" class="row">
+            <div class="col-xs-12 text-center ">
+                <h2>Books list</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID No.</th>
+                            <th class="text-center"><a id="titleSort" href="#">Title</a></th>
+                            <th class="text-center"><a id="principalSort" href="#">Principal</th>
+                            <th class="text-center">Publishing info</th>
+                            <th class="text-center">Page Length</th>
+                            <th class="text-center">Additional info</th>
+                            <th class="text-center">ISBN Number</th>
+                            <th class="text-center">Review</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="renderBooks">
+
+                    </tbody>
+                     <tfoot>
+                        <tr>
+                                                <th id="booksLength" class="text-center" colspan="1">
+
+                            </th>
+                            <th class="text-center" colspan="8">
+                                Total Books
+                            </th>
+        
+                        </tr>
+                    </tfoot>
+
+                </table>
+                 <div class="panel panel-default">
+                    <div class="panel-body" style="color:#00004d">
+                        <h4>
+                        <span style="color:#00004d">Novel</span> 
+                            vs
+                        <span style="color:#4d0000">Anthology</span>  
+                        </h4>
+                                          
+                    </div>      
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!--Start addNovelDIV Books page-->
+    <div id="addNovelDIV" class="container">
+        <div id="view" class="row">
+            <div class="col-xs-12 text-center ">
+                <h2 class="text-center">Add Novel</h1>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="novelTitle" class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="novelTitle"  required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelAutor" class="col-sm-2 control-label">Autor</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="novelAutor" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelPublisher" class="col-sm-2 control-label">Publisher</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="novelPublisher">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelYear" class="col-sm-2 control-label">Year of publication</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="1900 " max="2017" class="form-control" id="novelYear"
+                                placeholder="Year between 1900 and 2017">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelPageLength" class="col-sm-2 control-label">Length in pages</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="1 " max="1000" class="form-control" id="novelPageLength"
+                                placeholder="Page number between 1 and 1000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelSeries" class="col-sm-2 control-label">Novel Series</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="novelSeries">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelSeriesNumber" class="col-sm-2 control-label">Series Number</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" id="novelSeriesNumber">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelISBN" class="col-sm-2 control-label" >13-digit ISBN</label>
+                            <div class="col-sm-10">
+                                <input type="text" maxlength="13" class="form-control" id="novelISBN"
+                                placeholder="13-digit ISBN digit characters">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="novelReview" class="col-sm-2 control-label">Review</label>
+                            <div class="col-sm-10">
+                                <textarea id="novelReview" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button id="cleaNovelDIV" type="button" class="btn btn-default btn-lg">Close Form</button>
+                                <button  id="saveNovel" type="submit" class="btn btn-success btn-lg">Save Novel</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <!--End adding novel-->
+
+     <!--Start add AnthologieDIV e-->
+    <div id="AnthologieDIV" class="container">
+        <div id="view" class="row">
+            <div class="col-xs-12 text-center ">
+                <h2 class="text-center">Add Anthology</h1>
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="anthologyTitle" class="col-sm-2 control-label">Title</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="anthologyTitle" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyEditor" class="col-sm-2 control-label">Editor</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="anthologylEditor" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyPublisher" class="col-sm-2 control-label">Publisher</label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="anthologyPublisher">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyYear" class="col-sm-2 control-label">Year of publication</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="1900 " max="2017" class="form-control" id="anthologyYear"
+                                placeholder="Year between 1900 and 2017">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyPageLength" class="col-sm-2 control-label">Length in pages</label>
+                            <div class="col-sm-10">
+                                <input type="number" min="1 " max="1000" class="form-control" id="anthologyPageLength"
+                                placeholder="Page number between 1 and 1000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyStories " class="col-sm-2 control-label">Novel Stories</label>
+                            <div class="col-sm-10">
+                                <input id="storiesTitle " type="text" class="form-control" placeholder="Storie Title">
+                                <input id="storiesAutor" type="text" class="form-control" placeholder="Storie Autor">
+                                <label>
+                                    <input id="storieOriginal" type="checkbox" class="form-control"> 
+                                     Original Storie</label>  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyISBN" class="col-sm-2 control-label">13-digit ISBN</label>
+                            <div class="col-sm-10">
+                                <input type="text" maxlength="13" class="form-control" id="anthologyISBN"
+                                 placeholder="13-digit ISBN digit characters">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="anthologyReview" class="col-sm-2 control-label">Review</label>
+                            <div class="col-sm-10">
+                                <textarea id="anthologyReview" class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button id="cleaAnthologyDIV" type="button" class="btn btn-default btn-lg">Close Form</button>
+                                <button id="saveAnthology" type="submit" class="btn btn-success btn-lg">Save Anthology</button>
+                            </div>
+                        </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+    <!--End addAnthologieDIV Books page-->
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and Bottstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
