@@ -1,0 +1,30 @@
+#main{
+    position: absolute;
+    top: 20%;
+    left: 180px;
+}
+body{
+    background-image: url('http://static.guim.co.uk/sys-images/Guardian/Pix/pictures/2015/2/20/1424454392161/Library-books-009.jpg');
+}
+.entry{
+    
+    color: white;
+    
+
+}
+.result{
+    position: absolute;
+    top: 50%;
+    left: 180px;
+}
+#showBooks{
+    color: white;
+}
+
+#showBooks{
+    color: white;
+}
+
+.hide {
+    display: none;
+}
