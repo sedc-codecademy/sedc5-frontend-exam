@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>fontend-exam</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<select class="selected">
+		<option disabled selected>Choose type of Book</option>
+		<option>Novels</option>
+		<option>Anthologies</option>
+	</select>
+	<button id="library" class="hide">Library</button>
+	<button id="previous">Previous</button>
+	<button id="next">Next</button>
+
+	<table class="novels_table hide" border="1">
+		<thead>
+			<th>Title of the novel</th>
+			<th>Author of the novel</th>
+			<th>Publisher of the novel</th>
+			<th>Year of publication</th>
+			<th>Pages</th>
+			<th>Series</th>
+			<th id="thSeriesNumberHidden" class="hide">Series Number</th>
+			<th>ISBN</th>
+			<th>Review</th>
+		</thead>
+		<tbody>
+			<td>
+				<input type="" id="titleOfNovel_Id" placeholder="Title of the book">
+			</td>
+			<td>
+				<input type="" id="authorOfNovel_Id" placeholder="Author of the book">
+			</td>
+			<td>
+				<input type="" id="publisherOfNovel_Id" placeholder="Publishing Company">
+				<br>
+				<select id="predefinedPublishersNovel">
+					<option selected disabled>predefined publishers</option>
+					<option>Del Rey Books</option>
+					<option>Publishersdesk</option>
+					<option>Penguin Random House</option>
+					<option>Hachette Livre</option>
+				</select>
+			</td>
+			<td>
+			<input type="" id="yearOfPublication_Novel_Id" placeholder="Year of publication">
+			</td>
+			<td>
+			<input type="number" id="lengthInPages_Novel_Id" placeholder="Number of pages">
+			</td>
+			<td>
+			<input type="" id="series_Id" placeholder="Series">
+			</td>
+			<td id="tdSeriesNumberHidden" class="hide">
+			<input type="" id="seriesNumber_Novel_Id" placeholder="Series Number">
+			</td>
+			<td>
+			<input type="number" id="isbn_Novel_Id" placeholder="ISBN">
+			</td>
+			<td>
+			<textarea id="review_Novel_Id" placeholder="Review of the Book">
+			</textarea>
+			</td>
+		</tbody>
+	</table>
+
+	<table class="anthology_table hide" border="1">
+		<thead>
+			<th>Title of the anthology</th>
+			<th>Editor of the anthology</th>
+			<th>Publisher of the anthology</th>
+			<th>Year of publication</th>
+			<th>Pages</th>
+			<th>Stories included</th>
+			<th>ISBN</th>
+			<th>Review</th>
+		</thead>
+		<tbody>
+			<td><input type="text"  id="titleOfAnthology_Id" placeholder="Title of the book"></td>
+			<td><input type="text" id="editorOfAnthology_Id" placeholder="Editor of the book"></td>
+			<td>
+				<input type="" id="publisherOfAnthologi_Id" placeholder="Publishing Company">
+				<br>
+				<select id="predefinedPublishersAnthologies">
+					<option selected disabled>predefined publishers</option>
+					<option>Del Rey Books</option>
+					<option>Publishersdesk</option>
+					<option>Penguin Random House</option>
+					<option>Hachette Livre</option>
+				</select>
+			</td>
+			<td><input type="number" id="yearOfPublication_Anthology_Id" placeholder="Year of publishing"></td>
+			<td><input type="number" id="lengthInPages_Anthology_Id" placeholder="Number of pages"></td>
+			<td><input type="" id="storiesIncluded_Id" placeholder="Stories"></td>
+			<td><input type="number" id="isbn_Anthology_Id" placeholder="ISBN"></td>
+			<td>
+				<textarea id="review_Anthology_Id" placeholder="Review of the book">
+				</textarea>
+			</td>
+		</tbody>
+	</table>
+
+	<button id="saveBook" class="hide">Save</button>
+
+
+	<table class="result_table hide" border="1">
+		<thead>
+			<th></th>
+			<th>TitleOfBook</th>
+			<th>Author of the novel</th>
+			<th>Editor of the anthology</th>
+			<th>Publishing</th>
+			<th>Pages</th>
+			<th>Series</th>
+			<th>Stories included</th>
+			<th>ISBN</th>
+			<th>Review</th>
+		</thead>
+		<tbody class="result_tbody">
+	
+		</tbody>
+	</table>
+	<div id="deleteConfirm" class="hide">
+			Are you sure you want to delete this recept?
+			 </br>
+			<button id="confirmDelete" class="buttons">Yes</button>
+			<button id="declineDelete" class="buttons">No</button>
+	</div>
+
+
+
+
+
+
+<script type="text/javascript" src="jquery-3.1.1.js"></script>
+<script type="text/javascript" src="script.js"></script>
+</body>
+</html>
