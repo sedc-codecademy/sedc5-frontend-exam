@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Books Libraty</title>
+    <meta name="description" content="Books Libraty">
+    <meta name="author" content="LorDB">
+
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <p class="welcome"> Welcome to the Books Libraty. Please add new book.</p>
+        <button id="newbook">Add new book</button>
+        <button id="viewlibraty" onclick="viewNovelLibraty()">View novel library</button>
+        <button id="aviewlibraty" onclick="viewAnthologyLibraty()">View anthology library</button>
+        <button id="addanother" onclick="addAnother()">Add another book</button>
+        <div id="story">
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Publisher</th>
+                        <th>Year of publication</th>
+                        <th> ISBN </th>
+                        <th>Series</th>
+                        <td>Reviews</th>
+                        <td>Action</th>
+                    </tr>
+                </thead>
+                <tbody class="table22">
+                </tbody>
+            </table>
+        </div>
+        <script src="js/code.js"></script>
+</body>
+
+</html>
