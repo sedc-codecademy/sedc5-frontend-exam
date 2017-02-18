@@ -1,0 +1,21 @@
+body {
+    font-family: 'Sansita', sans-serif;
+    background: #83a4d4;
+    background: -webkit-linear-gradient(to left, #83a4d4 , #b6fbff);
+    background: linear-gradient(to left, #83a4d4 , #b6fbff); 
+}
+
+
+h1 {
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 30px;
+}
+
+.btn-block {
+    text-align: center;
+}
+
+table td {
+    width: 50px;
+}
