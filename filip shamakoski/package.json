@@ -1,0 +1,11 @@
+{
+  "name": "sedc5-frontend-exam",
+  "version": "1.0.0",
+  "description": "Front-end exam for the SEDC CodeCademy 2016/2017",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Wekoslav Stefanovski",
+  "license": "ISC"
+}

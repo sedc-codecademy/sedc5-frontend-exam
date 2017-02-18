@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Simple Sidebar - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        Start Bootstrap
+                    </a>
+                    <li>
+                        <a href="index.html">Book entry</a>
+                    </li>
+                </li>
+                <li>
+                    <a href="novels.html">Novels</a>
+                </li>
+                <li>
+                    <a href="antologies.html">Anthologies</a>
+                </li>
+                <li>
+                    <a href="#">Story</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-14">
+                        <a href="#menu-toggle" class="btn btn-warning btn-lg" id="menu-toggle">Menu</a>
+                        <hr />
+                        <h1 class="myHi">Novel entry</h1>
+                        <form id="resetNovels">
+                            <div class="form-group">
+                                <label for="novelTitle">enter the novel's title</label>
+                                <input type="text" class="form-control" id="novelTitle">
+                            </div>
+                            <div class="form-group">
+                                <label for="novelAuthor">enter the novel's author</label>
+                                <input type="text" class="form-control" id="novelAuthor">
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <label for="novelPublisher">enter the novel's publisher</label>
+                                    <input type="text" class="form-control" id="novelPublisher">
+                                </div>
+                                <div class="form-group">
+                                    <label for="novelPublication">enter the year of publication</label>
+                                    <input type="date" class="form-control" id="novelPublication">
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label for="novelLength">enter the length in pages</label>
+                                        <input type="number" class="form-control" id="novelLength">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="novelSeries">enter the name of the novel series</label>
+                                        <input type="text" class="form-control" id="novelSeries">
+                                    </div>
+                                    <div>
+                                        <div class="form-group">
+                                            <label for="novelNumber">enter the series number</label>
+                                            <input type="number" class="form-control" id="novelNumber">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="novelISBN">enter the ISBN</label>
+                                            <input type="text" class="form-control" id="novelISBN">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="novelReview">enter the review</label>
+                                            <!--<input type="text" class="form-control" id="novelReview">-->
+                                            <textarea id="novelReview" class="form-control" rows="4" cols="50">enter the review</textarea>
+                                        </div>
+                                        <div>
+                                            <button type="button" id="enterNovels">Enter!</button>
+                                        </div>
+                        </form>
+                        </div>
+                        </div>
+
+                        <!-- books table -->
+                        <div class="container">
+                            <h2><a id="allNovelsHD" href="#">All books list</a></h2>
+                            <div id="allRecDisplay">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>novel's title</th>
+                                            <th>novel's author</th>
+                                            <th>novel's publisher</th>
+                                            <th>year of publication</th>
+                                            <th>length in pages</th>
+                                            <th>name of the novel series</th>
+                                            <th>series number</th>
+                                            <th>ISBN</th>
+                                            <th>review</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="allNovTable">
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /#wrapper -->
+
+                        <!-- jQuery -->
+                        <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.0.min.js"></script>
+                        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+                            crossorigin="anonymous"></script>
+                            <script src="js/script.js"></script>
+</body>
+
+</html>
