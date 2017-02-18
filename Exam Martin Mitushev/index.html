@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Lybrary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="main">
+        <div class="buttonsCenter">
+
+
+            <button class="center" id="createNovel"> Create a Novel </button> <br>
+            <button class="center" id="createAnthology"> Create an Anthology</button>
+            <!--<button type="submit" id="reset"> Done</button>-->
+
+        </div>
+   
+        
+
+      
+
+
+    <table style="border: 2px solid;" class="entry" style="display: none;">
+        <thead id="headContainer" class="hide">
+            <tr>
+                <th> Title </th>
+                <th> Author/Editor </th>
+                <th> Publisher </th>
+                <th> Year of publication </th>
+                <th> Lenght in pages </th>
+                <th> Name of the series</th>
+                <th> Enter the series number</th>
+                <th> Enter the ISBN </th>
+                <th> Review </th>
+            </tr>
+          <!--<tr>
+                <th> Novel Title </th>
+                <th> Novel author </th>
+                <th> Novel's publisher </th>
+                <th> Year of publication </th>
+                <th> Lenght in pages </th>
+                <th> Enter the series number</th>
+                <th> Enter the ISBN </th>
+                <th> Review</th>
+            </tr>-->
+        </thead>
+        <tbody id="booksContainer">
+            <!--<tr> 
+                <th><input type="text" id="nameOfTheNovel" placeholder="Enter the title" required> </th>
+                <th><input type="text" id="authorOfTheNovel" placeholder="enter the novel's author" required> </th> 
+                <th><input type="text" id="novelPublisher" placeholder="enter the novel's publisher" required> </th> 
+                <th><input type="number" id="yearOfNovel" placeholder="enter the year of publication" required> </th> 
+                <th><input type="number" id="pagesOfNovel" placeholder="enter the length in pages" required> </th> 
+                <th><input type="text" id="nameNovelSeries" placeholder="name of the novel series" required> </th> 
+                <th><input type="text" id="seriesNumber" placeholder="enter the series number" required> </th> 
+                <th><input type="text" id="ISBN_Novel" placeholder="enter the ISBN of the Novel" required> </th> 
+                <th><input type="text" id="reviewOfTheNovel" placeholder="Write a review" required> </th> 
+                <th><button type="submit" class="addNovel">Add Novel</button></th>
+            </tr>-->
+        </tbody>
+    </table>
+
+    </div>
+    <div class="result">
+        <button type="submit" id="showResult">Library </button>
+        <table id="showBooks" style="border: 2px solid;">
+            <thead id="headResult" style="display: none;">
+                <!--<tr>
+                    <th></th>
+                    <th> Title </th>
+                    <th> Author </th>
+                    <th> Publisher </th>
+                    <th> Year of publication </th>
+                    <th> Lenght in pages </th>
+                    <th> Name of the series</th>
+                    <th> Enter the series number</th>
+                    <th> Enter the ISBN </th>
+                    <th> Review </th>
+            </tr>-->
+            </thead>
+            <tbody id="booksResult" style="display: none;">
+            </tbody>
+        </table> 
+    </div>
+    
+<!--
+    <button id="previous">Previous</button> Showing # to # of # <button id="next">Next</button>-->
+
+
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
