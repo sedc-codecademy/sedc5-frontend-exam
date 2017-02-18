@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Library</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header> </header>
+    <div class="wrapper">
+
+        <input type="checkbox" name="books" value="novel" id="nov"> Novel
+        <input type="checkbox" name="books" value="anthology" id="anth"> Anthology
+
+        <div id="formNovel">
+            <form id="novel">
+                <label for="title">Title of the novel: </label><br/>
+                <input type="text" id="title">
+                <br/>
+
+                <label for="author">Author of the novel: </label><br/>
+                <input type="text" id="author">
+                <br/>
+
+                <label for="publisher">Publisher of the novel: </label><br/>
+                <input type="text" id="publisher">
+                <br/>
+
+                <label for="year">Year: </label><br/>
+                <input type="date" id="year" min="1900-01-01" max="2017-02-18">
+                <br/>
+
+                <label for="length">Length in pages: </label><br/>
+                <input type="number" id="length" min="1" max="1000">
+                <br/>
+
+                <label for="series">Series: </label><br/>
+                <input type="number" id="series" min="1">
+                <br/>
+
+                <label for="isbn">ISBN: </label><br/>
+                <input type="text" id="isbn">
+                <br/>
+
+                <label for="review">Review</label><br/>
+                <textarea id="review" cols="30" rows="10"></textarea>
+
+                <br/>
+                <button type="button" id="addNovel"style="green"> Add Novel</button>
+            </form>
+        </div>
+
+        <div id="anthologyForm">
+            <form id="anthology">
+                <label for="titleAnthology">Title of the novel: </label><br/>
+                <input type="text" id="titleAnthology">
+                <br/>
+
+                <label for="editorAnthology">Author of the novel: </label><br/>
+                <input type="text" id="editorAnthology">
+                <br/>
+
+                <label for="publisherAnthology">Publisher of the novel: </label><br/>
+                <input type="text" id="publisherAnthology">
+                <br/>
+
+                <label for="yearAnthology">Year: </label><br/>
+                <input type="date" id="yearAnthology" min="1900-01-01" max="2017-02-18">
+                <br/>
+
+                <label for="lengthAnthology">Length in pages: </label><br/>
+                <input type="number" id="lengthAnthology" min="1" max="1000">
+                <br/>
+
+                <label for="storiesArr">Stories (separated by comma): </label><br/>
+                <input type="text" id="storiesArr">
+                <br/>
+
+                <label for="isbnAnthology">ISBN: </label><br/>
+                <input type="text" id="isbnAnthology">
+                <br/>
+
+                <label for="reviewAnthology">Review</label><br/>
+                <textarea id="reviewAnthology" cols="30" rows="10"></textarea>
+
+                <br/>
+                <button type="button" id="addAnthology">Add Anthology</button>
+            </form>
+            <br/>
+            <form id="stories">
+                <label for="titleStory">Story Title: </label> <br/>
+                <input type="text" id="titleStory">
+                <br/>
+
+                <label for="authorStory">Story Title: </label> <br/>
+                <input type="text" id="authorStory">
+                <br/>
+
+                <label for="originalStory">Is it original story?</label><br/>
+                <input type="checkbox" id="originalStory">
+            </form>
+        </div>
+    </div>
+
+
+    <div>
+        <table id="table" style="width:80%" border="1" >
+            <tr>
+                
+                <th id="title">Title</th>
+                <th id="author">Author/Editor</th>
+                <th id="publish" >Publishing info</th>
+                <th id="length">Length</th>
+                <th id="info">Additional Info</th>
+                <th id="isnb">ISNB</th>
+                <th id="review">Review</th>
+                <th id="action">Action</th>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    
+
+            <!--scripts...........................................................-->
+            <script src="jquery.js"></script>
+            <script src="bootstrap/js/bootstrap.js"></script>
+            <script src="script.js"></script>
+</body>
+
+</html>
