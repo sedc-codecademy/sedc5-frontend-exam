@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style1.css"></link>
+
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-outline-secondary" id="myBtn">Add an Antology</button>
+
+                <div id="myModal" class="modal">
+
+                    <!-- Modal content -->
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <div class="container">
+                                <div class="row text-center">
+                                    <div class="col-md-12">
+                                        <button type="button" class="btn" id="btn">Save</button>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                                        <!--<span class="close">&times;</span>-->
+
+                                    </div>
+                                    <div class="modal-body">
+                                        <div>
+                                            <ul>
+                                                Title:<input type="text" id="title">Enter The Title</input>
+                                                Editor:<input type="text" id="editor"></input>
+                                                Publisher:<input type="text" id="publisher"></input>
+                                                Year:<input type="year" id="year"></input>
+                                                Length:<input type="text" id="lenght"></input>
+                                            </ul>
+                                        </div>
+
+                                        <table class="table">
+                                            <thead class="thead-inverse">
+                                                <tr class="theads">
+                                                    <th>#</th>
+                                                    <th>Title of the anthology</th>
+                                                    <th>Editor of the anthology</th>
+                                                    <th>Publisher of the novel</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="counter" id="num"></td>
+                                                    <td id="one"></td>
+                                                    <td id="two"></td>
+                                                    <td id="three"></td>
+                                                    <td id="four"></td>
+                                                    <td id=""></td>
+                                                    <td></td>
+                                                </tr>
+
+                                                <!--</tr>
+                                    <tr>
+
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>-->
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+
+
+            <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+                crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+                crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+                crossorigin="anonymous"></script>
+            <script src="script.js"></script>
+</body>
+
+</html>
