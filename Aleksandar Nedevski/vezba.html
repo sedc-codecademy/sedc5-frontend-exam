@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <h1 style="color: red">EXAM
+        <h1>
+
+</head>
+
+<body style="background: url(slika.jpeg)">
+
+    <div style="color: white" class="container-fluid" id="book-entry">
+
+        <!--<div class="btn-group">
+            <button type="button" class="btn btn-primary">Select:</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+    <span class="caret"></span>
+  </button>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="#">Novel</a></li>
+                <li><a href="#">Anthology</a></li>
+            </ul>
+        </div>-->
+
+        <div class="form-group">
+            <label for="select">Select list:</label>
+            <select class="form-control btn-success" id="select">
+    <option id="novel">Novel</option>
+    <option id="anthology">Anthology</option>
+
+    
+
+   
+  </select>
+        </div>
+        <div class="container">
+            <form>
+                <div class="form-group ">
+
+                    <div class="form-group has-warning has-feedback">
+                        <label for="novel-title">Enter the title</label>
+                        <input type="text" class="form-control " id="novel-title" required>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                    </div>
+
+                    <!--<label for="novel-title ">Enter the title</label>
+                    <input type="" class="form-control btn-info" id="novel-title" required>-->
+
+                </div>
+                <div class="form-group">
+                    <div class="form-group has-warning has-feedback">
+                        <label for="novel-author">Enter the author</label>
+                        <input type="text" class="form-control " id="novel-author" required>
+                        <span class="glyphicon glyphicon-warning-sign form-control-feedback"></span>
+                    </div>
+                    <!--<label for="novel-author">Enter the author</label>
+                    <input type="" class="form-control btn-info" id="novel-author" required>-->
+                </div>
+                <div class="form-group">
+                    <label for="novel-publisher">Enter the publisher</label>
+                    <input type="" class="form-control btn-info" id="novel-publisher">
+                </div>
+                <div class="form-group">
+                    <label for="novel-publication">Enter the year of publication</label>
+                    <input type="text" min="1900" max="" class="form-control btn-info " id="novel-publication">
+                </div>
+                <div class="form-group">
+                    <label for="length">Enter the length in pages</label>
+                    <input type="number" min="1" max="1000" class="form-control btn-info" id="length">
+                </div>
+                <div class="form-group">
+                    <label for="isbn">Enter the ISBN</label>
+                    <input type="" class="form-control btn-info" id="isbn">
+                </div>
+                <div class="form-group">
+                    <label for="review">Enter the review</label>
+                    <input type="" class="form-control btn-info " id="review">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="name-series">Enter the name of the novel series</label>
+                    <input type="" class="form-control btn-warning" id="name-series-input">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="series-number">Enter the series number</label>
+                    <input type="number" class="form-control btn-warning" id="series-number-input">
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="anthology-stories">Enter the stories in the anthology</label>
+                    <input type="" class="form-control btn-warning" id="anthology-stories-input">
+                </div>
+                <button type="submit" class="btn btn-default btn-block btn-primary btn-lg">Submit</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <div id="library-view">
+
+        <table border="1" id="table1">
+            <thead>
+                <tr>
+                    <th>Title</th>
+
+                    <th>
+                        Author
+
+                    </th>
+
+                    <th>Publisher</th>
+                    <th>Publication</th>
+                    <th>Length</th>
+                    <th>ISBN</th>
+                    <th>Review</th>
+                    <th>Name</th>
+                    <th>Series Number</th>
+
+                </tr>
+            </thead>
+            <tbody id="book-list">
+
+            </tbody>
+        </table>
+
+        <table border="1" id="table2">
+            <thead>
+                <tr>
+                    <th>Title</th>
+
+                    <th>
+                        Author
+
+                    </th>
+
+                    <th>Publisher</th>
+                    <th>Publication</th>
+                    <th>Length</th>
+                    <th>ISBN</th>
+                    <th>Review</th>
+                    <th>Stories</th>
+
+
+                </tr>
+            </thead>
+            <tbody id="anthology-list">
+
+            </tbody>
+        </table>
+    </div>
+
+    <script src="style.css"></script>
+    <script src="jquery-3.1.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
