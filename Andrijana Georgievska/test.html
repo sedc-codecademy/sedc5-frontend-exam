@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<style>
+#submit {
+background-color: darkgreen;
+border-color: black;
+-webkit-text-fill-color: black;
+font-size: 25px;
+}
+
+#table1, #table2 {
+
+border-width: 10px;
+width:100%;
+}
+</style>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <h1>Test<h1>
+        
+</head>
+<body style="background-image: url(http://whytoread.com/wp-content/uploads/2015/03/best-books-book-youll-ever-read.jpg)">
+    <div class="container-fluid" style ="color: antiquewhite" >
+    <div id="book-entry">
+<div class="form-group">
+  <label for="sel1">Select from list:</label>
+  <select class="form-control" id="sel1">
+    <option id="novel">Novel</option>
+    <option id="anthology">Anthology</option>
+
+   
+  </select>
+</div>
+<div class="container">
+<form>
+  <div class="form-group">
+    <label for="novel-title">Enter the title</label>
+    <input type="text" class="form-control" id="novel-title" required>
+  </div>
+  <div class="form-group">
+    <label for="novel-author">Enter the author</label>
+    <input type="text" class="form-control" id="novel-author" required>
+  </div>
+  <div class="form-group">
+    <label for="novel-publisher">Enter the publisher</label>
+    <input type="" class="form-control" id="novel-publisher">
+  </div>
+   <div class="form-group">
+    <label for="novel-publication">Enter the year of publication</label>
+    <input type="number" class="form-control" id="novel-publication">
+  </div>
+    <div class="form-group">
+    <label for="length">Enter the length in pages</label>
+    <input type="number" class="form-control" id="length">
+  </div>
+    <div class="form-group">
+    <label for="isbn">Enter the ISBN</label>
+    <input type="number" class="form-control" id="isbn">
+  </div>
+   <div class="form-group">
+    <label for="review">Enter the review</label>
+    <input type="" class="form-control" id="review">
+  </div>
+  <div class="checkbox">
+    <label><input type="checkbox" id="name-series">Enter the name of the novel series</label>
+    <input type="" class="form-control" id="name-series-input">
+  </div>
+   <div class="checkbox">
+    <label><input type="checkbox" id="series-number">Enter the series number</label>
+    <input type="number" class="form-control" id="series-number-input">
+  </div>
+   <div class="checkbox">
+    <label><input type="checkbox" id="anthology-stories">Enter the stories in the anthology</label>
+    <input type="" class="form-control" id="anthology-stories-input">
+  </div>
+</form>
+  <button type="button" class="btn btn-default btn-block" id="submit" style="background-color: darkgreen" style="border-color: black">Submit</button>
+
+</div>
+</div> <br>
+
+<div id="library-view">
+
+    <table border="1" id="table1">
+        <thead>
+            <tr>
+                <th>Title</th>
+
+                <th>
+                    Author
+                   
+                </th>
+             
+                <th>Publisher</th>
+                <th>Publication</th>
+                 <th>Length</th>
+                 <th>ISBN</th>
+                 <th>Review</th>
+                   <th>Name</th>
+                 <th>Series Number</th>
+                 
+            </tr>
+        </thead>
+        <tbody id="book-list">
+
+        </tbody>
+    </table>
+
+    <table border="1" id="table2">
+        <thead>
+            <tr>
+                <th>Title</th>
+
+                <th>
+                    Author
+                   
+                </th>
+             
+                <th>Publisher</th>
+                <th>Publication</th>
+                 <th>Length</th>
+                 <th>ISBN</th>
+                 <th>Review</th>
+                   <th>Stories</th>
+                 
+                 
+            </tr>
+        </thead>
+        <tbody id="anthology-list">
+
+        </tbody>
+    </table>
+    </div>
+
+</div>
+     <script src="jquery-3.1.1.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="test.js"></script>
+
+   
+</body>
+</html>
