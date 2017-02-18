@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+    <title>Books</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Input your books</h1>
+    </div>
+    <div id="exTab1" class="container">
+        <ul class="nav nav-pills">
+            <li class="active">
+                <a href="#1a" data-toggle="tab">Novels</a>
+            </li>
+            <li><a href="#2a" data-toggle="tab">Anthologies</a>
+            </li>
+            <li><a href="#3a" data-toggle="tab">List all books</a>
+            </li>
+        </ul>
+
+              <div class="tab-content clearfix">
+        <div class="tab-pane active" id="1a">
+         <form class="form-horizontal" id="bookinput">
+                    <div class="form-group">
+                        <label for="novels">Enter Title:</label>
+                        <input type="text" class="form-control" id="title" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="novels">Enter Author:</label>
+                        <input type="text" class="form-control" id="author" placeholder="Enter author">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="novels">Enter Publisher:</label>
+                        <input type="text" class="form-control" id="publisher" placeholder="Enter publisher">
+                    </div>
+                    <label>Enter Year of Publication:</label>
+                    <input type="number" name="quantity" min="1900" max="2017" id="year">
+
+
+                    <label>Lenght in Pages:</label>
+                    <input type="number" name="quantity" min="1" max="1000" id="pages">
+
+                    <div class="form-group">
+                        <label for="novels">Enter Series (if any):</label>
+                        <input type="text" class="form-control" id="series" placeholder="Enter series">
+                    </div>
+
+                    <label>Series Number: </label>
+                    <input type="number" name="quantity" id="seriesNumber">
+
+                    <label>ISBN:</label>
+                    <input type="tel" name="quantity" maxlength="13" id="isbn">
+                    <br>
+
+
+                    <label>Enter your review: </label>
+                    <textarea rows="4" cols="50" placeholder="Enter your review" id="review"></textarea>
+                </form>
+                <button type="submit" class="btn btn-default" id="saveNovel">Save</button>
+                </form>
+
+        </div>
+        <div class="tab-pane" id="2a">
+          <form class="form-horizontal" id="bookinput">
+                    <div class="form-group">
+                        <label for="novels">Enter Title:</label>
+                        <input type="text" class="form-control" id="title2" placeholder="Enter title">
+                    </div>
+                    <div class="form-group">
+                        <label for="novels">Enter Editor:</label>
+                        <input type="text" class="form-control" id="editor" placeholder="Enter editor">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="novels">Enter Publisher:</label>
+                        <input type="text" class="form-control" id="publisher2" placeholder="Enter publisher">
+                    </div>
+                    <label>Enter Year of Publication:</label>
+                    <input type="number" name="quantity" min="1900" max="2017" id="year2">
+
+
+                    <label>Lenght in Pages:</label>
+                    <input type="number" name="quantity" min="1" max="1000" id="pages2">
+
+                    <div class="form-group">
+                        <label for="novels">Enter Stories:</label>
+                        <input type="text" class="form-control" id="stories" placeholder="Enter stories">
+                    </div>
+
+                    <label>Series Number: </label>
+                    <input type="number" name="quantity" id="seriesNumber2">
+
+                    <label>ISBN:</label>
+                    <input type="tel" name="quantity" maxlength="13" id="isbn2">
+                    <br>
+
+
+                    <label>Enter your review: </label>
+                    <textarea rows="4" cols="50" placeholder="Enter your review" id="review2"></textarea>
+                </form>
+                <button type="submit" class="btn btn-default" id="saveAnthologies">Save</button>
+                </form>
+        </div>
+        <div class="tab-pane" id="3a">
+        <table class="table">
+        <thead>
+      <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Year of Publication</th>
+        <th>Lenght in Pages</th>
+        <th>Series  (if any)</th>
+        <th>Series Number</th>
+        <th>ISBN</th>
+        <th>Review</th>
+      </tr>
+    </thead>
+      </div>
+      <div class="tab-pane" id="3a">
+        <table class="table2">
+        <thead>
+          <tr>
+            
+          </tr>
+        </thead>
+      </div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
