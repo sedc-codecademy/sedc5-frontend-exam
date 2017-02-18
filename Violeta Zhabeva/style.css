@@ -1,0 +1,24 @@
+
+
+
+body {
+    background-color: lightskyblue;
+
+}
+
+#submit {
+background-color: darkmagenta;
+border-color: black;
+-webkit-text-fill-color: black;
+font-size: 25px;
+}
+
+#table1, #table2 {
+
+border-width: 10px;
+width:100%;
+}
+
+
+
+
