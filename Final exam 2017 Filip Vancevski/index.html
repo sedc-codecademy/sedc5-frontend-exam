@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <select name="books" id="select__books" class="form-control">
+            <option value="" disabled selected>Please choose a book to input</option>
+        <option value="novel">Novel</option>
+        <option value="antology">Antology</option>
+</select>
+    </div>
+
+    <div class="novel container hide">
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Title</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="titleNovel" placeholder="Please enter the title">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="author" class="col-2 col-form-label">Author of Novel</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="authorNovel" placeholder="Please enter the author">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="publisher" class="col-2 col-form-label">Publisher of Novel</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="publisherNovel" placeholder="Publisher of novel">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="year of publication" class="col-2 col-form-label">Year of publication</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="yearOfPublicationNovel" placeholder="Year of publication">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="pages" class="col-2 col-form-label">Pages</label>
+            <div class="col-10">
+                <input class="form-control" type="number" value="" id="pagesNovel" placeholder="Length in pages">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="series" class="col-2 col-form-label">Series</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="seriesNovel" placeholder="series">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="series number" class="col-2 col-form-label">Series Number</label>
+            <div class="col-10">
+                <input class="form-control" type="number" value="" id="numInSeries" placeholder="Please enter the the number for the book">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="isbn" class="col-2 col-form-label">ISBN</label>
+            <div class="col-10">
+                <input class="form-control" type="number" value="" id="isbnNovel" placeholder="Enter ISBN">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Review</label>
+            <textarea class="form-control" id="reviewNovel" rows="3"></textarea>
+        </div>
+        <button type="button" class="btn btn-success" id="saveNovel">Save book</button>
+    </div>
+
+
+    <div class="antology container hide">
+        <div class="form-group row">
+            <label for="example-text-input" class="col-2 col-form-label">Title</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="titleAntology" placeholder="Please enter the title">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="editor" class="col-2 col-form-label">Editor</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="editorAntology" placeholder="Please enter the editor">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="publisher" class="col-2 col-form-label">Publisher of Antology</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="publisherAntology" placeholder="Publisher of antology">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="year of publication" class="col-2 col-form-label">Year of publication</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="yearOfPublicationAntology" placeholder="Year of publication">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="pages" class="col-2 col-form-label">Pages</label>
+            <div class="col-10">
+                <input class="form-control" type="number" value="" id="pagesAntology" placeholder="Length in pages">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="stories" class="col-2 col-form-label">Stories included</label>
+            <div class="col-10">
+                <input class="form-control" type="text" value="" id="stories" placeholder="Stories included">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="isbn" class="col-2 col-form-label">ISBN</label>
+            <div class="col-10">
+                <input class="form-control" type="number" value="" id="isbn_antology" placeholder="Please enter the ISBN">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="exampleTextarea">Review</label>
+            <textarea class="form-control" id="reviewAntology" rows="3"></textarea>
+        </div>
+
+        <h1>Story</h1>
+        <div class="story">
+            <div class="form-group">
+                <label for="title">Enter title</label>
+                <input type="text" id="storyTitle" placeholder="Please enter the title">
+            </div>
+            <div class="form-group">
+                <label for="authod">Enter Author</label>
+                <input type="text" id="authorStory" placeholder="Please enter the author">
+            </div>
+            <div class="form-group">
+                <select name="originalToAntology" id="storySelect">
+                    <option value="" disabled selected>Is the story original to the antology</option>
+                    <option value="true">Yes</option>
+                    <option value="false">No</option>
+                </select>
+            </div>
+             <button type="button" class="btn btn-success" id="addStory">Add story</button>
+        </div>
+        <button type="button" class="btn btn-success" id="saveAntology">Save book</button>
+    </div>
+
+    <button type="button" class="btn btn-primary" id="addBook">Add new Book</button>
+
+    <table class="table booksShow hide">
+        <thead class="thead-inverse">
+            <tr>
+                <th>#</th>
+                <th id="tableTitle">Title</th>
+                <th>Principle Author</th>
+                <th>Publisher Information</th>
+                <th>Length in pages</th>
+                <th>Additional Information</th>
+                <th>ISBN</th>
+                <th>Review</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="booksTable">
+
+        </tbody>
+    </table>
+
+<button id="check">See all movies</button>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
+</html>
