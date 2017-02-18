@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Anthology</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+<h1 id="title">Library</h1>
+<h3 id="title">Anthology</h3>
+
+<div style="margin: 0 auto;">
+	<div class="container-fluid" id="anthologyContainer">
+		<div class="row">
+			<div class="col-md-3">
+				<label>Title:</label> <br/>
+				<input type="text" name="anthologyTitle" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Editor:</label> <br/>
+				<input type="text" name="anthologyEditor" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Publisher:</label> <br/>
+				<input type="text" name="anthologyPublisher" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Year of Publication:</label> <br/>
+				<input type="date" min="1900-01-01" max="2017-12-12" name="anthologyYearPubl" id="yearP" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Length in Pages:</label> <br/>
+				<input type="number" name="anthologyLength" size="50">
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3">
+				<label>13-digit ISBN:</label> <br/>
+				<input type="text" maxlength="13" name="anthologyIsbn" size="50">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<label>Review:</label> <br/>
+				<textarea name="anthologyReview" cols="80" rows="4"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-sm-3">
+				<button type="button" id="button">Save</button> 
+			</div>
+		</div>
+
+	</div>
+</body>
+</html>

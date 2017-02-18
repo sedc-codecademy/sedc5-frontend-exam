@@ -1,0 +1,17 @@
+#booksContainer {
+	margin-left: 40px;
+	margin-top: 20px;
+}
+
+#title {
+	text-align: center;
+	margin-bottom: -10px;
+}
+
+#button {
+	margin-top: 5px;
+}
+
+h3 {
+	margin-top: -5px;
+}
