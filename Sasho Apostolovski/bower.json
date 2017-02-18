@@ -1,0 +1,23 @@
+{
+  "name": "gulp-kick-off",
+  "description": "Minimal gulp setup for building front-end projects",
+  "main": "index.js",
+  "authors": [
+    "Sashe Apostolovski"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "gulp"
+  ],
+  "homepage": "https://github.com/sashoa/gulp-kick-off",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "v4.0.0-alpha.6"
+  }
+}

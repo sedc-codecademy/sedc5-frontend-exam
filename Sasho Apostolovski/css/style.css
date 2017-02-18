@@ -1,0 +1,38 @@
+.selection {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px; 
+}
+.selection::after {
+    content: "";
+    clear: both;
+}
+.selection select {
+    float: left;
+    width: 300px;
+}
+.lib {
+    float: right;
+}
+#novel {
+    padding-top: 50px;
+    width: 700px;
+    margin: 50px auto;
+}
+#anthology {
+    padding-top: 50px;
+    width: 700px;
+    margin: 50px auto;
+}
+
+#checkOriginal {
+    margin-bottom: 25px;
+}
+
+.library {
+    padding-top: 150px;
+}
+
+.hidden {
+    display: none;
+}

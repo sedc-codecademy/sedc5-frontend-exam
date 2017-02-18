@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="build/css/vendor.css">
+  <link rel="stylesheet" href="build/css/style.css">
+  <!--<script src="build/js/vendor.min.js"></script>-->
+  <script src="build/js/app.js"></script>
+</head>
+
+<body>
+  <div class="container">
+    <div class="selection">
+        <select class="form-control" id="selectBookType">
+          <option value="" selected disabled>Select Book Type</option>
+          <option value="novel">Novel</option>
+          <option value="anthology">Anthology</option>
+        </select>
+      <div class="lib">
+        <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
+      </div>
+    </div>
+    <section id="novel" class="hidden">
+      <form id="novelForm">
+
+      <div class="form-group">
+        <label for="novelTitle">Title</label>
+        <input type="text" class="form-control" id="novelTitle" placeholder="Enter title" required>
+      </div>
+      <div class="form-group">
+        <label for="novelAuthor">Author</label>
+        <input type="text" class="form-control" id="novelAuthor" placeholder="Enter author" required>
+      </div>
+      <div class="form-group">
+        <label for="novelPublisher">Publisher</label>
+        <input type="text" class="form-control" id="novelPublisher" placeholder="Enter publisher">
+      </div>
+      <div class="form-group">
+        <label for="novelYear">Year of publication</label>
+        <input type="number" class="form-control" id="novelYear" placeholder="Enter year of publication">
+      </div>
+      <div class="form-group">
+        <label for="novelLength">Length in Pages</label>
+        <input type="number" class="form-control" id="novelLength" placeholder="Enter Length">
+      </div>
+      <div class="form-group">
+        <label for="novelSeries">Series</label>
+        <input type="text" class="form-control" id="novelSeries" placeholder="Enter Series">
+      </div>
+      <div class="form-group">
+        <label for="novelSeriesNumber">Series Number</label>
+        <input type="text" class="form-control" id="novelSeriesNumber" placeholder="Enter Series Number">
+      </div>
+      <div class="form-group">
+        <label for="novelIsbn">ISBN</label>
+        <input type="text" class="form-control" id="novelIsbn" placeholder="Enter ISBN">
+      </div>
+      <div class="form-group">
+        <label for="novelReview">Review</label>
+        <textarea name="novelReview" id="novelReview" cols="80" rows="5"></textarea>
+      </div>
+    </select>
+      <button type="submit" id="submitNovel" class="btn btn-primary">Add to Library</button>
+      </form>
+
+
+    </section>
+    <section id="anthology" class="hidden">
+      <form id="anthologyForm">
+      <div class="form-group">
+        <label for="anthologyTitle">Title</label>
+        <input type="text" class="form-control" id="anthologyTitle" placeholder="Enter title" required>
+      </div>
+      <div class="form-group">
+        <label for="anthologyEditor">Editor</label>
+        <input type="text" class="form-control" id="anthologyEditor" placeholder="Enter author" required>
+      </div>
+      <div class="form-group">
+        <label for="anthologyPublisher">Publisher</label>
+        <input type="text" class="form-control" id="anthologyPublisher" placeholder="Enter publisher">
+      </div>
+      <div class="form-group">
+        <label for="anthologyYear">Year of publication</label>
+        <input type="number" class="form-control" id="anthologyYear" placeholder="Enter year of publication">
+      </div>
+      <div class="form-group">
+        <label for="anthologyLength">Length in Pages</label>
+        <input type="number" class="form-control" id="anthologyLength" placeholder="Enter Length">
+      </div>
+      <div class="form-group">
+        <label for="anthologyStory">Story</label>
+        <input type="text" class="form-control" id="anthologyStory" placeholder="Enter Length">
+      </div>
+       <label class="form-check-label">
+      <input  id="checkOriginal" type="checkbox" class="form-check-input">
+      Original Story
+      </label>
+      <div class="form-group">
+        <label for="anthologyIsbn">ISBN</label>
+        <input type="text" class="form-control" id="anthologyIsbn" placeholder="Enter ISBN">
+      </div>
+      <div class="form-group">
+        <label for="anthologyReview">Review</label>
+        <textarea name="anthologyReview" id="anthologyReview" cols="80" rows="5"></textarea>
+      </div>
+    </select>
+      <button type="submit" id="submitAnthology"class="btn btn-primary">Add to Library</button>
+      </form>
+    </section>
+
+    <section id="library" class="hidden">
+
+    <table class="table">
+      <thead class="thead-inverse">
+        <tr>
+          <th>#</th>
+          <th>Tittle</th>
+          <th>Principal</th>
+          <th>Publishing Info</th>
+          <th>Length</th>
+          <th>Series</th>
+          <th>ISBN</th>
+          <th>Review</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="library-table">
+      </tbody>
+  </table>
+
+
+    </section>
+  </div>
+</body>
+
+</html>
