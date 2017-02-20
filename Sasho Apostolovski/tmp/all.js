@@ -12,9 +12,10 @@ let anthologyInputFeedback = document.getElementById('anthologyInputFeedback');
 let storyList = document.getElementById('storyList');
 let paging = document.getElementById('paging');
 
+let tempStories = [];
+let id = 0;
 
 // Initial setup of our bookRepository object 
-let tempStories = [];
 let bookRepository;
 function setBooks(books) {
     bookRepository = {
@@ -79,7 +80,6 @@ function displayBooks() {
     let tbody = document.getElementById('library-table');
     tbody.innerHTML = '';
     books.forEach(book => {
-        let id = bookRepository.books.indexOf(book) + 1;
         let additionalInfo;
         let principal;
         let review = '';
@@ -109,7 +109,7 @@ function displayBooks() {
 
         let tr = document.createElement('tr');
         tr.innerHTML = `
-        <td>${id}</td>
+        <td>${book.id}</td>
         <td>${book.title}</td>
         <td>${principal}</td>
         <td>${year} (${book.publisher})</td>
@@ -199,6 +199,7 @@ function validate(members) {
 }
 
 setBooks([]);
+
 // Series number is disabled if we dont have series
 let series = document.getElementById('novelSeries');
 let seriesNumber = document.getElementById('novelSeriesNumber');
@@ -255,6 +256,7 @@ submitNovelBtn.addEventListener('click', () => {
     if (!validate(novelMembers)) return;
 
     let novel = new Novel(novelMembers);
+    novel.id = ++id;
     bookRepository.books.push(novel);
     let alert = document.createElement('div');
     alert.className = 'alert alert-success';
@@ -304,6 +306,7 @@ submitAnthologyBtn.addEventListener('click', () => {
     if (!validate(anthologyMembers)) return;
 
     let anthology = new Anthology(anthologyMembers);
+    anthology.id = ++id;
     bookRepository.books.push(anthology);
     document.getElementById('anthologyForm').reset();
     storyList.innerHTML = '';
@@ -372,6 +375,7 @@ let booksFile = 'https://raw.githubusercontent.com/sedc-codecademy/sedc5-fronten
 loadBooksBtn.addEventListener('click', () => {
     console.log('here');
     getBooks(booksFile, function (books) {
+        books.forEach(book => book.id = ++id);
         bookRepository.books = bookRepository.books.concat(books);
         bookRepository.shownBooks = bookRepository.books.concat(books);
         displayBooks();

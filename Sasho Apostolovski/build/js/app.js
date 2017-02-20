@@ -223,8 +223,10 @@ var anthologyInputFeedback = document.getElementById('anthologyInputFeedback');
 var storyList = document.getElementById('storyList');
 var paging = document.getElementById('paging');
 
-// Initial setup of our bookRepository object 
 var tempStories = [];
+var id = 0;
+
+// Initial setup of our bookRepository object 
 var bookRepository = void 0;
 function setBooks(books) {
     bookRepository = {
@@ -291,7 +293,6 @@ function displayBooks() {
     var tbody = document.getElementById('library-table');
     tbody.innerHTML = '';
     books.forEach(function (book) {
-        var id = bookRepository.books.indexOf(book) + 1;
         var additionalInfo = void 0;
         var principal = void 0;
         var review = '';
@@ -320,7 +321,7 @@ function displayBooks() {
         }
 
         var tr = document.createElement('tr');
-        tr.innerHTML = "\n        <td>" + id + "</td>\n        <td>" + book.title + "</td>\n        <td>" + principal + "</td>\n        <td>" + year + " (" + book.publisher + ")</td>\n        <td>" + length + "</td>\n        <td>" + additionalInfo + "</td>\n        <td>" + isbn + "</td>\n        <td>" + review + "</td>\n        <td><button type=\"button\" id=\"delBtn\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm\">Delete</button></td>\n    ";
+        tr.innerHTML = "\n        <td>" + book.id + "</td>\n        <td>" + book.title + "</td>\n        <td>" + principal + "</td>\n        <td>" + year + " (" + book.publisher + ")</td>\n        <td>" + length + "</td>\n        <td>" + additionalInfo + "</td>\n        <td>" + isbn + "</td>\n        <td>" + review + "</td>\n        <td><button type=\"button\" id=\"delBtn\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm\">Delete</button></td>\n    ";
         tbody.appendChild(tr);
     });
 }
@@ -400,6 +401,7 @@ function validate(members) {
 }
 
 setBooks([]);
+
 // Series number is disabled if we dont have series
 var series = document.getElementById('novelSeries');
 var seriesNumber = document.getElementById('novelSeriesNumber');
@@ -454,6 +456,7 @@ submitNovelBtn.addEventListener('click', function () {
     if (!validate(novelMembers)) return;
 
     var novel = new _Novel2.default(novelMembers);
+    novel.id = ++id;
     bookRepository.books.push(novel);
     var alert = document.createElement('div');
     alert.className = 'alert alert-success';
@@ -502,6 +505,7 @@ submitAnthologyBtn.addEventListener('click', function () {
     if (!validate(anthologyMembers)) return;
 
     var anthology = new _Anthology2.default(anthologyMembers);
+    anthology.id = ++id;
     bookRepository.books.push(anthology);
     document.getElementById('anthologyForm').reset();
     storyList.innerHTML = '';
@@ -569,6 +573,9 @@ var booksFile = 'https://raw.githubusercontent.com/sedc-codecademy/sedc5-fronten
 loadBooksBtn.addEventListener('click', function () {
     console.log('here');
     getBooks(booksFile, function (books) {
+        books.forEach(function (book) {
+            return book.id = ++id;
+        });
         bookRepository.books = bookRepository.books.concat(books);
         bookRepository.shownBooks = bookRepository.books.concat(books);
         displayBooks();
