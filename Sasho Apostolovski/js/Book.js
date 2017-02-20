@@ -4,7 +4,7 @@ export default class Book {
     constructor(members) {
         this.title = members.title;
         this.publisher = members.publisher;
-        this._yearOfPublication = members.yearOfPublication;
+        this.yearOfPublication = members.yearOfPublication;
         this.lengthInPages = members.lengthInPages;
         this.isbn = members.isbn;
         this.review = members.review;
@@ -13,12 +13,12 @@ export default class Book {
     // set yearOfPublication(year) {
     //     this.yearOfPublication = year;
     // }
-    set yearOfPublication(year) {
-        let minYear = 1900;
-        let thisYear = new Date().getFullYear();
-        if (year > minYear && year < thisYear) this._yearOfPublication = year;
-        throw new Error(`Year must be between 1900 and ${thisYear}` )
-    }
+    // set yearOfPublication(year) {
+    //     let minYear = 1900;
+    //     let thisYear = new Date().getFullYear();
+    //     if (year > minYear && year < thisYear) this.yearOfPublication = year;
+    //     throw new Error(`Year must be between 1900 and ${thisYear}` )
+    // }
 
 
     // set lengthInPages(length) {

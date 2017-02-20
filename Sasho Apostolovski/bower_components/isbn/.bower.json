@@ -1,0 +1,26 @@
+{
+  "name": "isbn",
+  "description": "ISBN parsing, validation, and formatting utilities",
+  "main": "isbn.js",
+  "authors": [
+    "Hetappi <hetappi.pm@gmail.com> (http://twitter.com/hetappi)",
+    "AJ Oneal <awesome@coolaj86.com> (http://twitter.com/coolaj86)",
+    "Tait Brown <taitbrown@gmail.com> (http://twitter.com/taitems)"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "isbn"
+  ],
+  "homepage": "https://github.com/coolaj86/isbnjs",
+  "moduleType": [],
+  "_release": "016f513640",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "016f5136401fbbd157a92bb3380b21e31e594615"
+  },
+  "_source": "https://github.com/coolaj86/isbnjs.git",
+  "_target": "*",
+  "_originalSource": "isbn",
+  "_direct": true
+}

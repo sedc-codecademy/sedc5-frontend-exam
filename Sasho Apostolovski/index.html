@@ -6,20 +6,47 @@
   <title>Document</title>
   <link rel="stylesheet" href="build/css/vendor.css">
   <link rel="stylesheet" href="build/css/style.css">
-  <!--<script src="build/js/vendor.min.js"></script>-->
-  <script src="build/js/app.js"></script>
+  <script src="build/js/vendor.min.js"></script>
 </head>
 
 <body>
-  <div class="container">
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+    <a class="navbar-brand" href="#">Library</a>
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <select class="form-control" id="selectBookType">
+                <option value="disabled" selected disabled>Select Book Type to Add</option>
+                <option value="novel">Novel</option>
+                <option value="anthology">Anthology</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+          <ul id="paging" class="navbar-nav mr-auto hidden">
+            <li class="nav-item">
+              <a class="nav-link" id="prev" href="javascript:void(0)">Previous</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="next" href="javascript:void(0)">Next</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
+            </li>
+          </ul>
+    </div>
+  </nav>
+  <div id="page" class="container">
     <div class="selection">
-        <select class="form-control" id="selectBookType">
-          <option value="" selected disabled>Select Book Type</option>
-          <option value="novel">Novel</option>
-          <option value="anthology">Anthology</option>
-        </select>
       <div class="lib">
-        <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
       </div>
     </div>
     <section id="novel" class="hidden">
@@ -51,7 +78,7 @@
       </div>
       <div class="form-group">
         <label for="novelSeriesNumber">Series Number</label>
-        <input type="text" class="form-control" id="novelSeriesNumber" placeholder="Enter Series Number">
+        <input type="number" class="form-control" id="novelSeriesNumber" placeholder="Enter Series Number">
       </div>
       <div class="form-group">
         <label for="novelIsbn">ISBN</label>
@@ -66,6 +93,7 @@
       </form>
 
 
+      <div id="novelInputFeedback"></div>
     </section>
     <section id="anthology" class="hidden">
       <form id="anthologyForm">
@@ -89,16 +117,30 @@
         <label for="anthologyLength">Length in Pages</label>
         <input type="number" class="form-control" id="anthologyLength" placeholder="Enter Length">
       </div>
-      <div class="form-group">
-        <label for="anthologyStory">Story</label>
-        <input type="text" class="form-control" id="anthologyStory" placeholder="Enter Length">
+      <div class="stories">
+        <h6>Stories:</h6>
+        <ul id="storyList"></ul>
       </div>
-       <label class="form-check-label">
-      <input  id="checkOriginal" type="checkbox" class="form-check-input">
-      Original Story
-      </label>
+        <span>Story:<span>
+      <div class="form-gorup story">
+        <div class="form-group">
+          <label for="anthologyStorytitle">Story title</label>
+          <input type="text" class="form-control" id="anthologyStoryTitle" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+          <label for="anthologyStoryAuthor">Story Author</label>
+          <input type="text" class="form-control" id="anthologyStoryAuthor" placeholder="Enter author">
+        </div>
+        <label class="form-check-label">
+        <input  id="checkOriginal" type="checkbox" class="form-check-input">
+        Original Story
+        </label>
+        <div class="form-group">
+          <button id="addStory" class="btn btn-primary">Add Story</button>
+        </div>
+      </div>
       <div class="form-group">
-        <label for="anthologyIsbn">ISBN</label>
+        <label for="anthologyIsbn" style="clear:both">ISBN</label>
         <input type="text" class="form-control" id="anthologyIsbn" placeholder="Enter ISBN">
       </div>
       <div class="form-group">
@@ -108,9 +150,26 @@
     </select>
       <button type="submit" id="submitAnthology"class="btn btn-primary">Add to Library</button>
       </form>
+      <div id="anthologyInputFeedback"></div>
     </section>
 
     <section id="library" class="hidden">
+      <div class="formWrapper"> 
+        <form id="searchBook" class="form-inline my-2 my-lg-0">
+          <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search book">
+          <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button id="loadBooks" type="button" class="btn btn-primary">Load More Books</button>
+        <form id="sort" class="form-inline mr-auto">
+          <select id="select-sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option selected disabled>Sort by...</option>
+            <option value="title">Title</option>
+            <option value="year">Year of Publication</option>
+            <option value="novel">Novels only</option>
+            <option value="anthology">Anthologies only</option>
+          </select>
+        </form>
+      </div>
 
     <table class="table">
       <thead class="thead-inverse">
@@ -120,7 +179,7 @@
           <th>Principal</th>
           <th>Publishing Info</th>
           <th>Length</th>
-          <th>Series</th>
+          <th>Additional info</th>
           <th>ISBN</th>
           <th>Review</th>
           <th>Action</th>
@@ -133,6 +192,24 @@
 
     </section>
   </div>
+
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button id="closeModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="deleteBtn" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="build/js/app.js"></script>
 </body>
 
 </html>
