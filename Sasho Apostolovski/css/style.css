@@ -1,6 +1,9 @@
 .nav-item {
     margin-left: 20px;
 }
+#prev, #next {
+    color: #5cb85c;
+}
 
 #viewLibrary {
     float: left;
