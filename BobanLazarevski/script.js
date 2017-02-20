@@ -7,11 +7,19 @@ let anthologyTable = $(".anthology_table");
 let body = $("body");
 let i = 0;
 let pageNumber = 1;
-let pageSize = 5;
+let pageSize = 10;
 let arrayOfBooks = [];
-let updateArray = [];
+let sliceArray = [];
+let filterArray = [];
 let tbodyResult = $(".result_tbody");
-
+let searchButton = $("#SearchButton");
+let searchField = $("#searchField").val();
+let clearSearch = $("#ClearSearch");
+let searchArray = [];
+let showSearchField = $("#buttonShowSearhElements");
+let closeSearchField = $("#buttonCloseSearchElements");
+let searchInput = $("#searchField");
+searchArray = arrayOfBooks;
 
 $("#predefinedPublishersNovel").on("change",()=>{
 		let predefinedPublishersNovel = $("#predefinedPublishersNovel option:selected").val();
@@ -32,9 +40,7 @@ $("#series_Id").on("keyup",()=>{
 	$("#thSeriesNumberHidden").hide();
 	$("#tdSeriesNumberHidden").hide();
 	}
-
 })
-
 
 $(".selected").on("change",()=>{
 	let selected = $(".selected").val();
@@ -51,276 +57,294 @@ $(".selected").on("change",()=>{
 	}
 })
 
-function NovelBook(title,author,publisher,yearOfPublication,lengthInPages,
-	series,seriesNumber,isbnNovel,reviewNovel,arrayOfReview){
+function NovelBook(title,author,editor,publisher,yearOfPublication,lengthInPages,
+	series,seriesNumber,isbn,review,arrayOfReview){
 
 	this.title = title;
 	this.author = author;
+	this.editor = editor;
 	this.publisher = publisher;
 	this.yearOfPublication = yearOfPublication;
 	this.lengthInPages = lengthInPages;
 	this.series = series;
 	this.seriesNumber = seriesNumber;
-	this.isbnNovel = isbnNovel;
-	this.reviewNovel = reviewNovel;
+	this.isbn = isbn;
+	this.review = review;
 	this.arrayOfReview = arrayOfReview;
 
 }
 
-function AnthologyBook(title,editor,publisher,yearOfPublication,
-	lengthInPages,storiesIncluded,isbnAnthology,reviewAnthology,arrayOfReview){
+function AnthologyBook(title,author,editor,publisher,yearOfPublication,
+	lengthInPages,series,seriesNumber,storiesIncluded,isbn,review,arrayOfReview){
 
 	this.title = title;
+	this.author = author;
 	this.editor = editor;
 	this.publisher = publisher;
 	this.yearOfPublication = yearOfPublication;
 	this.lengthInPages = lengthInPages;
+	this.series = series;
+	this.seriesNumber = seriesNumber;
 	this.storiesIncluded = storiesIncluded;
-	this.isbnAnthology = isbnAnthology;
-	this.reviewAnthology = reviewAnthology;
+	this.isbn = isbn;
+	this.review = review;
 	this.arrayOfReview = arrayOfReview;
 }
 
-
-
-let displayPage = (pageNumber,pageSize)=>{
-		console.log(arrayOfBooks);
+let displayPage = (pageNumber,pageSize,arrayOfBooks)=>{
+		$(".result_tbody").html("");
         let startIndex = (pageNumber-1) * pageSize;
-
       	let endIndex = pageNumber * pageSize;
-
-      	updateArray = arrayOfBooks.slice(startIndex,endIndex);
-        appendBooks(pageNumber,pageSize,updateArray);
+      	sliceArray = arrayOfBooks.slice(startIndex,endIndex);
+      	let lastOne = arrayOfBooks[arrayOfBooks.length -1];
+        sliceArray.filter((lastOne)=>{appendBooks(pageNumber,pageSize,lastOne)});
    }
+
+  searchButton.on("click", ()=>{
+			
+	search = $("#searchField").val().toLowerCase();
+	if(!search)
+		return 
+	filterArray = searchArray.filter((b) => {
+            if(b.title.toLowerCase().indexOf(search) !== -1)
+                return true;
+            else if(b.author.toLowerCase().indexOf(search) !== -1)
+            	return true;
+            else if(b.editor.toLowerCase().indexOf(search) !== -1)
+            	return true;
+            else if(b.yearOfPublication.indexOf(search) !== -1)
+            	return true;
+	})
+	displayPage(pageNumber,pageSize,filterArray);
+	clearSearch.show();
+})
+  clearSearch.on("click",()=>{
+  	$("#searchField").val("");
+  	displayPage(pageNumber,pageSize,arrayOfBooks);
+  	clearSearch.hide();
+  })
+
    $("#previous").on("click",()=>{
    	  pageNumber > 1 ? pageNumber-- : -1
-   	  displayPage(pageNumber,pageSize,updateArray);
+   	  displayPage(pageNumber,pageSize,arrayOfBooks);
    })
 
    $("#next").on("click",()=>{
    	  let maxPageNumber = (arrayOfBooks.length / pageSize);
    	  pageNumber < maxPageNumber ? pageNumber++ : 1
-   	  displayPage(pageNumber,pageSize,updateArray);
-
+   	  displayPage(pageNumber,pageSize,arrayOfBooks);
    })
+ 
 
-   let appendBooks = (pageNumber,pageSize,updateArray)=>{
-   	tbodyResult.html("");
-   	for(let j = 0 ; j < updateArray.length ; j++){
-   		if(arrayOfBooks[arrayOfBooks.length - 1].constructor === AnthologyBook){
+   let appendBooks = (pageNumber,pageSize,a)=>{
+   		for(var j = 0 ; j < arrayOfBooks.length; j++){}
+   		// if(arrayOfBooks[arrayOfBooks.length -1].constructor === AnthologyBook){
 			$(".result_tbody").append(`
 				<tr>
+					<td>${j}</td>
+					<td>${a.title}</td>
+					<td>${a.author}</td>
+					<td>${a.editor}</td>
+					<td>${a.publisher} ${a.yearOfPublication}</td>
+					<td>${a.lengthInPages}</td>
+					<td><i>${a.series}  ${a.seriesNumber}</i></td>
 					<td></td>
-					<td>${arrayOfBooks[j].title}</td>
-					<td></td>
-					<td>${arrayOfBooks[j].editor}</td>
-					<td>Published by ${arrayOfBooks[j].publisher} in ${arrayOfBooks[j].yearOfPublication}</td>
-					<td>${arrayOfBooks[j].lengthInPages}</td>
-					<td><i>${arrayOfBooks[j].series} (# ${arrayOfBooks[j].seriesNumber})</i></td>
-					<td></td>
-					<td>${arrayOfBooks[j].isbnAnthology}</td>
-					<td>${arrayOfBooks[j].arrayOfReview}</td>
-					<td id="fullReview" class="hide">${arrayOfBooks[j].reviewAnthology}</td>
+					<td>${a.isbn}</td>
+					<td>${a.arrayOfReview}</td>
+					<td id="fullReview" class="hide">${a.review}</td>
 					<td><button id="delete">Delete</button></td>
 				</tr>
-
 				`);
-				}
-		  	
-		if(arrayOfBooks[arrayOfBooks.length - 1].constructor === NovelBook){
-			$(".result_tbody").append(`
-				<tr>
-					<td></td>
-					<td>${arrayOfBooks[j].title}</td>
-					<td>${arrayOfBooks[j].author}</td>
-					<td></td>
-					<td>Published by ${arrayOfBooks[j].publisher} in ${arrayOfBooks[j].yearOfPublication}</td>
-					<td>${arrayOfBooks[j].lengthInPages}</td>
-					<td><i>${arrayOfBooks[j].series} (# ${arrayOfBooks[j].seriesNumber})</i></td>
-					<td></td>
-					<td>${arrayOfBooks[j].isbnNovel}</td>
-					<td>${arrayOfBooks[j].arrayOfReview}</td>
-					<td id="fullReview" class="hide">${arrayOfBooks[j].reviewNovel}</td>
-					<td><button id="delete">Delete</button></td>
-				</tr>
-
-				`);
-		}
-	}
+		// } 	
+		// if(arrayOfBooks[arrayOfBooks.length -1].constructor === NovelBook){
+		// 	$(".result_tbody").append(`
+		// 		<tr>
+		// 			<td>${j}</td>
+		// 			<td>${a.title}</td>
+		// 			<td>${a.author}</td>
+		// 			<td></td>
+		// 			<td>${a.publisher} ${a.yearOfPublication}</td>
+		// 			<td>${a.lengthInPages}</td>
+		// 			<td><i>${a.series}  ${a.seriesNumber}</i></td>
+		// 			<td></td>
+		// 			<td>${a.isbnNovel}</td>
+		// 			<td>${a.arrayOfReview}</td>
+		// 			<td id="fullReview" class="hide">${a.reviewNovel}</td>
+		// 			<td><button id="delete">Delete</button></td>
+		// 		</tr>
+		// 		`);
+		// }
    }
-
+  
 let addNovelBooks = ()=>{
 	let title = $("#titleOfNovel_Id").val();
 	let author = $("#authorOfNovel_Id").val();
+	let editor = "";
 	let publisher = $("#publisherOfNovel_Id").val();
 	let yearOfPublication = $("#yearOfPublication_Novel_Id").val();
 	let lengthInPages = $("#lengthInPages_Novel_Id").val();
 	let series = $("#series_Id").val();
 	let seriesNumber = $("#seriesNumber_Novel_Id").val();
-	let isbnNovel = $("#isbn_Novel_Id").val();
-	let reviewNovel = $("#review_Novel_Id").val();
+	let isbn = $("#isbn_Novel_Id").val();
+	let review = $("#review_Novel_Id").val();
 	let arrayOfReview;
-	if(reviewNovel.length>50){
-		let halfReviewNovel = reviewNovel.slice(0,47,reviewNovel.length);
+	let array = [];
+	let date = new Date();
+	let currentYear = date.getFullYear();
+
+	if(!seriesNumber){}
+	else{seriesNumber = "(#" + seriesNumber + ")";}
+
+	if(review.length>50){
+		let halfReviewNovel = review.slice(0,47,review.length);
 		arrayOfReview = halfReviewNovel + `<button id="showFull">(...)</button>`;
 	}
-	else{
-		arrayOfReview = reviewNovel;
-	}
-	let array = [];
+	else{arrayOfReview = review;}
 
-	var date = new Date();
-	var currentYear = date.getFullYear();
 
 	if(!title)
 		return alert("Enter title");
 	if(!author)
-		return alert("enter author");
-	if(!(yearOfPublication > 1900 && yearOfPublication < currentYear))
+		return alert("Enter author");
+
+	if(!yearOfPublication){ }
+	else if(!publisher){return alert("First enter publisher");}
+
+	else if(!(yearOfPublication > 1900 && yearOfPublication <= currentYear))
 		return alert("Year is not valid");
-	if(!(lengthInPages > 1 && lengthInPages <= 1000))
+	
+	if(!yearOfPublication){ }
+	else{yearOfPublication = "in " + yearOfPublication};
+
+	if(!publisher){}
+	else if(publisher.length > 30){alert("Long Publisher");}
+
+	if(!publisher){}
+	else{publisher = "Published by " + publisher;}
+
+	if(!lengthInPages){}
+	else if(!(lengthInPages > 1 && lengthInPages <= 1000))
 		return alert("Length of pages is not valid");
-	if(isbnNovel.length != 13)
+
+	if(!isbn){}
+	else if(isbn.length != 13)
 		return alert("Not valid ISBN");
-	if(title.lenth > 15)
-		return alert("Long Title");
-	if(author.length > 15)
-		return alert("Long Author");
-	if(publisher.length > 30)
-		return alert("Long Publisher");
+
 	
 	document.addEventListener('click',function(e){
-	if(e.target && e.target.id == "showFull"){
-
+		if(e.target && e.target.id == "showFull"){
 		$(this).find('button:focus').parent().parent().find("#fullReview").show();
 		$(this).find('button:focus').parent().hide();
 	}
-
 })
-	var isbnString = "" + isbnNovel;
-
-	let book = new NovelBook(title,author,publisher,yearOfPublication,lengthInPages,
-		series,seriesNumber,isbnNovel,reviewNovel,arrayOfReview);
+	// let isbnString = "" + isbn;
+	let book = new NovelBook(title,author,editor,publisher,yearOfPublication,lengthInPages,
+		series,seriesNumber,isbn,review,arrayOfReview);
 	arrayOfBooks.push(book);
-	console.log(arrayOfBooks);
 
-	displayPage(pageNumber,pageSize,updateArray);
+	displayPage(pageNumber,pageSize,arrayOfBooks);
 }
 
 
-let addAnthologyBooks = (a)=>{
+let addAnthologyBooks = ()=>{
 	let title = $("#titleOfAnthology_Id").val();
 	let editor = $("#editorOfAnthology_Id").val();
+	let author = "";
 	let publisher = $("#publisherOfAnthologi_Id").val();
 	let yearOfPublication = $("#yearOfPublication_Anthology_Id").val();
 	let lengthInPages = $("#lengthInPages_Anthology_Id").val();
+	let series = "";
+	let seriesNumber = "";
 	let storiesIncluded = $("#storiesIncluded_Id").val();
-	let isbnAnthology = $("#isbn_Anthology_Id").val();
-	let reviewAnthology = $("#review_Anthology_Id").val();
+	let isbn = $("#isbn_Anthology_Id").val();
+	let review = $("#review_Anthology_Id").val();
 	let arrayOfReview;
+	let date = new Date();
+	let currentYear = date.getFullYear();
 
-	if(reviewAnthology.length>50){
-		let halfReviewAnthology = reviewAnthology.slice(0,47,reviewAnthology.length);
+	
+	if(!review){}
+	else if(review.length>50){
+		let halfReviewAnthology = review.slice(0,47,review.length);
 		arrayOfReview = halfReviewAnthology + `<button id="showFull">(...)</button>`;
 	}
-	else{
-		arrayOfReview = reviewAnthology;
-	}
-	
-
-	var date = new Date();
-	var currentYear = date.getFullYear();
-
+	else{arrayOfReview = review;}
 
 	if(!title)
 		return alert("Enter title");
 	if(!editor)
 		return alert("Enter editor");
-	if(!(yearOfPublication >= 1900 && yearOfPublication <= currentYear))
+
+	if(!yearOfPublication){ }
+	else if(!publisher){return alert("First enter publisher");}
+
+	else if(!(yearOfPublication > 1900 && yearOfPublication <= currentYear))
 		return alert("Year is not valid");
-	if(!(lengthInPages > 1 && lengthInPages <= 1000))
+	
+	if(!yearOfPublication){ }
+	else{yearOfPublication = "in " + yearOfPublication};
+
+	if(!publisher){}
+	else if(publisher.length > 30){alert("Long Publisher");}
+
+	if(!publisher){}
+	else{publisher = "Published by " + publisher;}
+		
+	if(!lengthInPages){}
+	else if(!(lengthInPages > 1 && lengthInPages <= 1000))
 		return alert("Length of pages is not valid");
-	if(isbnAnthology.length != 13)
+
+	if(!isbn){}
+	else if(isbn.length != 13)
 		return alert("Not valid ISBN");
 
-	if(title.lenth > 15)
-		return alert("Long Title");
-	if(editor.length > 15)
-		return alert("Long Edithor");
-	if(publisher.length > 30)
-		return alert("Long Publisher");
-
 	document.addEventListener('click',function(e){
-	if(e.target && e.target.id == "showFull"){
-
-		$(this).find('button:focus').parent().parent().find("#fullReview").show();
-		$(this).find('button:focus').parent().hide();
+		if(e.target && e.target.id == "showFull"){
+			$(this).find('button:focus').parent().parent().find("#fullReview").show();
+			$(this).find('button:focus').parent().hide();
 	}
 
 })
-	var isbnString = "" + isbnAnthology;
+	// var isbnString = "" + isbn;
+	let book = new AnthologyBook(title,author,editor,publisher,yearOfPublication,
+		lengthInPages,series,seriesNumber,storiesIncluded,isbn,review,arrayOfReview);
 
-
-	let book = new AnthologyBook(title,editor,publisher,yearOfPublication,
-	lengthInPages,storiesIncluded,isbnAnthology,reviewAnthology,arrayOfReview);
 	arrayOfBooks.push(book);
-	
-	// console.log(arrayOfBooks);
-	// $(".result_tbody").append(`
-	// 	<tr>
-	// 		<td>${i= i+1}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].title}</td>
-	// 		<td></td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].editor}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].publisher}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].yearOfPublication}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].lengthInPages}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].storiesIncluded}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].isbnAnthology}</td>
-	// 		<td>${arrayOfBooks[arrayOfBooks.length - 1].reviewAnthology}</td>
-	// 		<td><button id="delete">Delete</button></td>
-	// 	</tr>
 
-	// 	`)
-	displayPage(pageNumber,pageSize,updateArray);
-
-
+	displayPage(pageNumber,pageSize,arrayOfBooks);
 }
 
 save.on("click",()=>{
 	let selected = $(".selected").val();
-	if(selected == "Novels"){
-		addNovelBooks();
-		
-	}
-	else if(selected == "Anthologies"){
-		addAnthologyBooks();
-	}
+	if(selected == "Novels")return addNovelBooks();
+	else if(selected == "Anthologies")return addAnthologyBooks();
 })
 
 library.on("click",()=>{
 	novelsTable.hide();
 	anthologyTable.hide();
-	save.hide();
+	save.hide();	
 	resultTable.toggle();
 	$(".selected").val($("#default").val());
 })
 
 document.addEventListener("click",function(e){
 	if(e.target && e.target.id == "delete"){
-	$("#deleteConfirm").show();
-
-	var a = $(this).find('button:focus').parent().parent();
-
-	$("#confirmDelete").on("click",()=>{
-	a.remove();
-	$("#deleteConfirm").hide();
-
-	})
-
-	$("#declineDelete").on("click",()=>{
-	$("#deleteConfirm").hide();
-
-	})
+	  $("#deleteConfirm").show();
+	  let a = $(this).find('button:focus').parent().parent();
+	  $("#confirmDelete").on("click",()=>{a.remove(); $("#deleteConfirm").hide();})
+	  $("#declineDelete").on("click",()=>{$("#deleteConfirm").hide();})
 	}
+})
+showSearchField.on("click",()=>{
+	searchInput.show();
+	searchButton.show();
+	closeSearchField.show();
+	showSearchField.hide();
+})
+closeSearchField.on("click",()=>{
+	searchInput.hide();
+	searchButton.hide();
+	closeSearchField.hide();
+	showSearchField.show();
 })

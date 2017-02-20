@@ -12,8 +12,14 @@
 		<option>Anthologies</option>
 	</select>
 	<button id="library">Library</button>
+	<button id="buttonShowSearhElements">ShowSearchField</button>
+	<button id="buttonCloseSearchElements" class="hide">CloseSearchField</button>
+	<input type="text" id="searchField" class="hide">
+	<button id="SearchButton" class="hide">Search</button>
+	<button id="ClearSearch" class="hide">ClearSearch</button>
 	<button id="previous">Previous</button>
 	<button id="next">Next</button>
+	</br>
 
 	<table class="novels_table hide" border="1">
 		<thead>
@@ -74,7 +80,7 @@
 			<th>Publisher of the anthology</th>
 			<th>Year of publication</th>
 			<th>Pages</th>
-			<th>Stories included</th>
+			<th>Stories</th>
 			<th>ISBN</th>
 			<th>Review</th>
 		</thead>
@@ -83,9 +89,8 @@
 			<td><input type="text" id="editorOfAnthology_Id" placeholder="Editor of the book"></td>
 			<td>
 				<input type="" id="publisherOfAnthologi_Id" placeholder="Publishing Company">
-				<br>
 				<select id="predefinedPublishersAnthologies">
-					<option selected disabled>predefined publishers</option>
+					<option selected disabled>publishers</option>
 					<option>Del Rey Books</option>
 					<option>Publishersdesk</option>
 					<option>Penguin Random House</option>
@@ -94,7 +99,9 @@
 			</td>
 			<td><input type="number" id="yearOfPublication_Anthology_Id" placeholder="Year of publishing"></td>
 			<td><input type="number" id="lengthInPages_Anthology_Id" placeholder="Number of pages"></td>
-			<td><input type="" id="storiesIncluded_Id" placeholder="Stories"></td>
+			<td>
+				
+			</td>
 			<td><input type="number" id="isbn_Anthology_Id" placeholder="ISBN"></td>
 			<td>
 				<textarea id="review_Anthology_Id" placeholder="Review of the book">

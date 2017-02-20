@@ -5,10 +5,32 @@ html{
 	background-image: url('img.jpg');
 	background-repeat: no-repeat;
 	background-size: 130%;
+	margin: 0px;
+	font-family: Comic Sans MS;
+	font-family: 20px;
 
 }
 table {
 	background-color: purple;
+}
+button:hover {
+	background-color: lightblue;
+}
+.novels_table > tbody > tr > td {
+	height: 50px;
+}
+.novels_table > tbody > tr > td > input {
+	height: 25px;
+}
+.anthology_table > tbody > tr > td {
+	height: 50px;
+	width: 150px;
+}
+.anthology_table > thead {
+	font-family: 5px;
+}
+.anthology_table > tbody > tr > td > input {
+	height: 25px;
 }
 .result_tbody > tr > td {
 	background-color: white;
