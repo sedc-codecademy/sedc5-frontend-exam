@@ -1,0 +1,35 @@
+
+
+ima zadozitelni polinja nekoi nekoi // i za dvete tabeli na popolnuvanje
+
+tabelite veke popolneti da se prikazat prvite tri drugite nekoi
+
+kopce da se gledaat site
+
+vo hederot da se stiska i podreduvaat spored imeto naslovot ......
+
+prebaruvanje search na knigi ... do nego kopce da se odbira sto se bara
+
+site knigi vo edna tabela no kopce da se odbira da se pokazuvaat samo zbirki samo noveli i site /// moze vo searchot toa
+
+dve nizi na noveli i zbirki po 10 filma za veke postoecka tabela
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////////// popolnuvanjeto na knigite
+
+
+noveli
+
+naslov title // aftor author // izdavac publisher // godina year // lista na strani length os pages // serii series ako ima // koja seria prodolzenie series number // 13 id broj 13-digit ISBN // review
+    9 reda za popolnuvanje
+
+
+anthology 
+
+
+naslov title // izdavac editor AUTHOR // izdavac // godina year // strani // niza od stories prikazni   // 13 id broj // review
+     8 reda za popolnuvanje 
+

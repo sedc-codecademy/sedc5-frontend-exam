@@ -1,0 +1,47 @@
+body {
+     background-image: url("images/books.jpg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center; 
+     background-size: cover;
+    
+}
+
+header {
+    color: red;
+    background-color: gainsboro;
+    border-radius: 10px;
+}
+
+header > h1 {
+    margin-left: 300px; 
+}
+
+header > button {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+header > div > button {
+     margin-left: 50px;
+    margin-top: 10px;
+}
+
+.allBooks {
+    float: right;
+}
+
+table {
+    background-color: rebeccapurple;
+}
+
+.tableForFull {
+    float: right;
+    width: 80px;
+}
+
+.tablenews {
+    float: left;
+    width: 100px;
+    border-radius: 5px;
+}

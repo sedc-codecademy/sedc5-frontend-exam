@@ -1,0 +1,41 @@
+body {
+     background-image: url("images/books.jpg");
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center; 
+     background-size: cover;
+    
+}
+
+header {
+    color: red;
+    background-color: gainsboro;
+    
+}
+
+header > h1 {
+    margin-left: 300px; 
+}
+
+header > button {
+    margin-left: 100px;
+    margin-top: 20px;
+}
+
+header > div > button {
+     margin-left: 50px;
+    margin-top: 10px;
+}
+
+.allBooks {
+    float: right;
+}
+
+table, .table{
+    background-color: rebeccapurple;
+}
+
+#allBooksTable {
+    float: right;
+    width: 70px;
+}
