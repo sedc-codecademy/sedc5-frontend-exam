@@ -35,7 +35,6 @@ $("#addNovel").click(function () {
     $('.story').remove();
 
     isNovel();
-    console.log(isNovel());
 });
 
 
@@ -50,7 +49,6 @@ $("#addAnthology").click(function () {
     $(".novel").hide();
 
     isNovel();
-    console.log(isNovel());
 });
 
 //closing inputs---------------------
@@ -107,7 +105,7 @@ function displayStories() {
 
         $("#storyListing").append(
             `<ul>
-            <li>${element.title}</li>
+            <li>"${element.title}" - ${element.author}</li>
             </ul>`
         )
     }, this)
@@ -139,7 +137,7 @@ $("#saveBook").click(function () {
     let seriesNum = $("#seriesNum").val();
     let ISBN = $("#ISBN").val();
     let review = $("#review").val();
-    let publisher = $("#publisher option:selected" ).text();
+    let publisher = $( "#publisher option:selected" ).val();
     let stories = storyList;
 
     if (isNovel() == true) {
@@ -163,19 +161,29 @@ function displayBooks() {
     bookList.forEach(function (element, i) {
         let bookList = $("#bookList");
         bookList.append(
-            `   <tr>
-        <th>${i + 1}</th>
-        <th>${element.title}</th>
-        <th>${element.author}</th>
-        <th>${element.publisher}</th>
-        <th>${element.yearOfPublication}</th>
-        <th>${element.pages}</th>
-        <th>${element.series}</th>
-        <th>${element.seriesNum}</th>
-        <th>${element.ISBN}</th>   
-        <th>${element.editor}</th>
-        <th>${element.review}</th>
+            `   <tr id="${i}">
+                    <th>${i + 1}</th>
+                    <th>${element.title}</th>
+                    <th>${element.author}</th>
+                    <th>${element.publisher}</th>
+                    <th>${element.yearOfPublication}</th>
+                    <th>${element.pages}</th>
+                    <th>${element.series}(#${element.seriesNum})</th>
+                    <th>${element.ISBN}</th>   
+                    <th>${element.editor}</th>
+                    <th>${element.stories}</th>
+                    <th>${element.review}</th>
+                    <th><input type="button" class="btn btn-danger deleteBook" value="delete"></th>
+                </tr>`)
+    }, this)
+};
 
-
-    </tr>`)}, this)
-}
+//deleting a table row/book----------------------------------------
+$(document).on('click', 'input.deleteBook', function () {
+    let tableRow = $(this).closest("tr");
+    let tableRowId = tableRow.attr('id');
+    tableRow.remove();
+    bookList.splice(tableRowId, 1);
+    $("#bookList").html("");
+    displayBooks();
+});

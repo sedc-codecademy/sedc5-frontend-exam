@@ -1,6 +1,12 @@
 #header {
+    padding-top: 5px;
+    padding-bottom: 25px;
     margin-bottom: 0px;
-    background-image: url('img/head2.jpg')
+    background-image: url('img/head5.jpg')
+}
+
+#header h3{
+    color: whitesmoke
 }
 
 label {
