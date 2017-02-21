@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+            crossorigin="anonymous">
+
+
+
+            <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 style="position: absolute">Books novels and anthology</h1>
+            <button id="addBook" class="btn-primary btn-lg" type="button">Add new book!</button>
+            <div>
+
+            </div>
+        </header>
+        <div class="listContainer">
+            <table class="tableForFull table">
+                <thead>
+                    <tr>
+                        <th>Titles</th>
+                        <th>Author/Editor</th>
+                        <th>Publisher</th>
+                        <th>Year</th>
+                        <th>Pages</th>
+                        <th>Series/Stories</th>
+                        <th>Series Numb</th>
+                        <th>idDigit</th>
+                        <th>Review</th>
+                    </tr>
+                </thead>
+                <tbody id="allBooksTable">
+
+                </tbody>
+            </table>
+        </div>
+
+        <button id="bkNovel" class="btn-primary btn-lg" type="button">Novel!</button>
+        <button id="bkAnth" class="btn-primary btn-lg" type="button">Anthology!</button>
+
+        <div class="container">
+            <table class="tablenews table addedAnthology">
+                <div>
+                    <tr>
+                        <td>
+                            <h3 style="color: red">Add new Anthology</h3>
+                        </td>
+                        <td><button id="saveAnthology" class="btn-primary btn-lg" type="button">Save</button></td>
+                    </tr>
+                </div>
+                <tbody>
+                    <tr>
+                        <td> <label for='anthtitle'></label>
+                            <input id='anthtitle' type='text' placeholder="Title of the anthology" required>
+                        </td>
+                        <td> <label for='antheditor'></label>
+                            <input id='antheditor' maxlength="25" type='text' name="fullname" placeholder="Editor of the anthology" required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for='anthpublisher'></label>
+                            <input id='anthpublisher' maxlength="25" type='text' placeholder="Publisher of the novel" required>
+                        </td>
+                        <td> <label for='anthyear'></label>
+                            <select style="margin-top: 20px" id='anthyear'></select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for='anthpages'>Pages </label>
+                            <input  style="margin-top: 18px" id='anthpages' type='number' min="1" max="1000">
+                        </td>
+
+                        <td>
+                            <label for='anthstories'></label>
+                            <input id='anthstories' type='text' placeholder="Stories">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> <label for='anthidDigit'></label>
+                            <input id='anthidDigit' maxlength="13" type='text' placeholder="13-digit ISBN">
+                        </td>
+                        <td>
+                            <label for='anthreview'></label>
+                            <input id='anthreview' type='text' placeholder="Review" required>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container">
+            <table class="tablenews table addedNovel">
+                <div>
+                    <tr>
+                        <td>
+                            <h3 style="color: red">Add new novel</h3>
+                        </td>
+                        <td><button id="saveNovel" onclick="submitform()" class="btn-primary btn-lg" type="button">Save</button></td>
+                    </tr>
+                </div>
+                <thead>
+                    <tbody>
+                        <tr>
+                            <td> <label for='novtitle'></label> 
+                                <input id='novtitle' type='text' placeholder="Title of the novel" required>
+                            </td>
+                            <td> <label for='novauthor'></label>
+                                <input id='novauthor' maxlength="25" type='text' name="fname" placeholder="Author of the novel" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label for='novpublisher'></label>
+                                <input id='novpublisher' maxlength="25" type='text' placeholder="Publisher of the novel" required>
+                            </td>
+                            <td>
+                                <label for='novyear'></label>
+                                <select style="margin-top: 20px"  id='novyear'></select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for='novpages'>Pages </label>
+                                <input  style="margin-top: 18px" id='novpages'  type='number' min="1" max="1000">
+                            </td>
+                            <td>
+                                <label for='novseries'></label>
+                                <input id='novseries' type='text' placeholder="Series">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <label for='novseriesNumb'></label>
+                                <input id='novseriesNumb' type='text' placeholder="seriesNumb">
+                            </td>
+                            <td>
+                                <label for='novidDigit'></label>
+                                <input id='novidDigit' maxlength="13" type='text' placeholder="13-digit ISBN" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label for='novreview'></label>
+                                <input id='novreview' type='text' placeholder="review" required>
+                            </td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+
+
+
+        <script src="jquery-3.1.1.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+            <script src="app.js"></script>
+</body>
+
+</html>
