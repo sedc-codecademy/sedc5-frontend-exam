@@ -64,7 +64,7 @@ $("#closeBook").click(function () {
 //----------------------------------------------------------------------------------------------------
 //Book class-------------------------
 class Book {
-    constructor(title, yearOfPublication, pages, ISBN, review, author, series, seriesNum, editor, stories) {
+    constructor(title, yearOfPublication, pages, ISBN, review, author, series, seriesNum, editor, stories, publisher) {
         this.title = title;
         this.yearOfPublication = yearOfPublication;
         this.pages = pages;
@@ -75,6 +75,7 @@ class Book {
         this.seriesNum = seriesNum;
         this.editor = editor;
         this.stories = stories;
+        this.publisher = publisher;
     }
 }
 //novel book class-------------------
