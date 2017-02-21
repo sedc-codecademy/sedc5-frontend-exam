@@ -601,6 +601,7 @@ deleteBtn.addEventListener('click', function () {
     bookRepository.books.splice(bookToDeleteIndex, 1);
     closeModal.click();
     if (searchInput.value) {
+        bookRepository.shownBooks.splice(shownBookToDeleteIndex, 1);
         var searchTerm = searchInput.value.toLowerCase();
         bookRepository.search(searchTerm);
     }
