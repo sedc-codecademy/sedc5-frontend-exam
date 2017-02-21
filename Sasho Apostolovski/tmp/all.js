@@ -57,6 +57,16 @@ function setBooks(books) {
                 this.shownBooks = this.books.filter(book => book.kind == 'anthology');
                 return;
             }
+            if (sortBy === 'additionalInfo') {
+                this.shownBooks = this.books.sort((a, b) => {
+                    return b.kind == 'novel' && a.kind == 'anthology' ? 1 : 0;
+                }).sort((a, b) => {
+                    if ((b.kind == 'novel' && !b.series) && (a.kind != 'novel' || a.series))
+                        return 1;
+                    return 0;
+                });
+                return;
+            }
             this.shownBooks = this.books.sort((a, b) => {
                 switch (sortBy) {
                     case 'id':
@@ -71,11 +81,6 @@ function setBooks(books) {
                         let bPrincipal = b.author || b.editor;
                         return aPrincipal.localeCompare(bPrincipal);
                         break;
-                    case 'series':
-                        let aSeries = a.series || "";
-                        let bSeries = b.series || "";
-                        return aSeries.localeCompare(bSeries);
-                        break;
                     case 'isbn':
                         let aIsbn = a.isbn || "";
                         let bIsbn = b.isbn || "";
@@ -85,18 +90,6 @@ function setBooks(books) {
                         return a[sortBy].localeCompare(b[sortBy]);
                         break;
                 }
-                // if (sortBy === 'id') return Number(b[sortBy]) - Number(a[sortBy]);
-                // else if (sortBy === 'year' || sortBy == 'length') {
-                //     return Number(b[sortBy]) - Number(a[sortBy]);
-                // }
-                // else {
-                //     if (sortBy == 'principal') {
-                //         let aPrincipal = a.author || a.editor;
-                //         let bPrincipal = b.author || b.editor;
-                //         return aPrincipal.localeCompare(bPrincipal);
-                //     }
-                //     return a[sortBy].localeCompare(b[sortBy]);
-                // }
             });
         }
     }
@@ -153,6 +146,10 @@ function displayBooks() {
     `;
         tbody.appendChild(tr);
     })
+
+    let pageNumber = document.getElementById('pageNumber');
+    console.log(pageNumber);
+    pageNumber.innerText = `Page: ${bookRepository.pageIndex + 1}`
 }
 
 function getBooks(file, cb) {

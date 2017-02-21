@@ -92,3 +92,9 @@
 #bookTableHead a {
     color: #fff;
 }
+
+#pageNumber {
+    line-height: 39px;
+    margin-top: 5px;
+    margin-left: 15px;
+}

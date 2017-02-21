@@ -271,6 +271,15 @@ function setBooks(books) {
                 });
                 return;
             }
+            if (sortBy === 'additionalInfo') {
+                this.shownBooks = this.books.sort(function (a, b) {
+                    return b.kind == 'novel' && a.kind == 'anthology' ? 1 : 0;
+                }).sort(function (a, b) {
+                    if (b.kind == 'novel' && !b.series && (a.kind != 'novel' || a.series)) return 1;
+                    return 0;
+                });
+                return;
+            }
             this.shownBooks = this.books.sort(function (a, b) {
                 switch (sortBy) {
                     case 'id':
@@ -285,11 +294,6 @@ function setBooks(books) {
                         var bPrincipal = b.author || b.editor;
                         return aPrincipal.localeCompare(bPrincipal);
                         break;
-                    case 'series':
-                        var aSeries = a.series || "";
-                        var bSeries = b.series || "";
-                        return aSeries.localeCompare(bSeries);
-                        break;
                     case 'isbn':
                         var aIsbn = a.isbn || "";
                         var bIsbn = b.isbn || "";
@@ -299,18 +303,6 @@ function setBooks(books) {
                         return a[sortBy].localeCompare(b[sortBy]);
                         break;
                 }
-                // if (sortBy === 'id') return Number(b[sortBy]) - Number(a[sortBy]);
-                // else if (sortBy === 'year' || sortBy == 'length') {
-                //     return Number(b[sortBy]) - Number(a[sortBy]);
-                // }
-                // else {
-                //     if (sortBy == 'principal') {
-                //         let aPrincipal = a.author || a.editor;
-                //         let bPrincipal = b.author || b.editor;
-                //         return aPrincipal.localeCompare(bPrincipal);
-                //     }
-                //     return a[sortBy].localeCompare(b[sortBy]);
-                // }
             });
         }
     };
@@ -357,6 +349,10 @@ function displayBooks() {
         tr.innerHTML = "\n        <td>" + book.id + "</td>\n        <td>" + book.title + "</td>\n        <td>" + principal + "</td>\n        <td>" + year + " (" + book.publisher + ")</td>\n        <td>" + length + "</td>\n        <td>" + additionalInfo + "</td>\n        <td>" + isbn + "</td>\n        <td>" + review + "</td>\n        <td><button type=\"button\" id=\"delBtn\" class=\"btn btn-danger\" data-toggle=\"modal\" data-target=\".bd-example-modal-sm\">Delete</button></td>\n    ";
         tbody.appendChild(tr);
     });
+
+    var pageNumber = document.getElementById('pageNumber');
+    console.log(pageNumber);
+    pageNumber.innerText = "Page: " + (bookRepository.pageIndex + 1);
 }
 
 function getBooks(file, cb) {

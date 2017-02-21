@@ -29,14 +29,6 @@
             </li>
           </ul>
         </div>
-          <!--<ul id="paging" class="navbar-nav mr-auto hidden">
-            <li class="nav-item">
-              <a class="nav-link" id="prev" href="javascript:void(0)">Previous Page</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="next" href="javascript:void(0)">Next Page</a>
-            </li>
-          </ul>-->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
@@ -181,6 +173,7 @@
         <div id="pagingButtons" class="btn-group">
           <button id="prev" type="button" class="btn btn-secondary btn-sm">Previous</button>
           <button id="next" type="button" class="btn btn-secondary btn-sm">Next</button>
+          <span id="pageNumber" >Page: </span>
 
         </div>
 
@@ -203,7 +196,7 @@
           <th><a id="principal" href="javascript:void(0)">Principal▾</a></th>
           <th><a id="year" href="javascript:void(0)">Publishing Info▾</a></th>
           <th><a id="length" href="javascript:void(0)">Length▾</a></th>
-          <th><a id="series" href="javascript:void(0)">Additional info▾</a></th>
+          <th><a id="additionalInfo" href="javascript:void(0)">Additional info▾</a></th>
           <th><a id="isbn" href="javascript:void(0)">ISBN▾</a></th>
           <th>Review</th>
           <th>Action</th>
