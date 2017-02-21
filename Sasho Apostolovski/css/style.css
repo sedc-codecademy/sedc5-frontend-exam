@@ -2,7 +2,7 @@
     margin-left: 20px;
 }
 #prev, #next {
-    color: #5cb85c;
+    margin-top: 12px;
 }
 
 #viewLibrary {
@@ -13,7 +13,7 @@
     float: left;
 }
 
-#sort {
+#pagingButtons {
     float: right;
 }
 .selection {
@@ -87,4 +87,8 @@
 #anthologyInputFeedback {
     height: 400px;
     margin-top: 30px;
+}
+
+#bookTableHead a {
+    color: #fff;
 }

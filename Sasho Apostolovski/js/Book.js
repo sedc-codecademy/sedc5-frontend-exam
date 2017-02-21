@@ -4,8 +4,8 @@ export default class Book {
     constructor(members) {
         this.title = members.title;
         this.publisher = members.publisher;
-        this.yearOfPublication = members.yearOfPublication;
-        this.lengthInPages = members.lengthInPages;
+        this.year = members.year;
+        this.length = members.length;
         this.isbn = members.isbn;
         this.review = members.review;
     }

@@ -10,7 +10,6 @@ let addStoryBtn = document.getElementById('addStory');
 let novelInputFeedback = document.getElementById('novelInputFeedback');
 let anthologyInputFeedback = document.getElementById('anthologyInputFeedback');
 let storyList = document.getElementById('storyList');
-let paging = document.getElementById('paging');
 
 let tempStories = [];
 let id = 0;
@@ -59,12 +58,45 @@ function setBooks(books) {
                 return;
             }
             this.shownBooks = this.books.sort((a, b) => {
-                if (sortBy === 'title') {
-                    return a.title.localeCompare(b.title);
+                switch (sortBy) {
+                    case 'id':
+                    case 'length':
+                        return Number(a[sortBy]) - Number(b[sortBy]);
+                        break;
+                    case 'year':
+                        return Number(b.year) - Number(a.year);
+                        break;
+                    case 'principal':
+                        let aPrincipal = a.author || a.editor;
+                        let bPrincipal = b.author || b.editor;
+                        return aPrincipal.localeCompare(bPrincipal);
+                        break;
+                    case 'series':
+                        let aSeries = a.series || "";
+                        let bSeries = b.series || "";
+                        return aSeries.localeCompare(bSeries);
+                        break;
+                    case 'isbn':
+                        let aIsbn = a.isbn || "";
+                        let bIsbn = b.isbn || "";
+                        return aIsbn.localeCompare(bIsbn);
+                        break;
+                    default:
+                        return a[sortBy].localeCompare(b[sortBy]);
+                        break;
                 }
-                else if (sortBy === 'year') {
-                    return Number(b.yearOfPublication || b.year) - Number(a.yearOfPublication || a.year);
-                }
+                // if (sortBy === 'id') return Number(b[sortBy]) - Number(a[sortBy]);
+                // else if (sortBy === 'year' || sortBy == 'length') {
+                //     return Number(b[sortBy]) - Number(a[sortBy]);
+                // }
+                // else {
+                //     if (sortBy == 'principal') {
+                //         let aPrincipal = a.author || a.editor;
+                //         let bPrincipal = b.author || b.editor;
+                //         return aPrincipal.localeCompare(bPrincipal);
+                //     }
+                //     return a[sortBy].localeCompare(b[sortBy]);
+                // }
             });
         }
     }
@@ -83,13 +115,13 @@ function displayBooks() {
         let additionalInfo;
         let principal;
         let review = '';
-        let year = book.year || book.yearOfPublication;
-        let length = book.length || book.lengthInPages;
+        let year = book.year;
+        let length = book.length;
         let isbn = book.isbn || "";
         if (book.kind == 'novel') {
             principal = book.author;
             if (!book.series) additionalInfo = "";
-            else additionalInfo = `${book.series} (${book.seriesNumber})`;
+            else additionalInfo = `${book.series} (#${book.seriesNumber})`;
         }
         else {
             principal = book.editor;
@@ -164,11 +196,11 @@ function validate(members) {
     if (members.isbn && (!isbn || !isbn.isIsbn13())) {
         let alert = document.createElement('div');
         alert.className = 'alert alert-danger';
-        alert.innerHTML = `<strong>Input Error</strong> Isbn is not valid.`
+        alert.innerHTML = `<strong>Input Error</strong> Isbn is not valid. Valid isbn would be (ex. 978-1-56619-909-4)`
         errors.appendChild(alert);
         allGood = false;
     }
-    let year = members.yearOfPublication
+    let year = members.year;
     let currentYear = new Date();
     if (year && (year < 1900 || year > currentYear.getFullYear())) {
         let alert = document.createElement('div');
@@ -177,7 +209,7 @@ function validate(members) {
         errors.appendChild(alert);
         allGood = false;
     }
-    let pageLength = members.lengthInPages
+    let pageLength = members.length;
     if (pageLength && (pageLength < 1 || pageLength > 1000)) {
         let alert = document.createElement('div');
         alert.className = 'alert alert-danger';
@@ -216,13 +248,11 @@ bookSelect.addEventListener('change', () => {
         library.classList.add('hidden');
         anthologyForm.classList.add('hidden');
         novelForm.classList.remove('hidden');
-        paging.classList.add('hidden');
     }
     if (value == "anthology") {
         library.classList.add('hidden');
         novelForm.classList.add('hidden');
         anthologyForm.classList.remove('hidden');
-        paging.classList.add('hidden');
     }
 });
 
@@ -235,7 +265,7 @@ submitNovelBtn.addEventListener('click', () => {
     let author = document.getElementById('novelAuthor');
     let publisher = document.getElementById('novelPublisher');
     let year = document.getElementById('novelYear');
-    let lengthInPages = document.getElementById('novelLength');
+    let length = document.getElementById('novelLength');
     let series = document.getElementById('novelSeries');
     let seriesNumber = document.getElementById('novelSeriesNumber');
     let isbn = document.getElementById('novelIsbn');
@@ -245,8 +275,8 @@ submitNovelBtn.addEventListener('click', () => {
         title: title.value,
         author: author.value,
         publisher: publisher.value,
-        yearOfPublication: year.value,
-        lengthInPages: lengthInPages.value,
+        year: year.value,
+        length: length.value,
         isbn: isbn.value,
         review: review.value,
         series: series.value,
@@ -288,15 +318,15 @@ submitAnthologyBtn.addEventListener('click', () => {
     let editor = document.getElementById('anthologyEditor');
     let publisher = document.getElementById('anthologyPublisher');
     let year = document.getElementById('anthologyYear');
-    let lengthInPages = document.getElementById('anthologyLength');
+    let length = document.getElementById('anthologyLength');
     let isbn = document.getElementById('anthologyIsbn');
     let review = document.getElementById('anthologyReview');
 
     let anthologyMembers = {
         title: title.value,
         publisher: publisher.value,
-        yearOfPublication: year.value,
-        lengthInPages: lengthInPages.value,
+        year: year.value,
+        length: length.value,
         isbn: isbn.value,
         stories: tempStories,
         review: review.value,
@@ -324,18 +354,22 @@ viewLibrary.addEventListener('click', function () {
     novelForm.classList.add('hidden');
     anthologyForm.classList.add('hidden');
     library.classList.remove('hidden');
-    paging.classList.remove('hidden');
     bookSelect.value = "disabled";
     displayBooks();
 });
 
 
 // Sorting
-let sortSelection = document.getElementById('select-sort');
-sortSelection.addEventListener('change', () => {
-    bookRepository.sort(sortSelection.value);
-    displayBooks();
-});
+let bookTableHead = document.getElementById('bookTableHead');
+bookTableHead.addEventListener('click', () => {
+    event.preventDefault();
+    if (event.target.tagName == 'A') {
+        console.log(event.target.id);
+        event.stopPropagation();
+        bookRepository.sort(event.target.id);
+        displayBooks();
+    }
+})
 
 // Search books
 let searchInput = document.getElementById('searchInput');
@@ -348,24 +382,27 @@ searchBtn.addEventListener('click', () => {
 })
 
 // Delete book
-let bookToDeleteIndex;
+let bookToDeleteId;
 library.addEventListener('click', () => {
     // event.preventDefault();
     let clickedElement = event.target;
     if (clickedElement.id == "delBtn") {
         let tr = clickedElement.parentNode.parentNode;
-        let index = parseInt(tr.children[0].innerText) - 1;
-        bookToDeleteIndex = index;
+        bookToDeleteId = parseInt(tr.children[0].innerText);
     }
 })
 let deleteBtn = document.getElementById('deleteBtn');
 let closeModal = document.getElementById('closeModal');
 deleteBtn.addEventListener('click', () => {
-    let book = bookRepository.books[bookToDeleteIndex];
+    let book = bookRepository.books.find(book => book.id == bookToDeleteId)
+    let bookToDeleteIndex = bookRepository.books.indexOf(book);
     let shownBookToDeleteIndex = bookRepository.shownBooks.indexOf(book);
     bookRepository.books.splice(bookToDeleteIndex, 1);
-    bookRepository.shownBooks.splice(shownBookToDeleteIndex, 1);
     closeModal.click();
+    if (searchInput.value) {
+      let searchTerm = searchInput.value.toLowerCase();
+      bookRepository.search(searchTerm);
+    }
     displayBooks();
 })
 

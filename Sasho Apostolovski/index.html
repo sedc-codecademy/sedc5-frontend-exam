@@ -29,14 +29,14 @@
             </li>
           </ul>
         </div>
-          <ul id="paging" class="navbar-nav mr-auto hidden">
+          <!--<ul id="paging" class="navbar-nav mr-auto hidden">
             <li class="nav-item">
-              <a class="nav-link" id="prev" href="javascript:void(0)">Previous</a>
+              <a class="nav-link" id="prev" href="javascript:void(0)">Previous Page</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" id="next" href="javascript:void(0)">Next</a>
+              <a class="nav-link" id="next" href="javascript:void(0)">Next Page</a>
             </li>
-          </ul>
+          </ul>-->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
               <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
@@ -62,7 +62,16 @@
       </div>
       <div class="form-group">
         <label for="novelPublisher">Publisher</label>
-        <input type="text" class="form-control" id="novelPublisher" placeholder="Enter publisher">
+        <div>
+          <select id="novelPublisher" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="" selected disabled>Select publisher</option>
+            <option value="Penguin Random House">Penguin Random House</option>
+            <option value="Hachette Livre">Hachette Livre</option>
+            <option value="HarperCollins">HarperCollins</option>
+            <option value="Pan Macmillan">Pan Macmillan</option>
+          </select>
+        </div>
+        <!--<input type="text" class="form-control" id="novelPublisher" placeholder="Enter publisher">-->
       </div>
       <div class="form-group">
         <label for="novelYear">Year of publication</label>
@@ -107,7 +116,16 @@
       </div>
       <div class="form-group">
         <label for="anthologyPublisher">Publisher</label>
-        <input type="text" class="form-control" id="anthologyPublisher" placeholder="Enter publisher">
+        <div>
+          <select id="anthologyPublisher" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="" selected disabled>Select publisher</option>
+            <option value="Penguin Random House">Penguin Random House</option>
+            <option value="Hachette Livre">Hachette Livre</option>
+            <option value="HarperCollins">HarperCollins</option>
+            <option value="Pan Macmillan">Pan Macmillan</option>
+          </select>
+        </div>
+        <!--<input type="text" class="form-control" id="anthologyPublisher" placeholder="Enter publisher">-->
       </div>
       <div class="form-group">
         <label for="anthologyYear">Year of publication</label>
@@ -160,7 +178,13 @@
           <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <button id="loadBooks" type="button" class="btn btn-primary">Load More Books</button>
-        <form id="sort" class="form-inline mr-auto">
+        <div id="pagingButtons" class="btn-group">
+          <button id="prev" type="button" class="btn btn-secondary btn-sm">Previous</button>
+          <button id="next" type="button" class="btn btn-secondary btn-sm">Next</button>
+
+        </div>
+
+        <!--<form id="sort" class="form-inline mr-auto">
           <select id="select-sort" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
             <option selected disabled>Sort by...</option>
             <option value="title">Title</option>
@@ -168,19 +192,19 @@
             <option value="novel">Novels only</option>
             <option value="anthology">Anthologies only</option>
           </select>
-        </form>
+        </form>-->
       </div>
 
     <table class="table">
-      <thead class="thead-inverse">
+      <thead id="bookTableHead" class="thead-inverse">
         <tr>
-          <th>#</th>
-          <th>Tittle</th>
-          <th>Principal</th>
-          <th>Publishing Info</th>
-          <th>Length</th>
-          <th>Additional info</th>
-          <th>ISBN</th>
+          <th><a id="id" href="javascript:void(0)">ID▾</a></th>
+          <th><a id="title" href="javascript:void(0)">Tittle▾</a></th>
+          <th><a id="principal" href="javascript:void(0)">Principal▾</a></th>
+          <th><a id="year" href="javascript:void(0)">Publishing Info▾</a></th>
+          <th><a id="length" href="javascript:void(0)">Length▾</a></th>
+          <th><a id="series" href="javascript:void(0)">Additional info▾</a></th>
+          <th><a id="isbn" href="javascript:void(0)">ISBN▾</a></th>
           <th>Review</th>
           <th>Action</th>
         </tr>

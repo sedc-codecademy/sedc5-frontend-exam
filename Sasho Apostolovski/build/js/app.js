@@ -52,8 +52,8 @@ var Book = function Book(members) {
 
     this.title = members.title;
     this.publisher = members.publisher;
-    this.yearOfPublication = members.yearOfPublication;
-    this.lengthInPages = members.lengthInPages;
+    this.year = members.year;
+    this.length = members.length;
     this.isbn = members.isbn;
     this.review = members.review;
 }
@@ -221,7 +221,6 @@ var addStoryBtn = document.getElementById('addStory');
 var novelInputFeedback = document.getElementById('novelInputFeedback');
 var anthologyInputFeedback = document.getElementById('anthologyInputFeedback');
 var storyList = document.getElementById('storyList');
-var paging = document.getElementById('paging');
 
 var tempStories = [];
 var id = 0;
@@ -273,11 +272,45 @@ function setBooks(books) {
                 return;
             }
             this.shownBooks = this.books.sort(function (a, b) {
-                if (sortBy === 'title') {
-                    return a.title.localeCompare(b.title);
-                } else if (sortBy === 'year') {
-                    return Number(b.yearOfPublication || b.year) - Number(a.yearOfPublication || a.year);
+                switch (sortBy) {
+                    case 'id':
+                    case 'length':
+                        return Number(a[sortBy]) - Number(b[sortBy]);
+                        break;
+                    case 'year':
+                        return Number(b.year) - Number(a.year);
+                        break;
+                    case 'principal':
+                        var aPrincipal = a.author || a.editor;
+                        var bPrincipal = b.author || b.editor;
+                        return aPrincipal.localeCompare(bPrincipal);
+                        break;
+                    case 'series':
+                        var aSeries = a.series || "";
+                        var bSeries = b.series || "";
+                        return aSeries.localeCompare(bSeries);
+                        break;
+                    case 'isbn':
+                        var aIsbn = a.isbn || "";
+                        var bIsbn = b.isbn || "";
+                        return aIsbn.localeCompare(bIsbn);
+                        break;
+                    default:
+                        return a[sortBy].localeCompare(b[sortBy]);
+                        break;
                 }
+                // if (sortBy === 'id') return Number(b[sortBy]) - Number(a[sortBy]);
+                // else if (sortBy === 'year' || sortBy == 'length') {
+                //     return Number(b[sortBy]) - Number(a[sortBy]);
+                // }
+                // else {
+                //     if (sortBy == 'principal') {
+                //         let aPrincipal = a.author || a.editor;
+                //         let bPrincipal = b.author || b.editor;
+                //         return aPrincipal.localeCompare(bPrincipal);
+                //     }
+                //     return a[sortBy].localeCompare(b[sortBy]);
+                // }
             });
         }
     };
@@ -296,12 +329,12 @@ function displayBooks() {
         var additionalInfo = void 0;
         var principal = void 0;
         var review = '';
-        var year = book.year || book.yearOfPublication;
-        var length = book.length || book.lengthInPages;
+        var year = book.year;
+        var length = book.length;
         var isbn = book.isbn || "";
         if (book.kind == 'novel') {
             principal = book.author;
-            if (!book.series) additionalInfo = "";else additionalInfo = book.series + " (" + book.seriesNumber + ")";
+            if (!book.series) additionalInfo = "";else additionalInfo = book.series + " (#" + book.seriesNumber + ")";
         } else {
             principal = book.editor;
             var firstStoryAuthor = book.stories[0].author;
@@ -366,11 +399,11 @@ function validate(members) {
     if (members.isbn && (!isbn || !isbn.isIsbn13())) {
         var _alert = document.createElement('div');
         _alert.className = 'alert alert-danger';
-        _alert.innerHTML = "<strong>Input Error</strong> Isbn is not valid.";
+        _alert.innerHTML = "<strong>Input Error</strong> Isbn is not valid. Valid isbn would be (ex. 978-1-56619-909-4)";
         errors.appendChild(_alert);
         allGood = false;
     }
-    var year = members.yearOfPublication;
+    var year = members.year;
     var currentYear = new Date();
     if (year && (year < 1900 || year > currentYear.getFullYear())) {
         var _alert2 = document.createElement('div');
@@ -379,7 +412,7 @@ function validate(members) {
         errors.appendChild(_alert2);
         allGood = false;
     }
-    var pageLength = members.lengthInPages;
+    var pageLength = members.length;
     if (pageLength && (pageLength < 1 || pageLength > 1000)) {
         var _alert3 = document.createElement('div');
         _alert3.className = 'alert alert-danger';
@@ -417,13 +450,11 @@ bookSelect.addEventListener('change', function () {
         library.classList.add('hidden');
         anthologyForm.classList.add('hidden');
         novelForm.classList.remove('hidden');
-        paging.classList.add('hidden');
     }
     if (value == "anthology") {
         library.classList.add('hidden');
         novelForm.classList.add('hidden');
         anthologyForm.classList.remove('hidden');
-        paging.classList.add('hidden');
     }
 });
 
@@ -435,7 +466,7 @@ submitNovelBtn.addEventListener('click', function () {
     var author = document.getElementById('novelAuthor');
     var publisher = document.getElementById('novelPublisher');
     var year = document.getElementById('novelYear');
-    var lengthInPages = document.getElementById('novelLength');
+    var length = document.getElementById('novelLength');
     var series = document.getElementById('novelSeries');
     var seriesNumber = document.getElementById('novelSeriesNumber');
     var isbn = document.getElementById('novelIsbn');
@@ -445,8 +476,8 @@ submitNovelBtn.addEventListener('click', function () {
         title: title.value,
         author: author.value,
         publisher: publisher.value,
-        yearOfPublication: year.value,
-        lengthInPages: lengthInPages.value,
+        year: year.value,
+        length: length.value,
         isbn: isbn.value,
         review: review.value,
         series: series.value,
@@ -487,15 +518,15 @@ submitAnthologyBtn.addEventListener('click', function () {
     var editor = document.getElementById('anthologyEditor');
     var publisher = document.getElementById('anthologyPublisher');
     var year = document.getElementById('anthologyYear');
-    var lengthInPages = document.getElementById('anthologyLength');
+    var length = document.getElementById('anthologyLength');
     var isbn = document.getElementById('anthologyIsbn');
     var review = document.getElementById('anthologyReview');
 
     var anthologyMembers = {
         title: title.value,
         publisher: publisher.value,
-        yearOfPublication: year.value,
-        lengthInPages: lengthInPages.value,
+        year: year.value,
+        length: length.value,
         isbn: isbn.value,
         stories: tempStories,
         review: review.value,
@@ -523,16 +554,20 @@ viewLibrary.addEventListener('click', function () {
     novelForm.classList.add('hidden');
     anthologyForm.classList.add('hidden');
     library.classList.remove('hidden');
-    paging.classList.remove('hidden');
     bookSelect.value = "disabled";
     displayBooks();
 });
 
 // Sorting
-var sortSelection = document.getElementById('select-sort');
-sortSelection.addEventListener('change', function () {
-    bookRepository.sort(sortSelection.value);
-    displayBooks();
+var bookTableHead = document.getElementById('bookTableHead');
+bookTableHead.addEventListener('click', function () {
+    event.preventDefault();
+    if (event.target.tagName == 'A') {
+        console.log(event.target.id);
+        event.stopPropagation();
+        bookRepository.sort(event.target.id);
+        displayBooks();
+    }
 });
 
 // Search books
@@ -546,24 +581,29 @@ searchBtn.addEventListener('click', function () {
 });
 
 // Delete book
-var bookToDeleteIndex = void 0;
+var bookToDeleteId = void 0;
 library.addEventListener('click', function () {
     // event.preventDefault();
     var clickedElement = event.target;
     if (clickedElement.id == "delBtn") {
         var tr = clickedElement.parentNode.parentNode;
-        var index = parseInt(tr.children[0].innerText) - 1;
-        bookToDeleteIndex = index;
+        bookToDeleteId = parseInt(tr.children[0].innerText);
     }
 });
 var deleteBtn = document.getElementById('deleteBtn');
 var closeModal = document.getElementById('closeModal');
 deleteBtn.addEventListener('click', function () {
-    var book = bookRepository.books[bookToDeleteIndex];
+    var book = bookRepository.books.find(function (book) {
+        return book.id == bookToDeleteId;
+    });
+    var bookToDeleteIndex = bookRepository.books.indexOf(book);
     var shownBookToDeleteIndex = bookRepository.shownBooks.indexOf(book);
     bookRepository.books.splice(bookToDeleteIndex, 1);
-    bookRepository.shownBooks.splice(shownBookToDeleteIndex, 1);
     closeModal.click();
+    if (searchInput.value) {
+        var searchTerm = searchInput.value.toLowerCase();
+        bookRepository.search(searchTerm);
+    }
     displayBooks();
 });
 
