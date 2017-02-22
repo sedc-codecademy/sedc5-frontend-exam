@@ -1,7 +1,7 @@
 export default class Story {
-    constructor(title, author, isOriginal) {
+    constructor(title, author, original) {
         this.title = title;
         this.author = author;
-        this.isOriginal = isOriginal;
+        this.original = original;
     }
 }

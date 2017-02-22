@@ -31,6 +31,9 @@
         </div>
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+              <button id="loadBooks" type="button" class="btn btn-outline-success hidden">Load More Books</button>
+            </li>
+            <li class="nav-item">
               <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
             </li>
           </ul>
@@ -169,7 +172,7 @@
           <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search book">
           <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
-        <button id="loadBooks" type="button" class="btn btn-primary">Load More Books</button>
+        <button id="showFilterModal" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#filterModal">Filter</button>
         <div id="pagingButtons" class="btn-group">
           <button id="prev" type="button" class="btn btn-secondary btn-sm">Previous</button>
           <button id="next" type="button" class="btn btn-secondary btn-sm">Next</button>
@@ -222,6 +225,77 @@
         <div class="modal-footer">
           <button id="closeModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button id="deleteBtn" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Modal -->
+  <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModalLabel">Filter options</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <select id="filterSelector" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="disabled" selected disabled>Select Filter</option>
+            <option value="filterByPub">by period of publucation</option>
+            <option value="filterByNovels">by Novels</option>
+            <option value="filterByAnthologies">by Anthologies</option>
+          </select>
+          <div id="filterOptions">
+            <form id="filterByPeriodForm" class="form-inline hidden">
+              <h6>Filter by period:</h6>
+              <div class="form-group">
+                <input id="filterFrom" type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="From">
+                <input id="filterTo" type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="To">
+              </div>
+            </form>
+          </div>
+          <form id="filterByNovelsForm" class="hidden">
+            <h6>Novels only:</h6>
+            <div class="custom-controls-stacked">
+              <label class="custom-control custom-radio">
+                <input id="filterAllNovels" name="filterByNovelsRadio" type="radio" class="custom-control-input" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">All Novels</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterPartNovels" name="filterByNovelsRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Only novels that are part of series</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterSpecificNovel" name="filterByNovelsRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Novels that are parts of specific series</span>
+                <input id="seriesNameToFilterBy" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Series name" disabled>
+              </label>
+            </div>
+          </form>
+          <form id="filterByAnthForm" class="hidden">
+            <h6>Anthologies only:</h6>
+            <div class="custom-controls-stacked">
+              <label class="custom-control custom-radio">
+                <input id="filterAllAnthologies" name="filterByAnthologiesRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">All Anthologies</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterAnthOriginal" name="filterByAnthologiesRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Only Anthologies that contain original stories</span>
+              </label><br>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="closeFilterOptions" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="filter" type="button" class="btn btn-primary">Filter</button>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@ let addStoryBtn = document.getElementById('addStory');
 let novelInputFeedback = document.getElementById('novelInputFeedback');
 let anthologyInputFeedback = document.getElementById('anthologyInputFeedback');
 let storyList = document.getElementById('storyList');
+let loadBooksBtn = document.getElementById('loadBooks');
 
 let tempStories = [];
 let id = 0;
@@ -46,18 +47,57 @@ function setBooks(books) {
             })
         },
 
-        // Sort Feature
-        sort: function (sortBy) {
+        // Filter Feature    --Needs refactoring                   
+        filter: function(filterBy, options) {
             bookRepository.pageIndex = 0;
-            if (sortBy === 'novel') {
+            if (filterBy == 'year') {
+                this.shownBooks = this.books.filter(book => { 
+                    let thisYear = new Date().getFullYear();
+                    let fromYear = options.from || 1900;
+                    let toYear = options.to || thisYear;
+                    if (book.year && (book.year > fromYear && book.year < toYear))
+                        return true;
+                    else
+                        return false
+               }).sort((a, b) => a.year - b.year);
+                return;
+            }
+            if (filterBy == 'filterAllNovels') {
                 this.shownBooks = this.books.filter(book => book.kind == 'novel');
                 return;
             }
-            if (sortBy === 'anthology') {
+            if (filterBy == 'filterPartNovels') {
+                this.shownBooks = this.books.filter(book => { 
+                    let hasSeries = book.hasOwnProperty('series') && book.series;
+                    return book.kind == 'novel' && hasSeries;
+                });
+                return;
+            }
+            if (filterBy == 'filterSpecificNovel') {
+                this.shownBooks = this.books.filter(book => { 
+                    let hasSeries = book.hasOwnProperty('series') && book.series;
+                    return hasSeries && (book.series.toLowerCase().indexOf(options.seriesName) != -1);
+                });
+                return;
+            }
+            if (filterBy == 'filterAllAnthologies') {
                 this.shownBooks = this.books.filter(book => book.kind == 'anthology');
                 return;
             }
-            if (sortBy === 'additionalInfo') {
+            if (filterBy == 'filterAnthOriginal') {
+                this.shownBooks = this.books.filter(book => {
+                    return book.kind == 'anthology' &&
+                           book.stories.every(story => story.original);
+                });
+                return;
+            }
+
+        },
+
+        // Sort Feature
+        sort: function(sortBy) {
+            bookRepository.pageIndex = 0;
+            if (sortBy == 'additionalInfo') {
                 this.shownBooks = this.books.sort((a, b) => {
                     return b.kind == 'novel' && a.kind == 'anthology' ? 1 : 0;
                 }).sort((a, b) => {
@@ -243,10 +283,12 @@ bookSelect.addEventListener('change', () => {
     let value = bookSelect.value;
     if (value == "novel") {
         library.classList.add('hidden');
+        loadBooksBtn.classList.add('hidden');
         anthologyForm.classList.add('hidden');
         novelForm.classList.remove('hidden');
     }
     if (value == "anthology") {
+        loadBooksBtn.classList.add('hidden');
         library.classList.add('hidden');
         novelForm.classList.add('hidden');
         anthologyForm.classList.remove('hidden');
@@ -351,6 +393,7 @@ viewLibrary.addEventListener('click', function () {
     novelForm.classList.add('hidden');
     anthologyForm.classList.add('hidden');
     library.classList.remove('hidden');
+    loadBooksBtn.classList.remove('hidden');
     bookSelect.value = "disabled";
     displayBooks();
 });
@@ -366,6 +409,85 @@ bookTableHead.addEventListener('click', () => {
         bookRepository.sort(event.target.id);
         displayBooks();
     }
+})
+
+// Filtering
+function filterByPublication() {
+  let filterFrom = parseInt(document.getElementById('filterFrom').value);
+  let filterTo = parseInt(document.getElementById('filterTo').value);
+  let filterOptions = {from: filterFrom, to: filterTo};
+  
+  bookRepository.filter('year', filterOptions);
+}
+
+function filterByNovels() {
+  let filterBy = document.querySelector('input[name="filterByNovelsRadio"]:checked').id;
+  let filterOptions = {};
+  if (filterBy == 'filterSpecificNovel') {
+      filterOptions.seriesName = seriesNameToFilterBy.value.toLowerCase();
+  }
+  
+  bookRepository.filter(filterBy, filterOptions);
+}
+
+function filterByAnthology() {
+  let filterBy = document.querySelector('input[name="filterByAnthologiesRadio"]:checked').id;
+  
+  bookRepository.filter(filterBy, filterOptions);
+}
+
+let filterSelector = document.getElementById('filterSelector');
+let filterBtn = document.getElementById('filter');
+let closeFilterOptionsBtn = document.getElementById('closeFilterOptions');
+let filterByPubForm = document.getElementById('filterByPeriodForm');
+let filterByNovelForm = document.getElementById('filterByNovelsForm');
+let filterByAnthForm = document.getElementById('filterByAnthForm');
+
+let filterSpecificNovel = document.getElementById('filterSpecificNovel');
+let seriesNameToFilterBy = document.getElementById('seriesNameToFilterBy');
+filterSpecificNovel.addEventListener('change', () => {
+    if (filterSpecificNovel.checked == true)
+        seriesNameToFilterBy.disabled = false;
+})
+
+filterSelector.addEventListener('click', () => {
+    let selected = filterSelector.value;
+    if (selected == 'filterByPub') {
+        filterByPubForm.classList.remove('hidden');
+        filterByNovelForm.classList.add('hidden');
+        filterByAnthForm.classList.add('hidden');
+    }
+    if (selected == 'filterByNovels') {
+        filterByNovelForm.classList.remove('hidden');
+        filterByPubForm.classList.add('hidden');
+        filterByAnthForm.classList.add('hidden');
+    }
+    if (selected == 'filterByAnthologies') {
+        filterByAnthForm.classList.remove('hidden');
+        filterByNovelForm.classList.add('hidden');
+        filterByPubForm.classList.add('hidden');
+    }
+})
+
+filterBtn.addEventListener('click', () => {
+    let selected = filterSelector.value;
+    if (selected == 'filterByPub') {
+        filterByPublication();
+        displayBooks();
+    }
+    if (selected == 'filterByNovels') {
+        filterByNovels();
+        displayBooks();
+    }
+    if (selected == 'filterByAnthologies') {
+        filterByAnthology();
+        displayBooks();
+    }
+    filterByAnthForm.classList.add('hidden');
+    filterByNovelForm.classList.add('hidden');
+    filterByPubForm.classList.add('hidden');
+    filterSelector.value = 'disabled';
+    closeFilterOptionsBtn.click();
 })
 
 // Search books
@@ -405,7 +527,6 @@ deleteBtn.addEventListener('click', () => {
 })
 
 // Load Books from JSON
-let loadBooksBtn = document.getElementById('loadBooks');
 let booksFile = 'https://raw.githubusercontent.com/sedc-codecademy/sedc5-frontend-exam/master/books.json';
 loadBooksBtn.addEventListener('click', () => {
     console.log('here');
