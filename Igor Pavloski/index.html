@@ -6,6 +6,7 @@
     <title>e-library</title>
     <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -68,10 +69,13 @@
                 <input type="text" class="form-control" id="editor" placeholder="Editor">
             </div>
 
+            <!--author/title/editor input alerts-->
+            <div id="alertEmptyInputs" class="col-sm-12 alerts"></div>
+
             <div class="form-group col-sm-12">
                 <label for="publisher">Publisher:</label>
                 <select class="form-control" id="publisher">
-                    <option value="default" disabled selected>Choose a publisher</option>
+                    <option value="N/A" disabled selected>Choose a publisher</option>
                     <option value="Holtzbrinck">Holtzbrinck</option>
                     <option value="Hachette Livre">Hachette Livre</option>
                     <option value="Scholastic">Scholastic</option>
@@ -80,13 +84,17 @@
 
             <div class="form-group col-sm-12">
                 <label for="yearOfPublication">Year of Publication:</label>
-                <input type="number" class="form-control" id="yearOfPublication" placeholder="Year of publication">
+                <select class="selectpicker form-control" data-live-search="true" id="yearOfPublication">
+                </select>
             </div>
 
             <div class="form-group col-sm-12">
                 <label for="pages">Number of Pages:</label>
-                <input type="number" class="form-control" id="pages" placeholder="Number of pages 1-100">
+                <input type="number" class="form-control" id="pages" max="1000" min="1" placeholder="Number of pages 1-1000">
             </div>
+
+            <!--Pages input alerts-->
+            <div id="alertPages" class="col-sm-12"></div>
 
             <!--adding stories into the anthology -->
             <div class="form-group col-sm-12 anthology">
@@ -147,6 +155,8 @@
                 <input type="button" class="btn btn-danger" value="X" id="closeBook">
             </div>
 
+            <!--Successfully entered book alert-->
+            <div id="alertSuccess" class="col-sm-12"></div>
         </div>
     </nav>
 
@@ -157,14 +167,11 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Author</th>
-                    <th>Publisher</th>
-                    <th>Year of Publication</th>
-                    <th>Pages</th>
-                    <th>Series</th>
+                    <th>Author/Editor</th>
+                    <th>Publishing information</th>
+                    <th>Length</th>
+                    <th>Additional information</th>
                     <th>ISBN</th>
-                    <th>editor</th>
-                    <th>stories</th>
                     <th>Review</th>
                 </tr>
             </thead>
@@ -176,6 +183,7 @@
     <script src="jquery.js"></script>
     <script src="bootstrap\js\bootstrap.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.js"></script>
     <script src="script.js"></script>
 </body>
 
