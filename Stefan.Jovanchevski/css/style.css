@@ -1,12 +1,13 @@
 body {
     background-color: #c5c6a7;
+    min-width: 1300px;
 }
 
 .cover {
     background: url("../images/cover.jpg") center no-repeat fixed;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover;
-    height: 100vh;
+    height: auto;
 }
 
 #addNewBook {
@@ -29,7 +30,6 @@ body {
 
 .header {
     text-align: center;
-
 }
 
 .bookItem {
@@ -50,4 +50,12 @@ body {
 
 .hidden {
     display: none;
+}
+
+.filterOptions {
+    margin: 20px 0;
+}
+
+.filterOptions .form-group {
+    margin: 2px 0;
 }

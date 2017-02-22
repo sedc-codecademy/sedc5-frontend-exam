@@ -1,5 +1,5 @@
 let container = $(".booksContainer");
-let pageSize = 2;
+let pageSize = 10;
 let pageNumber = 1;
 let tempArray = [];
 
@@ -11,10 +11,10 @@ let addNewBookToDisplay = (book) => {
                     <div class="bookItem__cel bookItem__author col-1">${book.author}</div>
                     <div class="bookItem__cel bookItem__publishingInfo col-1">${book.yearOfPublication} (${book.publisher})</div>
                     <div class="bookItem__cel bookItem__length col-1">${book.length}</div>
-                    <div class="bookItem__cel bookItem__AdittionalInfo col-1">${getAdditionalInformations(book)}</div>
+                    <div class="bookItem__cel bookItem__AdittionalInfo col-1" title="${getAdditionalInformations(book)}">Additional info</div>
                     <div class="bookItem__cel bookItem__isbn col-1">${book.ISBN}</div>
-                    <div class="bookItem__cel bookItem__review col-5">${normalizeReview(book.review)}</div>
-                    <div class="bookItem__cel bookItem__delete${book.id}"><button class="btn btn-danger">Delete</button></div>
+                    <div class="bookItem__cel bookItem__review col-4">${normalizeReview(book.review)}</div>
+                    <div class="bookItem__cel bookItem__delete${book.id} col-1"><button class="btn btn-danger">Delete</button></div>
         </div>`)
     handleDeleteButton(book.id);
 }
@@ -56,20 +56,16 @@ let setPage = (pageNumber) => {
 
 let normalizeReview = function(review) {
     let text = review;
-    if (review.length > 50) {
-        for (let i = 47;; ++i) {
-            if (text[i] == " ") {
-                text = text.slice(0, i);
-                break;
-            }
-        }
+    if (text.length > 50) {
+        i = 47;
+        //while (text[i] != " ") { i -= 1 };
+        text = text.slice(0, i);
+        text += "...";
     }
-    text += "...";
     return text;
 }
 
 let getAdditionalInformations = function(book) {
-    console.log(book);
     if (book.kind == "novel") {
         return getNovelAddInfo(book);
     } else if (book.kind == "anthology") {
@@ -85,19 +81,34 @@ let getNovelAddInfo = (book) => {
     return message;
 }
 
-
-// not finished
 let getAnthologyAddInfo = function(book) {
     let message = '';
     // check if all stories are from one author
     let i = 0;
-    for (; i < book.stories.length - 1; i++) {
+    for (; i < book.stories.length - 1;) {
         if (book.stories[i].author == book.stories[i + 1].author) break;
+        i += 1;
     }
-    if (i - 1 == book.stories.length) {
+    if (i - 2 == book.stories.length) {
         message = `${book.stories.length} stories by ${book.stories[0].author}`;
         return message;
     }
+    // get "X stories by Y authors" and original stories
+    let authors = 1,
+        orgStories = 0;
+    let _stories = book.stories;
+    _stories.sort((a, b) => sortFunc(a["author"], b["author"]));
+    for (i = 1; i < _stories.length; ++i) {
+        if (_stories[i].author != _stories[i - 1].author) authors += 1;
+        if (_stories[i].original) orgStories += 1;
+    }
+    message = `${_stories.length} ${_stories.length % 10 == 1? "story" : "stories"} by ${authors} ${_stories.length == 1 ? "author" : "authors"}`;
+    message += `\n${orgStories} original ${orgStories == 1? "story" : "stories"}`
+    return message;
+}
+
+let sortFunc = (a, b) => {
+    return a < b ? 1 : (a > b ? -1 : 0);
 }
 
 
@@ -116,11 +127,6 @@ let handleDeleteButton = (id) => {
 }
 
 let refreshDisplay = () => {
-    container.html("");
-    /*let books = getBooksFromDB();
-    books.forEach((b) => {
-        addNewBookToDisplay(b);
-    });*/
     setPagination(getMaxPageNumber(getBooksFromDB().length));
     setPage(pageNumber);
     displayPage(pageNumber, pageSize, getBooksFromDB(), container);
@@ -161,12 +167,11 @@ let validAnthologyInput = () => {
     if (!$("#anthologyTitle").val()) message += 'Invalid title\n';
     if (!$("#anthologyEditor").val()) message += 'Invalid editor\n';
     let stories = getStories();
-    if (stories.length < 1) message += "Warning: you need at least 2 stories";
+    if (stories.length < 2) message += "Warning: you need at least 2 stories";
     if (message)
         alert(message);
-    console.log(stories)
 
-    return message.length == 0 && stories.length > 1;
+    return (message.length == 0);
 }
 
 $(() => {
@@ -205,21 +210,22 @@ $(() => {
                 addNewBookToDisplay(book);
             }
         } else {
-            /* if (validAnthologyInput()) {*/
-            let id = getBooksFromDB().length + 1;
-            let title = $("#anthologyTitle").val();
-            let author = $("#anthologyAuthor").val();
-            let publisher = $("#anthologyPublisher").val();
-            let publication = $("#anthologyPublication").val();
-            let pages = Number($("#anthologyPages").val());
-            let stories = getStories();
-            //let seriesNumber = Number($("#novelSeriesNumber").val());
-            let ISBN = $("#anthologyIsbn").val();
-            let review = $("#anthologyReview").val();
-            let book = new Anthology(id, title, author, publisher, publication, pages, stories, ISBN, review);
-            updateDatabase(book);
-            addNewBookToDisplay(book);
-            /**/
+            if (validAnthologyInput()) {
+                let id = getBooksFromDB().length + 1;
+                let title = $("#anthologyTitle").val();
+                let author = $("#anthologyAuthor").val();
+                let publisher = $("#anthologyPublisher").val();
+                let publication = $("#anthologyPublication").val();
+                let pages = Number($("#anthologyPages").val());
+                let stories = getStories();
+                //let seriesNumber = Number($("#novelSeriesNumber").val());
+                let ISBN = $("#anthologyIsbn").val();
+                let review = $("#anthologyReview").val();
+                let book = new Anthology(id, title, author, publisher, publication, pages, stories, ISBN, review);
+                delete sessionStorage.stories;
+                updateDatabase(book);
+                addNewBookToDisplay(book);
+            }
         }
         refreshDisplay();
 
@@ -263,13 +269,13 @@ $(() => {
         $("#isOriginal").val("none");
     })
 
-    /*$.ajax("library.json", {
-        complete: (data) => {
-            let result = data.responseJSON;
-            result.forEach((b) => {
-                updateDatabase(b);
-            });
-            /*setPagination(getMaxPageNumber(getMovies().length));
-            setPage(pageNumber);
-            displayPage(pageNumber, getPageSize(), getMovies(), moviesContainer);*/
+
+    $(window).scroll(function(event) {
+        let st = $(this).scrollTop();
+        if (st > 50) {
+            $("#addNewBook").fadeOut();
+        } else {
+            $("#addNewBook").fadeIn();
+        }
+    });
 })
