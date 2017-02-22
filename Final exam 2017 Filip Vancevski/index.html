@@ -10,15 +10,23 @@
 
 <body>
 
+
+
+
     <div class="container">
         <select name="books" id="select__books" class="form-control">
             <option value="" disabled selected>Please choose a book to input</option>
         <option value="novel">Novel</option>
         <option value="antology">Antology</option>
 </select>
+        <input type="text" id="searchBooks" class="form-control hide" name="search" placeholder="Search Books...">
     </div>
 
+
+
+
     <div class="novel container hide">
+        <h1>Novel Entry</h1>
         <div class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Title</label>
             <div class="col-10">
@@ -75,7 +83,10 @@
     </div>
 
 
+
+
     <div class="antology container hide">
+        <h1>Antology Entry</h1>
         <div class="form-group row">
             <label for="example-text-input" class="col-2 col-form-label">Title</label>
             <div class="col-10">
@@ -123,6 +134,9 @@
             <textarea class="form-control" id="reviewAntology" rows="3"></textarea>
         </div>
 
+
+
+
         <h1>Story</h1>
         <div class="story">
             <div class="form-group">
@@ -140,14 +154,13 @@
                     <option value="false">No</option>
                 </select>
             </div>
-             <button type="button" class="btn btn-success" id="addStory">Add story</button>
+            <button type="button" class="btn btn-success" id="addStory">Add story</button>
         </div>
         <button type="button" class="btn btn-success" id="saveAntology">Save book</button>
     </div>
-
     <button type="button" class="btn btn-primary" id="addBook">Add new Book</button>
-
-    <table class="table booksShow hide">
+    
+    <table id="tableBooks" class="table booksShow hide">
         <thead class="thead-inverse">
             <tr>
                 <th>#</th>
@@ -162,17 +175,14 @@
             </tr>
         </thead>
         <tbody id="booksTable">
-
         </tbody>
+        <button id="btnPrevious">Previous pages</button> <button id="btnNext">Next Page</button>
     </table>
-
-<button id="check">See all movies</button>
 
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="js/script.js"></script>
-
 </body>
 
 </html>
