@@ -102,7 +102,8 @@ let getAnthologyAddInfo = function(book) {
         if (_stories[i].author != _stories[i - 1].author) authors += 1;
         if (_stories[i].original) orgStories += 1;
     }
-    message = `${_stories.length} ${_stories.length % 10 == 1? "story" : "stories"} by ${authors} ${_stories.length == 1 ? "author" : "authors"}`;
+    message = `${_stories.length} ${_stories.length % 10 == 1 && _stories.length != 11 ? 
+                    "story" : "stories"} by ${authors} ${_stories.length == 1 ? "author" : "authors"}`;
     message += `\n${orgStories} original ${orgStories == 1? "story" : "stories"}`
     return message;
 }
