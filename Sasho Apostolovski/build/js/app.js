@@ -311,7 +311,7 @@ function setBooks(books) {
         sort: function sort(sortBy) {
             bookRepository.pageIndex = 0;
             if (sortBy == 'additionalInfo') {
-                this.shownBooks = this.books.sort(function (a, b) {
+                this.shownBooks = this.shownBooks.sort(function (a, b) {
                     return b.kind == 'novel' && a.kind == 'anthology' ? 1 : 0;
                 }).sort(function (a, b) {
                     if (b.kind == 'novel' && !b.series && (a.kind != 'novel' || a.series)) return 1;
@@ -319,7 +319,7 @@ function setBooks(books) {
                 });
                 return;
             }
-            this.shownBooks = this.books.sort(function (a, b) {
+            this.shownBooks = this.shownBooks.sort(function (a, b) {
                 switch (sortBy) {
                     case 'id':
                     case 'length':
@@ -593,6 +593,7 @@ viewLibrary.addEventListener('click', function () {
     library.classList.remove('hidden');
     loadBooksBtn.classList.remove('hidden');
     bookSelect.value = "disabled";
+    console.log(bookRepository.books);
     displayBooks();
 });
 
@@ -714,13 +715,16 @@ deleteBtn.addEventListener('click', function () {
     });
     var bookToDeleteIndex = bookRepository.books.indexOf(book);
     var shownBookToDeleteIndex = bookRepository.shownBooks.indexOf(book);
+    bookRepository.shownBooks = bookRepository.shownBooks.slice(0); // disconnect from bookRepository.books
     bookRepository.books.splice(bookToDeleteIndex, 1);
+    bookRepository.shownBooks.splice(shownBookToDeleteIndex, 1);
     closeModal.click();
-    if (searchInput.value) {
-        bookRepository.shownBooks.splice(shownBookToDeleteIndex, 1);
-        var searchTerm = searchInput.value.toLowerCase();
-        bookRepository.search(searchTerm);
-    }
+    // if (searchInput.value) {
+    // //   let searchTerm = searchInput.value.toLowerCase();
+    //   let currentPage = bookRepository.pageIndex;
+    // //   bookRepository.search(searchTerm);
+    //   bookRepository.pageIndex = currentPage;
+    // }
     displayBooks();
 });
 
