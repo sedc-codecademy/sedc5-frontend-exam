@@ -1,0 +1,104 @@
+.nav-item {
+    margin-left: 20px;
+}
+#prev, #next {
+    margin-top: 12px;
+}
+
+#viewLibrary {
+    float: left;
+}
+
+#searchBook {
+    float: left;
+}
+
+#pagingButtons {
+    float: right;
+}
+.selection {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 50px; 
+}
+.selection::after {
+    content: "";
+    clear: both;
+}
+.selection select {
+    float: left;
+    width: 300px;
+}
+.lib {
+    float: right;
+}
+
+.story {
+    width: 400px;
+    position: relative;
+    left: 20px;
+}
+.stories {
+    width: 200px;
+    float: right;
+    margin-top: 15px;
+}
+#novel {
+    padding-top: 50px;
+    width: 700px;
+    margin: 50px auto;
+}
+#anthology {
+    padding-top: 50px;
+    width: 700px;
+    margin: 50px auto;
+}
+
+#checkOriginal {
+    margin-bottom: 25px;
+}
+
+#library {
+    margin-top: 100px;
+}
+
+.formWrapper:after {
+    content: "";
+    clear: both;
+}
+
+.formWrapper {
+    padding-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+#novelInputFeedback {
+    height: 400px;
+    margin-top: 30px;
+}
+
+#anthologyInputFeedback {
+    height: 400px;
+    margin-top: 30px;
+}
+
+#bookTableHead a {
+    color: #fff;
+}
+
+#pageNumber {
+    line-height: 39px;
+    margin-top: 5px;
+    margin-left: 15px;
+}
+
+#showFilterModal {
+    margin-left: 60px;
+}
+
+#filterOptions {
+    margin: 20px auto;
+}

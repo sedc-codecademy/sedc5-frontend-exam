@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <link rel="stylesheet" href="build/css/vendor.css">
+  <link rel="stylesheet" href="build/css/style.css">
+  <script src="build/js/vendor.min.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse fixed-top">
+    <a class="navbar-brand" href="#">Library</a>
+    <div class="container">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <select class="form-control" id="selectBookType">
+                <option value="disabled" selected disabled>Select Book Type to Add</option>
+                <option value="novel">Novel</option>
+                <option value="anthology">Anthology</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <button id="loadBooks" type="button" class="btn btn-outline-success hidden">Load More Books</button>
+            </li>
+            <li class="nav-item">
+              <button type="button" class="btn btn-info" id="viewLibrary">View books</button>
+            </li>
+          </ul>
+    </div>
+  </nav>
+  <div id="page" class="container">
+    <div class="selection">
+      <div class="lib">
+      </div>
+    </div>
+    <section id="novel" class="hidden">
+      <form id="novelForm">
+
+      <div class="form-group">
+        <label for="novelTitle">Title</label>
+        <input type="text" class="form-control" id="novelTitle" placeholder="Enter title" required>
+      </div>
+      <div class="form-group">
+        <label for="novelAuthor">Author</label>
+        <input type="text" class="form-control" id="novelAuthor" placeholder="Enter author" required>
+      </div>
+      <div class="form-group">
+        <label for="novelPublisher">Publisher</label>
+        <div>
+          <select id="novelPublisher" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="" selected disabled>Select publisher</option>
+            <option value="Penguin Random House">Penguin Random House</option>
+            <option value="Hachette Livre">Hachette Livre</option>
+            <option value="HarperCollins">HarperCollins</option>
+            <option value="Pan Macmillan">Pan Macmillan</option>
+          </select>
+        </div>
+        <!--<input type="text" class="form-control" id="novelPublisher" placeholder="Enter publisher">-->
+      </div>
+      <div class="form-group">
+        <label for="novelYear">Year of publication</label>
+        <input type="number" class="form-control" id="novelYear" placeholder="Enter year of publication">
+      </div>
+      <div class="form-group">
+        <label for="novelLength">Length in Pages</label>
+        <input type="number" class="form-control" id="novelLength" placeholder="Enter Length">
+      </div>
+      <div class="form-group">
+        <label for="novelSeries">Series</label>
+        <input type="text" class="form-control" id="novelSeries" placeholder="Enter Series">
+      </div>
+      <div class="form-group">
+        <label for="novelSeriesNumber">Series Number</label>
+        <input type="number" class="form-control" id="novelSeriesNumber" placeholder="Enter Series Number">
+      </div>
+      <div class="form-group">
+        <label for="novelIsbn">ISBN</label>
+        <input type="text" class="form-control" id="novelIsbn" placeholder="Enter ISBN">
+      </div>
+      <div class="form-group">
+        <label for="novelReview">Review</label>
+        <textarea name="novelReview" id="novelReview" cols="80" rows="5"></textarea>
+      </div>
+    </select>
+      <button type="submit" id="submitNovel" class="btn btn-primary">Add to Library</button>
+      </form>
+
+
+      <div id="novelInputFeedback"></div>
+    </section>
+    <section id="anthology" class="hidden">
+      <form id="anthologyForm">
+      <div class="form-group">
+        <label for="anthologyTitle">Title</label>
+        <input type="text" class="form-control" id="anthologyTitle" placeholder="Enter title" required>
+      </div>
+      <div class="form-group">
+        <label for="anthologyEditor">Editor</label>
+        <input type="text" class="form-control" id="anthologyEditor" placeholder="Enter author" required>
+      </div>
+      <div class="form-group">
+        <label for="anthologyPublisher">Publisher</label>
+        <div>
+          <select id="anthologyPublisher" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="" selected disabled>Select publisher</option>
+            <option value="Penguin Random House">Penguin Random House</option>
+            <option value="Hachette Livre">Hachette Livre</option>
+            <option value="HarperCollins">HarperCollins</option>
+            <option value="Pan Macmillan">Pan Macmillan</option>
+          </select>
+        </div>
+        <!--<input type="text" class="form-control" id="anthologyPublisher" placeholder="Enter publisher">-->
+      </div>
+      <div class="form-group">
+        <label for="anthologyYear">Year of publication</label>
+        <input type="number" class="form-control" id="anthologyYear" placeholder="Enter year of publication">
+      </div>
+      <div class="form-group">
+        <label for="anthologyLength">Length in Pages</label>
+        <input type="number" class="form-control" id="anthologyLength" placeholder="Enter Length">
+      </div>
+      <div class="stories">
+        <h6>Stories:</h6>
+        <ul id="storyList"></ul>
+      </div>
+        <span>Story:<span>
+      <div class="form-gorup story">
+        <div class="form-group">
+          <label for="anthologyStorytitle">Story title</label>
+          <input type="text" class="form-control" id="anthologyStoryTitle" placeholder="Enter title">
+        </div>
+        <div class="form-group">
+          <label for="anthologyStoryAuthor">Story Author</label>
+          <input type="text" class="form-control" id="anthologyStoryAuthor" placeholder="Enter author">
+        </div>
+        <label class="form-check-label">
+        <input  id="checkOriginal" type="checkbox" class="form-check-input">
+        Original Story
+        </label>
+        <div class="form-group">
+          <button id="addStory" class="btn btn-primary">Add Story</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="anthologyIsbn" style="clear:both">ISBN</label>
+        <input type="text" class="form-control" id="anthologyIsbn" placeholder="Enter ISBN">
+      </div>
+      <div class="form-group">
+        <label for="anthologyReview">Review</label>
+        <textarea name="anthologyReview" id="anthologyReview" cols="80" rows="5"></textarea>
+      </div>
+    </select>
+      <button type="submit" id="submitAnthology"class="btn btn-primary">Add to Library</button>
+      </form>
+      <div id="anthologyInputFeedback"></div>
+    </section>
+
+    <section id="library" class="hidden">
+      <div class="formWrapper"> 
+        <form id="searchBook" class="form-inline my-2 my-lg-0">
+          <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search book">
+          <button id="search" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <button id="showFilterModal" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#filterModal">Filter</button>
+        <div id="pagingButtons" class="btn-group">
+          <button id="prev" type="button" class="btn btn-secondary btn-sm">Previous</button>
+          <button id="next" type="button" class="btn btn-secondary btn-sm">Next</button>
+          <span id="pageNumber" >Page: </span>
+        </div>
+      </div>
+
+    <table class="table">
+      <thead id="bookTableHead" class="thead-inverse">
+        <tr>
+          <th><a id="id" href="javascript:void(0)">ID▾</a></th>
+          <th><a id="title" href="javascript:void(0)">Tittle▾</a></th>
+          <th><a id="principal" href="javascript:void(0)">Principal▾</a></th>
+          <th><a id="year" href="javascript:void(0)">Publishing Info▾</a></th>
+          <th><a id="length" href="javascript:void(0)">Length▾</a></th>
+          <th><a id="additionalInfo" href="javascript:void(0)">Additional info▾</a></th>
+          <th><a id="isbn" href="javascript:void(0)">ISBN▾</a></th>
+          <th>Review</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="library-table">
+      </tbody>
+  </table>
+
+
+    </section>
+  </div>
+
+  <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-footer">
+          <button id="closeModal" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="deleteBtn" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Filter Modal -->
+  <div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="filterModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="filterModalLabel">Filter options</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <select id="filterSelector" class="custom-select mb-2 mr-sm-2 mb-sm-0" id="inlineFormCustomSelect">
+            <option value="disabled" selected disabled>Select Filter</option>
+            <option value="filterByPub">by period of publucation</option>
+            <option value="filterByNovels">by Novels</option>
+            <option value="filterByAnthologies">by Anthologies</option>
+          </select>
+          <div id="filterOptions">
+            <form id="filterByPeriodForm" class="form-inline hidden">
+              <h6>Filter by period:</h6>
+              <div class="form-group">
+                <input id="filterFrom" type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="From">
+                <input id="filterTo" type="number" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="To">
+              </div>
+            </form>
+          </div>
+          <form id="filterByNovelsForm" class="hidden">
+            <h6>Novels only:</h6>
+            <div class="custom-controls-stacked">
+              <label class="custom-control custom-radio">
+                <input id="filterAllNovels" name="filterByNovelsRadio" type="radio" class="custom-control-input" checked>
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">All Novels</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterPartNovels" name="filterByNovelsRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Only novels that are part of some series</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterSpecificNovel" name="filterByNovelsRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Novels that are part of specific series</span>
+                <input id="seriesNameToFilterBy" type="text" class="form-control mb-2 mr-sm-2 mb-sm-0" id="inlineFormInput" placeholder="Series name" disabled>
+              </label>
+            </div>
+          </form>
+          <form id="filterByAnthForm" class="hidden">
+            <h6>Anthologies only:</h6>
+            <div class="custom-controls-stacked">
+              <label class="custom-control custom-radio">
+                <input id="filterAllAnthologies" name="filterByAnthologiesRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">All Anthologies</span>
+              </label><br>
+              <label class="custom-control custom-radio">
+                <input id="filterAnthOriginal" name="filterByAnthologiesRadio" type="radio" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Only Anthologies that contain original stories</span>
+              </label><br>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button id="closeFilterOptions" type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="filter" type="button" class="btn btn-primary">Filter</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="build/js/app.js"></script>
+</body>
+
+</html>
