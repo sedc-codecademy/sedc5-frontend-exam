@@ -38,16 +38,25 @@
                 <li>
                     <form class="navbar-form navbar-left">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit" id="searchButton">
-                                <i class="glyphicon glyphicon-search"></i>
-                                </button>
+                            <div class="input-group-btn search-panel">
+                                <select class="form-control" id="searchFilter">
+                                    <option value="title">Filter by</option>
+                                    <option value="title">Title</option>
+                                    <option value="author">Author/Editor</option>
+                                    <option value="length">Length</option>
+                                 </select>
                             </div>
+                            <span class="input-group-btn">
+                            <input type="text" class="form-control" id="searchTerm" placeholder="Search term...">
+                            </span>
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="searchButton">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
                         </div>
                     </form>
                 </li>
-
             </ul>
         </div>
 
@@ -142,6 +151,9 @@
                 <input type="text" class="form-control" id="ISBN" placeholder="ISBN">
             </div>
 
+            <!--ISBN inputs alerts-->
+            <div id="alertISBN" class="col-sm-12"></div>
+
             <div class="form-group col-sm-12">
                 <label for="review">Short Review:</label>
                 <textarea class="form-control" id="review" rows="4"></textarea>
@@ -162,17 +174,18 @@
 
     <!--table container-->
     <div class="container-fluid">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped table-hover" id="myTable">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Author/Editor</th>
-                    <th>Publishing information</th>
-                    <th>Length</th>
-                    <th>Additional information</th>
-                    <th>ISBN</th>
-                    <th>Review</th>
+                    <th><input type="button" class="btn btn-default btn-sm" value="Sort by" id="sortByButton"></th>
+                    <th id="idTh">ID</th>
+                    <th id="titleTh">Title</th>
+                    <th id="authorTh">Author/Editor</th>
+                    <th id="publishTh">Publishing information</th>
+                    <th id="lengthTh">Length</th>
+                    <th id="infoTh">Additional information</th>
+                    <th id="isbnTh">ISBN</th>
+                    <th id="reviewTh">Review</th>
                 </tr>
             </thead>
             <tbody id="bookList"></tbody>
