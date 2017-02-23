@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>e-library</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!--header-->
+    <div class="jumbotron text-center" id="header">
+        <h1>e-Library</h1>
+        <h3>Front End Exam</h3>
+    </div>
+    <!--nav bar-->
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+
+            <ul class="nav navbar-nav">
+                <!--dropdown menu-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="" id="bookDropdown">Add New Book
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" id="addNovel">Novel</a></li>
+                        <li><a href="#" id="addAnthology">Anthology</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--search bar-->
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form navbar-left">
+                        <div class="input-group">
+                            <div class="input-group-btn search-panel">
+                                <select class="form-control" id="searchFilter">
+                                    <option value="title">Filter by</option>
+                                    <option value="title">Title</option>
+                                    <option value="author">Author/Editor</option>
+                                    <option value="length">Length</option>
+                                 </select>
+                            </div>
+                            <span class="input-group-btn">
+                            <input type="text" class="form-control" id="searchTerm" placeholder="Search term...">
+                            </span>
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" id="searchButton">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                        </div>
+                    </form>
+                </li>
+            </ul>
+        </div>
+
+        <!--inputs for the  book-->
+        <div class="col-sm-3" id="bookInputs" hidden="true">
+
+            <div class="form-group col-sm-12">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" id="title" placeholder="Title">
+            </div>
+
+            <div class="form-group col-sm-12 novel">
+                <label for="author">Author:</label>
+                <input type="text" class="form-control" id="author" placeholder="Author">
+            </div>
+
+            <div class="form-group col-sm-12 anthology">
+                <label for="editor">Editor:</label>
+                <input type="text" class="form-control" id="editor" placeholder="Editor">
+            </div>
+
+            <!--author/title/editor input alerts-->
+            <div id="alertEmptyInputs" class="col-sm-12 alerts"></div>
+
+            <div class="form-group col-sm-12">
+                <label for="publisher">Publisher:</label>
+                <select class="form-control" id="publisher">
+                    <option value="N/A" disabled selected>Choose a publisher</option>
+                    <option value="Holtzbrinck">Holtzbrinck</option>
+                    <option value="Hachette Livre">Hachette Livre</option>
+                    <option value="Scholastic">Scholastic</option>
+                </select>
+            </div>
+
+            <div class="form-group col-sm-12">
+                <label for="yearOfPublication">Year of Publication:</label>
+                <select class="selectpicker form-control" data-live-search="true" id="yearOfPublication">
+                </select>
+            </div>
+
+            <div class="form-group col-sm-12">
+                <label for="pages">Number of Pages:</label>
+                <input type="number" class="form-control" id="pages" max="1000" min="1" placeholder="Number of pages 1-1000">
+            </div>
+
+            <!--Pages input alerts-->
+            <div id="alertPages" class="col-sm-12"></div>
+
+            <!--adding stories into the anthology -->
+            <div class="form-group col-sm-12 anthology">
+                <label for="stories">Stories:</label>
+            </div>
+
+            <div class="form-group col-sm-12 anthology">
+                <div id="storyListing"></div>
+                <div class="form-group col-sm-8 anthology" id="storyInputs">
+                    <div class="form-group">
+                        <label for="storyTitle">Title:</label>
+                        <input type="text" class="form-control" id="storyTitle" placeholder="Title">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="storyAuthor">Author:</label>
+                        <input type="text" class="form-control" id="storyAuthor" placeholder="Author">
+                    </div>
+                </div>
+
+                <div id="story"></div>
+            </div>
+
+
+
+            <div class="form-group col-sm-12 anthology">
+                <input type="button" class="btn btn-warning col-sm-6" id="addStory" value="Add Story">
+            </div>
+
+            <!-- stories end -->
+
+            <div class="form-group col-sm-12 novel" id="seriesGroup">
+                <div class="col-sm-8">
+                    <label for="series">Series:</label>
+                    <input type="text" class="form-control" id="series" placeholder="Series">
+                </div>
+                <div class="col-sm-4">
+                    <label for="seriesNum">Number:</label>
+                    <input type="number" class="form-control" id="seriesNum" placeholder="#">
+                </div>
+            </div>
+
+            <div class="form-group col-sm-12">
+                <label for="ISBN">ISBN:</label>
+                <input type="text" class="form-control" id="ISBN" placeholder="ISBN">
+            </div>
+
+            <!--ISBN inputs alerts-->
+            <div id="alertISBN" class="col-sm-12"></div>
+
+            <div class="form-group col-sm-12">
+                <label for="review">Short Review:</label>
+                <textarea class="form-control" id="review" rows="4"></textarea>
+            </div>
+
+            <!--save button and exit button-->
+            <div class="form-group col-sm-3">
+                <input type="button" class="btn btn-success" value="Save" id="saveBook">
+            </div>
+            <div class="form-group col-sm-1">
+                <input type="button" class="btn btn-danger" value="X" id="closeBook">
+            </div>
+
+            <!--Successfully entered book alert-->
+            <div id="alertSuccess" class="col-sm-12"></div>
+        </div>
+    </nav>
+
+    <!--table container-->
+    <div class="container-fluid">
+        <table class="table table-striped table-hover" id="myTable">
+            <thead>
+                <tr>
+                    <th><input type="button" class="btn btn-default btn-sm" value="Sort by" id="sortByButton"></th>
+                    <th id="idTh">ID</th>
+                    <th id="titleTh">Title</th>
+                    <th id="authorTh">Author/Editor</th>
+                    <th id="publishTh">Publishing information</th>
+                    <th id="lengthTh">Length</th>
+                    <th id="infoTh">Additional information</th>
+                    <th id="isbnTh">ISBN</th>
+                    <th id="reviewTh">Review</th>
+                </tr>
+            </thead>
+            <tbody id="bookList"></tbody>
+        </table>
+    </div>
+
+    <!--scripts...........................................................-->
+    <script src="jquery.js"></script>
+    <script src="bootstrap\js\bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.1.0/jquery-confirm.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

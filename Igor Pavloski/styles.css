@@ -1,0 +1,35 @@
+#header {
+    padding-top: 5px;
+    padding-bottom: 25px;
+    margin-bottom: 0px;
+    background-image: url('img/head5.jpg')
+}
+
+#header h3{
+    color: whitesmoke
+}
+
+label {
+    color: white;
+}
+
+#bookInputs {
+    padding-top: 10px;
+    background-color: #323232;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+#seriesGroup {
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+#storyInputs {
+    background-color: #4C4C4C;
+    padding-top: 10px;
+}
+
+#storyListing {
+    color: white;
+}
