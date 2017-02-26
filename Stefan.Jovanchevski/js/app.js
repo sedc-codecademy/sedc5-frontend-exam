@@ -38,7 +38,7 @@ let setPagination = (length) => {
     pages.find("li").on('click', function() {
         pageNumber = $(pages).find("li").index($(this)) + 1;
         setPage(pageNumber);
-        displayPage(pageNumber, pageSize, getBooksFromDB(), container);
+        displayPage(pageNumber, pageSize, tempArray.length == 0 ? getBooksFromDB() : tempArray, container);
     })
 }
 
@@ -98,10 +98,8 @@ let getAnthologyAddInfo = function(book) {
         orgStories = 0;
     let _stories = book.stories;
     _stories.sort((a, b) => sortFunc(a["author"], b["author"]));
-    for (i = 1; i < _stories.length; ++i) {
-        if (_stories[i].author != _stories[i - 1].author) authors += 1;
-        if (_stories[i].original) orgStories += 1;
-    }
+    for (i = 1; i < _stories.length; ++i) { if (_stories[i].author != _stories[i - 1].author) authors += 1; }
+    for (i = 0; i < _stories.length; ++i) { if (_stories[i].original === true) orgStories += 1; }
     message = `${_stories.length} ${_stories.length % 10 == 1 && _stories.length != 11 ? 
                     "story" : "stories"} by ${authors} ${_stories.length == 1 ? "author" : "authors"}`;
     message += `\n${orgStories} original ${orgStories == 1? "story" : "stories"}`
@@ -123,14 +121,14 @@ let handleDeleteButton = (id) => {
             }
         }
         localStorage.books = JSON.stringify(books);
-        refreshDisplay();
+        refreshDisplay(books);
     })
 }
 
-let refreshDisplay = () => {
-    setPagination(getMaxPageNumber(getBooksFromDB().length));
+let refreshDisplay = (books) => {
+    setPagination(getMaxPageNumber(books.length));
     setPage(pageNumber);
-    displayPage(pageNumber, pageSize, getBooksFromDB(), container);
+    displayPage(pageNumber, pageSize, books, container);
 }
 
 let updateDatabase = (book) => {
@@ -175,22 +173,34 @@ let validAnthologyInput = () => {
     return (message.length == 0);
 }
 
+let resetInputs = function() {
+    tempArray = [];
+    for (let i = 0; i < arguments.length; ++i) arguments[i].val("");
+}
+
+let filterBooks = function(fn, books) {
+    tempArray = books.filter((book) => fn(book));
+    console.log(tempArray);
+    pageNumber = 1;
+    refreshDisplay(tempArray);
+}
+
 $(() => {
 
     $('[data-toggle="tooltip"]').tooltip();
 
-    refreshDisplay();
+    refreshDisplay(getBooksFromDB());
 
     $("#previous").on('click', function() {
         if (pageNumber > 1)
             setPage(--pageNumber);
-        displayPage(pageNumber, pageSize, getBooksFromDB(), container);
+        refreshDisplay(tempArray.length == 0 ? getBooksFromDB() : tempArray);
     })
 
     $("#next").on('click', function() {
         if (pageNumber < getMaxPageNumber(getBooksFromDB().length))
             setPage(++pageNumber);
-        displayPage(pageNumber, pageSize, getBooksFromDB(), container);
+        refreshDisplay(tempArray.length == 0 ? getBooksFromDB() : tempArray);
     })
 
     $("#saveBook").on('click', () => {
@@ -214,12 +224,11 @@ $(() => {
             if (validAnthologyInput()) {
                 let id = getBooksFromDB().length + 1;
                 let title = $("#anthologyTitle").val();
-                let author = $("#anthologyAuthor").val();
+                let author = $("#anthologyEditor").val();
                 let publisher = $("#anthologyPublisher").val();
                 let publication = $("#anthologyPublication").val();
                 let pages = Number($("#anthologyPages").val());
                 let stories = getStories();
-                //let seriesNumber = Number($("#novelSeriesNumber").val());
                 let ISBN = $("#anthologyIsbn").val();
                 let review = $("#anthologyReview").val();
                 let book = new Anthology(id, title, author, publisher, publication, pages, stories, ISBN, review);
@@ -228,7 +237,7 @@ $(() => {
                 addNewBookToDisplay(book);
             }
         }
-        refreshDisplay();
+        refreshDisplay(getBooksFromDB());
 
     });
 
@@ -270,10 +279,89 @@ $(() => {
         $("#isOriginal").val("none");
     })
 
+    $("#searchByTitleOrAuthor").keyup(() => {
+        resetInputs($("#filterPeriod"), $("#searchNovelsByUser"));
+        if (!!$("#searchByTitleOrAuthor").val()) {
+            filterBooks((book) => {
+                let phrase = $("#searchByTitleOrAuthor").val().toLowerCase();
+                if (book.title.toLowerCase().indexOf(phrase) != -1) return true;
+                if (book.author.toLowerCase().indexOf(phrase) != -1) return true;
+                if (book.kind == "anthology") {
+                    for (let i = 0; i < book.stories.length; ++i)
+                        if (book.stories[i].author.toLowerCase().indexOf(phrase) != -1) return true;
+                }
+            }, getBooksFromDB());
+        } else {
+            tempArray = [];
+            refreshDisplay(getBooksFromDB());
+        }
+    });
+
+    $("#filterPeriod").keyup(() => {
+        resetInputs($("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
+        if (!!$("#filterPeriod").val()) {
+            console.log($("#filterPeriod").val());
+            filterBooks((book) => {
+                let year = $("#filterPeriod").val();
+                if (Number(book.yearOfPublication) >= year) return true;
+            }, getBooksFromDB());
+        } else {
+            tempArray = [];
+            refreshDisplay(getBooksFromDB());
+        }
+    });
+
+    $("#searchNovelsByUser").keyup(() => {
+        resetInputs($("#filterPeriod"), $("#searchByTitleOrAuthor"));
+        if (!!$("#searchNovelsByUser").val()) {
+            filterBooks((book) => {
+                let phrase = $("#searchNovelsByUser").val().toLowerCase();
+                if (book.kind == "novel")
+                    if (book.series.toLowerCase().indexOf(phrase) != -1) return true;
+            }, getBooksFromDB());
+        } else {
+            tempArray = [];
+            refreshDisplay(getBooksFromDB());
+        }
+    });
+
+    $("#showNovels").on('click', () => {
+        resetInputs($("#filterPeriod"), $("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
+        filterBooks((book) => {
+            if (book.kind == "novel") return true;
+        }, getBooksFromDB());
+    });
+
+    $("#showNovelsPartOfSeries").on('click', () => {
+        resetInputs($("#filterPeriod"), $("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
+        filterBooks((book) => {
+            if (book.kind == "novel" && !!book.series) return true;
+        }, getBooksFromDB());
+    });
+
+    $("#showAnthologies").on('click', () => {
+        resetInputs($("#filterPeriod"), $("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
+        filterBooks((book) => {
+            if (book.kind == "anthology") return true;
+        }, getBooksFromDB());
+    });
+
+    $("#showAnthologiesWithOriginalStories").on('click', () => {
+        resetInputs($("#filterPeriod"), $("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
+        filterBooks((book) => {
+            if (book.kind == "anthology") {
+                for (let i = 0; i < book.stories.length; ++i) {
+                    console.log(book.stories[i]);
+                    if (book.stories[i].original == true) return true;
+                }
+            }
+        }, getBooksFromDB());
+    });
+
 
     $(window).scroll(function(event) {
         let st = $(this).scrollTop();
-        if (st > 50) {
+        if (st > 10) {
             $("#addNewBook").fadeOut();
         } else {
             $("#addNewBook").fadeIn();
