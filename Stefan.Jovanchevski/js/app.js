@@ -2,6 +2,7 @@ let container = $(".booksContainer");
 let pageSize = 10;
 let pageNumber = 1;
 let tempArray = [];
+let sortAscending = false;
 
 let addNewBookToDisplay = (book) => {
     container.append(`
@@ -97,7 +98,7 @@ let getAnthologyAddInfo = function(book) {
     let authors = 1,
         orgStories = 0;
     let _stories = book.stories;
-    _stories.sort((a, b) => sortFunc(a["author"], b["author"]));
+    _stories.sort((a, b) => asc(a["author"], b["author"]));
     for (i = 1; i < _stories.length; ++i) { if (_stories[i].author != _stories[i - 1].author) authors += 1; }
     for (i = 0; i < _stories.length; ++i) { if (_stories[i].original === true) orgStories += 1; }
     message = `${_stories.length} ${_stories.length % 10 == 1 && _stories.length != 11 ? 
@@ -105,11 +106,6 @@ let getAnthologyAddInfo = function(book) {
     message += `\n${orgStories} original ${orgStories == 1? "story" : "stories"}`
     return message;
 }
-
-let sortFunc = (a, b) => {
-    return a < b ? 1 : (a > b ? -1 : 0);
-}
-
 
 let handleDeleteButton = (id) => {
     $(`.bookItem__delete${id}`).on('click', () => {
@@ -180,9 +176,30 @@ let resetInputs = function() {
 
 let filterBooks = function(fn, books) {
     tempArray = books.filter((book) => fn(book));
-    console.log(tempArray);
     pageNumber = 1;
     refreshDisplay(tempArray);
+}
+
+let handleSorts = function(books, property) {
+    sortAscending = !sortAscending;
+    tempArray = sortBooks(books, property);
+    refreshDisplay(tempArray);
+}
+
+let sortBooks = (books, property) => {
+    return [].concat(books.sort((a, b) => sortOrder()(a[property], b[property])));
+}
+
+let sortOrder = () => {
+    return sortAscending ? asc : desc;
+}
+
+function asc(a, b) {
+    return a < b ? 1 : (a > b ? -1 : 0);
+}
+
+function desc(a, b) {
+    return a > b ? 1 : (a < b ? -1 : 0)
 }
 
 $(() => {
@@ -210,11 +227,11 @@ $(() => {
                 let title = $("#novelTitle").val();
                 let author = $("#novelAuthor").val();
                 let publisher = $("#novelPublisher").val();
-                let publication = $("#novelPublication").val();
+                let publication = Number($("#novelPublication").val());
                 let pages = Number($("#novelPages").val());
                 let series = $("#novelSeriesName").val();
                 let seriesNumber = Number($("#novelSeriesNumber").val());
-                let ISBN = $("#novelIsbn").val();
+                let ISBN = Number($("#novelIsbn").val());
                 let review = $("#novelReview").val();
                 let book = new Novel(id, title, author, publisher, publication, pages, series, seriesNumber, ISBN, review);
                 updateDatabase(book);
@@ -226,10 +243,10 @@ $(() => {
                 let title = $("#anthologyTitle").val();
                 let author = $("#anthologyEditor").val();
                 let publisher = $("#anthologyPublisher").val();
-                let publication = $("#anthologyPublication").val();
+                let publication = Number($("#anthologyPublication").val());
                 let pages = Number($("#anthologyPages").val());
                 let stories = getStories();
-                let ISBN = $("#anthologyIsbn").val();
+                let ISBN = Number($("#anthologyIsbn").val());
                 let review = $("#anthologyReview").val();
                 let book = new Anthology(id, title, author, publisher, publication, pages, stories, ISBN, review);
                 delete sessionStorage.stories;
@@ -251,7 +268,6 @@ $(() => {
 
     $("#typeOfBook").on('change', () => {
         let type = $("#typeOfBook").val();
-        console.log(type);
         if (type == "none") {
             $("#novelEntry").addClass("hidden");
             $("#anthologyEntry").addClass("hidden");
@@ -300,7 +316,6 @@ $(() => {
     $("#filterPeriod").keyup(() => {
         resetInputs($("#searchByTitleOrAuthor"), $("#searchNovelsByUser"));
         if (!!$("#filterPeriod").val()) {
-            console.log($("#filterPeriod").val());
             filterBooks((book) => {
                 let year = $("#filterPeriod").val();
                 if (Number(book.yearOfPublication) >= year) return true;
@@ -351,13 +366,15 @@ $(() => {
         filterBooks((book) => {
             if (book.kind == "anthology") {
                 for (let i = 0; i < book.stories.length; ++i) {
-                    console.log(book.stories[i]);
                     if (book.stories[i].original == true) return true;
                 }
             }
         }, getBooksFromDB());
     });
 
+    $(".headerProperty").on('click', function() {
+        handleSorts(tempArray == 0 ? getBooksFromDB() : tempArray, $(this).attr('id'));
+    })
 
     $(window).scroll(function(event) {
         let st = $(this).scrollTop();
